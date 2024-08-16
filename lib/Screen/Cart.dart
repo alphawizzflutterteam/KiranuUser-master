@@ -7266,6 +7266,8 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
             if (value['error']) {
               paymentResponse = value['errorMessage'];
 
+
+
               if (value['response'] != null)
                 addTransaction(value['response']['TXNID'], orderId,
                     value['response']['STATUS'] ?? '', paymentResponse, false);
