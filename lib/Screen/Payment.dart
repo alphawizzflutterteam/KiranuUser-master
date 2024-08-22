@@ -496,6 +496,8 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
     );
   }
 
+
+
   Future<void> _getdateTime() async {
     _isNetworkAvail = await isNetworkAvailable();
     if (_isNetworkAvail) {

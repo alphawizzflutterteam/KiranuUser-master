@@ -633,6 +633,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     registerTxt(),
+
                     setUserName(),
                     setEmail(),
                     setPass(),
