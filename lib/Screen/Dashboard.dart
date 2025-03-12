@@ -38,8 +38,8 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(
-        SystemUiMode.manual, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.light,
@@ -172,7 +172,6 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
   }
 
   @override
-
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
@@ -185,15 +184,23 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
                 content: Text("Are you sure you want to exit?"),
                 actions: <Widget>[
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: colors.primary),
-                    child: Text("YES"),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: colors.primary),
+                    child: Text(
+                      "YES",
+                      style: TextStyle(color: colors.lightWhite2),
+                    ),
                     onPressed: () {
                       SystemNavigator.pop();
                     },
                   ),
                   ElevatedButton(
-                    style: ElevatedButton.styleFrom(backgroundColor: colors.primary),
-                    child: Text("NO"),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: colors.primary),
+                    child: Text(
+                      "NO",
+                      style: TextStyle(color: colors.lightWhite2),
+                    ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -252,7 +259,7 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
               // width: 45,
             )
           : null,
-      leadingWidth:_selBottom == 0 ? null : 200,
+      leadingWidth: _selBottom == 0 ? null : 200,
       leading: _selBottom == 0
           ? InkWell(
               child: Center(
@@ -270,7 +277,6 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
               },
             )
           : Container(
-              
               child: Row(
                 children: [
                   Image.asset(
