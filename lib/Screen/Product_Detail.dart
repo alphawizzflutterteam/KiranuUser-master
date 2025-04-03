@@ -131,7 +131,6 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
         }
       }
 
-
     getShare();
 
     _oldSelVarient = widget.model!.selVarient;
@@ -356,7 +355,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                         ),
                         height: height,
                         width: double.maxFinite,
-                       // fit: extendImg ? BoxFit.fill : BoxFit.fitWidth,
+                        // fit: extendImg ? BoxFit.fill : BoxFit.fitWidth,
 
                         imageErrorBuilder: (context, error, stackTrace) =>
                             erroWidget(height),
@@ -482,7 +481,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
           child: indicator == "1"
               ? SvgPicture.asset(
                   "assets/images/vag.svg",
-                  color:Colors.green,
+                  color: Colors.green,
                 )
               : indicator == "2"
                   ? SvgPicture.asset(
@@ -584,14 +583,16 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                                   Selector<CartProvider,
                                       Tuple2<List<dynamic>, List<dynamic>>>(
                                     builder: (context, data, child) {
-                                      setVariant == false ?
-                                          qtyController.text = data.item1.contains(widget.model!.id)
+                                      setVariant == false
+                                          ? qtyController.text = data.item1
+                                                  .contains(widget.model!.id)
                                               ? data.item2[data.item1
                                                       .indexWhere((element) =>
                                                           element ==
                                                           widget.model!.id)]
                                                   .toString()
-                                              : "0" : "0";
+                                              : "0"
+                                          : "0";
                                       return TextField(
                                         textAlign: TextAlign.center,
                                         readOnly: true,
@@ -744,16 +745,17 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
             Text(
               CUR_CURRENCY! + " " + widget.model!.prVarientList![pos].price!,
               style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                  decoration: TextDecoration.lineThrough, fontSize: 18,
-              fontWeight: FontWeight.bold
-              ),
-            ),
-            Text(" | " + off.toStringAsFixed(2) + "% off",
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.secondary,
-                  fontWeight: FontWeight.bold,
+                  decoration: TextDecoration.lineThrough,
                   fontSize: 18,
-                ),
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              " | " + off.toStringAsFixed(2) + "% off",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.secondary,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
             ),
           ],
         ),
@@ -791,7 +793,8 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
       List att = [], val = [];
       if (widget.model!.prVarientList![widget.model!.selVarient!].attr_name !=
           null) {
-        print("Type2===============> ${widget.model!.prVarientList![widget.model!.selVarient!].attr_name}");
+        print(
+            "Type2===============> ${widget.model!.prVarientList![widget.model!.selVarient!].attr_name}");
         att = widget.model!.prVarientList![widget.model!.selVarient!].attr_name!
             .split(',');
         val = widget
@@ -961,8 +964,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
             return Container(
               constraints: BoxConstraints(
                   maxHeight: MediaQuery.of(context).size.height * 0.9),
-              child: ListView(
-                  shrinkWrap: true, children: [
+              child: ListView(shrinkWrap: true, children: [
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -1322,31 +1324,25 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                   CupertinoButton(
                     padding: EdgeInsets.all(0),
                     child: Container(
-                        alignment: FractionalOffset.center,
-                        height: 55,
-                        decoration: BoxDecoration(
-                          gradient: available!
-                              ? LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                      colors.grad1Color,
-                                      colors.grad2Color
-                                    ],
-                                  stops: [
-                                      0,
-                                      1
-                                    ])
-                              : null,
-                          color: available!
-                              ? null
-                              : Theme.of(context).colorScheme.gray,
-                        ),
-                        child: Text(getTranslated(context, 'APPLY')!,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.button!.copyWith(
-                                  color: Theme.of(context).colorScheme.white,
-                                )),
+                      alignment: FractionalOffset.center,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        gradient: available!
+                            ? LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [colors.grad1Color, colors.grad2Color],
+                                stops: [0, 1])
+                            : null,
+                        color: available!
+                            ? null
+                            : Theme.of(context).colorScheme.gray,
+                      ),
+                      child: Text(getTranslated(context, 'APPLY')!,
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.button!.copyWith(
+                                color: Theme.of(context).colorScheme.white,
+                              )),
                     ),
                     onPressed: available! ? applyVarient : null,
                   )
@@ -1887,6 +1883,15 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
 
                     //Divider(),
                     _sellerDetail(),
+                    Text(
+                      "   HSN Code : ${widget.model!.hsn_code ?? ''}",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+
                     // Divider()
                     //_tags()
                   ],
@@ -1947,7 +1952,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                         (index) {
                           Product? item;
                         */
-                      /*  try {
+                        /*  try {
                             item =
                                 productList.isEmpty ? null : productList[index];
                             if (notificationisloadmore &&
@@ -1956,7 +1961,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                               getProduct();
                             }
                           } on Exception catch (_) {}*/
-                      /*
+                        /*
 
                           return item == null
                               ? Container()
@@ -2038,9 +2043,9 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                             backgroundColor:
                                 Theme.of(context).colorScheme.btnColor),
                         onPressed: () {
-                          String qty = ((int.parse(qtyController.text)) +0
-                                  // (int.parse(widget.model!.qtyStepSize!))
-                          )
+                          String qty = ((int.parse(qtyController.text)) + 0
+                              // (int.parse(widget.model!.qtyStepSize!))
+                              )
                               .toString();
                           addToCart(qty, true);
                         },
@@ -2198,8 +2203,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                           child: Hero(
                             tag: "$index${productList[index].id}",
                             child: FadeInImage(
-                              image: NetworkImage(
-                                  productList[index].image!),
+                              image: NetworkImage(productList[index].image!),
                               height: double.maxFinite,
                               width: double.maxFinite,
                               fit: BoxFit.contain,
@@ -2598,6 +2602,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                       sellerName: widget.model!.store_name ?? "",
                       sellerID: widget.model!.seller_id,
                       storeDesc: widget.model!.store_description,
+                      hsncode: widget.model!.hsn_code,
                     )));
           },
         ),
@@ -2690,8 +2695,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                 child: new ClipRRect(
                   borderRadius: BorderRadius.circular(5.0),
                   child: new FadeInImage(
-                    image: NetworkImage(
-                        reviewList[i].imgList![index]),
+                    image: NetworkImage(reviewList[i].imgList![index]),
                     height: 50.0,
                     width: 50.0,
                     placeholder: placeHolder(50),
@@ -2757,7 +2761,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
   }
 
   Future<void> getShare() async {
-   /* final DynamicLinkParameters parameters = DynamicLinkParameters(
+    /* final DynamicLinkParameters parameters = DynamicLinkParameters(
       uriPrefix: deepLinkUrlPrefix,
       link: Uri.parse(
           'https://$deepLinkName/?index=${widget.index}&secPos=${widget.secPos}&list=${widget.list}&id=${widget.model!.id}'),
@@ -3150,7 +3154,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
         textDirection: TextDirection.rtl,
         rating: ratingStar,
         itemBuilder: (context, index) => const Icon(
-           Icons.star_rate_rounded,
+          Icons.star_rate_rounded,
           color: colors.yellow,
         ),
         itemCount: totalStars,

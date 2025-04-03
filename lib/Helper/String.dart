@@ -7,7 +7,8 @@ final Uri getUserDetailsApi = Uri.parse(baseUrl + 'get_user_details');
 final Uri updateUserApi = Uri.parse(baseUrl + 'update_user');
 final Uri getSectionApi = Uri.parse(baseUrl + 'get_sections');
 final Uri getSettingApi = Uri.parse(baseUrl + 'get_settings');
-final Uri getSubcatApi = Uri.parse(baseUrl + 'get_subcategories_by_category_id');
+final Uri getSubcatApi =
+    Uri.parse(baseUrl + 'get_subcategories_by_category_id');
 final Uri getProductApi = Uri.parse(baseUrl + 'get_products');
 final Uri manageCartApi = Uri.parse(baseUrl + 'manage_cart');
 final Uri getUserLoginApi = Uri.parse(baseUrl + 'login');
@@ -293,6 +294,7 @@ const String SELLER_NAME = 'seller_name';
 const String SELLER_PROFILE = 'seller_profile';
 const String SELLER_RATING = 'seller_rating';
 const String STORE_DESC = 'store_description';
+const String HSNCODE = 'hsn_code';
 const String STORE_NAME = 'store_name';
 
 const String MIN_CART_AMT = 'minimum_cart_amt';
