@@ -9,7 +9,7 @@ import '../String.dart';
 
 Future<UserDetails?> userDetails() async {
   var header = headers;
-  var request = http.MultipartRequest('POST',getUserDetailsApi);
+  var request = http.MultipartRequest('POST', getUserDetailsApi);
   request.fields.addAll({'user_id': '$CUR_USERID'});
 
   request.headers.addAll(header);
@@ -29,15 +29,15 @@ Future<UserDetails?> userDetails() async {
 
 Future<UpdateUserModels?> uploadImage(param, image) async {
   var header = headers;
-  var request = http.MultipartRequest('POST',updateUserApi);
+  var request = http.MultipartRequest('POST', updateUserApi);
   request.fields.addAll({'user_id': '$CUR_USERID'});
   request.files.add(await http.MultipartFile.fromPath('$param', '$image'));
   request.headers.addAll(header);
 
   http.StreamedResponse response = await request.send();
- print(request.fields);
- print(request.files[0].field);
- print(response.statusCode);
+  print(request.fields);
+  print(request.files[0].field);
+  print(response.statusCode);
   if (response.statusCode == 200) {
     final str = await response.stream.bytesToString();
     return UpdateUserModels.fromJson(json.decode(str));
@@ -46,7 +46,7 @@ Future<UpdateUserModels?> uploadImage(param, image) async {
   }
 }
 
-Future<UpdateUserModels?> updateUserDetails(userName , email, dob) async {
+Future<UpdateUserModels?> updateUserDetails(userName, email, dob) async {
   var header = headers;
   var request = http.MultipartRequest('POST', updateUserApi);
   request.fields.addAll({
@@ -67,12 +67,10 @@ Future<UpdateUserModels?> updateUserDetails(userName , email, dob) async {
   }
 }
 
-Future<SingleSellerModal?> singleSeller(sellerId) async{
+Future<SingleSellerModal?> singleSeller(sellerId) async {
   var header = headers;
   var request = http.MultipartRequest('POST', getSellerApi);
-  request.fields.addAll({
-    'seller_id': sellerId
-  });
+  request.fields.addAll({'seller_id': sellerId});
 
   request.headers.addAll(header);
   print("API Seller Id: $sellerId");
@@ -81,22 +79,42 @@ Future<SingleSellerModal?> singleSeller(sellerId) async{
   if (response.statusCode == 200) {
     final data = await response.stream.bytesToString();
     return SingleSellerModal.fromJson(json.decode(data));
-  }
-  else {
+  } else {
     return null;
   }
 }
 
-checkOnOff(sellerId) async{
+checkOnOff(sellerId) async {
   SingleSellerModal? modal = await singleSeller(sellerId);
-  if(modal!.error == false){
-    if(modal.data![0].openCloseStatus == '1'){
-      print("CHEK ON OFF STATUS ========================> ${modal.data![0].openCloseStatus}");
+  if (modal!.error == false) {
+    if (modal.data![0].openCloseStatus == '1') {
+      print(
+          "CHEK ON OFF STATUS ========================> ${modal.data![0].openCloseStatus}");
       return true;
-    }else {
+    } else {
       return false;
     }
   } else {
     print("Error");
+  }
+}
+
+Future<String> deleteAccount(userId) async {
+  var header = headers;
+  var request = http.MultipartRequest('POST', getDeleteAccountApi);
+  request.fields.addAll({'user_id': userId});
+
+  request.headers.addAll(header);
+  print('delete-----${request}');
+  print(request.fields);
+  print(request.headers);
+  http.StreamedResponse response = await request.send();
+  print('response  $response');
+  if (response.statusCode == 200) {
+    print('mmmmmmmmmmmmm');
+    final data = await response.stream.bytesToString();
+    return json.decode(data)['message'];
+  } else {
+    return 'Unable to delete account';
   }
 }

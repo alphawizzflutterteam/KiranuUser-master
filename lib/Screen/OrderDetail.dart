@@ -3911,7 +3911,7 @@ class StateOrder extends State<OrderDetail>
       child: InkWell(
           child: ListTile(
             dense: true,
-            trailing: Icon(
+            trailing: const Icon(
               Icons.keyboard_arrow_right,
               color: colors.primary,
             ),
@@ -3993,87 +3993,88 @@ class StateOrder extends State<OrderDetail>
     );
   }
 
-  // downloadInvoice() {
-  //   return Card(
-  //     elevation: 0,
-  //     child: InkWell(
-  //         child: ListTile(
-  //           dense: true,
-  //           trailing: Icon(
-  //             Icons.keyboard_arrow_right,
-  //             color: colors.primary,
-  //           ),
-  //           leading: Icon(
-  //             Icons.receipt,
-  //             color: colors.primary,
-  //           ),
-  //           title: Text(
-  //             getTranslated(context, 'DWNLD_INVOICE')!,
-  //             style: Theme.of(context)
-  //                 .textTheme
-  //                 .subtitle2!
-  //                 .copyWith(color: Theme.of(context).colorScheme.lightBlack),
-  //           ),
-  //         ),
-  //         onTap: () async {
-  //           final status = await Permission.storage.request();
-  //
-  //           if (status == PermissionStatus.granted) {
-  //             if (mounted) {
-  //               setState(() {
-  //                 _isProgress = true;
-  //               });
-  //             }
-  //             var targetPath;
-  //
-  //             if (Platform.isIOS) {
-  //               var target = await getApplicationDocumentsDirectory();
-  //               targetPath = target.path.toString();
-  //             } else {
-  //               var downloadsDirectory =
-  //               await DownloadsPathProvider.downloadsDirectory;
-  //               targetPath = downloadsDirectory!.path.toString();
-  //             }
-  //
-  //             var targetFileName = "Invoice_${widget.model!.id}";
-  //             var generatedPdfFile, filePath;
-  //             try {
-  //               generatedPdfFile =
-  //               await FlutterHtmlToPdf.convertFromHtmlContent(
-  //                   widget.model!.invoice!, targetPath, targetFileName);
-  //               filePath = generatedPdfFile.path;
-  //             } on Exception {
-  //               //  filePath = targetPath + "/" + targetFileName + ".html";
-  //               generatedPdfFile =
-  //               await FlutterHtmlToPdf.convertFromHtmlContent(
-  //                   widget.model!.invoice!, targetPath, targetFileName);
-  //               filePath = generatedPdfFile.path;
-  //             }
-  //
-  //             if (mounted) {
-  //               setState(() {
-  //                 _isProgress = false;
-  //               });
-  //             }
-  //             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //               content: Text(
-  //                 "${getTranslated(context, 'INVOICE_PATH')} $targetFileName",
-  //                 textAlign: TextAlign.center,
-  //                 style: TextStyle(color: Theme.of(context).colorScheme.black),
-  //               ),
-  //               action: SnackBarAction(
-  //                   label: getTranslated(context, 'VIEW')!,
-  //                   textColor: Theme.of(context).colorScheme.fontColor,
-  //                   onPressed: () async {
-  //                     final result = await OpenFilex.open(filePath);
-  //                   }),
-  //               backgroundColor: Theme.of(context).colorScheme.white,
-  //               elevation: 1.0,
-  //             ));
-  //           }
-  //         }),
-  //   );
-  // }
+  DwnInvoice() {
+    return Card(
+      elevation: 0,
+      child: InkWell(
+          child: ListTile(
+            dense: true,
+            trailing: const Icon(
+              Icons.keyboard_arrow_right,
+              color: colors.primary,
+            ),
+            leading: const Icon(
+              Icons.receipt,
+              color: colors.primary,
+            ),
+            title: Text(
+              getTranslated(context, 'DWNLD_INVOICE')!,
+              style: Theme.of(context)
+                  .textTheme
+                  .subtitle2!
+                  .copyWith(color: Theme.of(context).colorScheme.lightBlack),
+            ),
+          ),
+          onTap: () async {
+            final status = await Permission.storage.request();
+
+            if (status == PermissionStatus.granted) {
+              if (mounted) {
+                setState(() {
+                  _isProgress = true;
+                });
+              }
+              var targetPath;
+
+              if (Platform.isIOS) {
+                var target = await getApplicationDocumentsDirectory();
+                targetPath = target.path.toString();
+              } else {
+                var downloadsDirectory =
+                    await DownloadsPathProvider.downloadsDirectory;
+                targetPath = downloadsDirectory!.path.toString();
+                print('___________${targetPath}__________');
+              }
+
+              var targetFileName = "Invoice_${widget.model!.id}";
+              var generatedPdfFile, filePath;
+              try {
+                generatedPdfFile =
+                    await FlutterHtmlToPdf.convertFromHtmlContent(
+                        widget.model!.invoice!, targetPath, targetFileName);
+                filePath = generatedPdfFile.path;
+              } on Exception {
+                //  filePath = targetPath + "/" + targetFileName + ".html";
+                generatedPdfFile =
+                    await FlutterHtmlToPdf.convertFromHtmlContent(
+                        widget.model!.invoice!, targetPath, targetFileName);
+                filePath = generatedPdfFile.path;
+              }
+
+              if (mounted) {
+                setState(() {
+                  _isProgress = false;
+                });
+              }
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  "${getTranslated(context, 'INVOICE_PATH')} $targetFileName",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Theme.of(context).colorScheme.black),
+                ),
+                action: SnackBarAction(
+                    label: getTranslated(context, 'VIEW')!,
+                    textColor: Theme.of(context).colorScheme.fontColor,
+                    onPressed: () async {
+                      final result = await OpenFilex.open(filePath);
+                    }),
+                backgroundColor: Theme.of(context).colorScheme.white,
+                elevation: 1.0,
+              ));
+            }
+          }),
+    );
+  }
 
   Future<void> sendBankProof() async {
     _isNetworkAvail = await isNetworkAvailable();
@@ -4659,7 +4660,7 @@ class StateOrder extends State<OrderDetail>
                 ),
                 Text(
                   model.dateTime != null && model.dateTime!.isNotEmpty
-                      ? DateFormat('dd-MM-yy HH:mm')
+                      ? DateFormat('dd-MM-yy hh:mm a')
                           .format(DateTime.parse(model.dateTime!))
                       : 'N/A',
                   style: TextStyle(

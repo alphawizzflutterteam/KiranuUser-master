@@ -124,6 +124,7 @@
   "CONFIRM": "Confirm",
   "CANCEL": "Cancel",
   "ORDER_PLACED": "Order Placed",
+  "DELETE_ACCOUNT": "Delete Account",
   "ORD_PLC": "Success!",
   "ORD_PLC_SUCC": "Your order will be delivered soon.\nThank you for choosing our app!",
   "ADD_PROMO": "Please Add Promo Code",

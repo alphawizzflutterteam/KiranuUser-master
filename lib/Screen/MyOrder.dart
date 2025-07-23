@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:intl/intl.dart';
 import '../Helper/AppBtn.dart';
 import '../Helper/Color.dart';
 import '../Helper/Constant.dart';
@@ -31,6 +31,9 @@ int offset = 0;
 int total = 0;
 
 int pos = 0;
+final String sDate = "2025-07-12T14:30:00";
+DateTime dateTime = DateTime.parse(sDate);
+String formattedDate = DateFormat('dd-MM-yy hh:mm a').format(dateTime);
 
 class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -101,7 +104,6 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
         offset = 0;
         getOrder();
       }
-
     });
 
     super.initState();
@@ -233,7 +235,7 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
                             ? Center(
                                 child: Text(getTranslated(context, 'noItem')!))
                             : RefreshIndicator(
-                                 color: colors.primary,
+                                color: colors.primary,
                                 key: _refreshIndicatorKey,
                                 onRefresh: _refresh,
                                 child: ListView.builder(
@@ -473,7 +475,7 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
                             Text(
-                              "$proStatus on $sDate",
+                              "$proStatus",
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle2!
@@ -481,6 +483,17 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
                                       color: Theme.of(context)
                                           .colorScheme
                                           .lightBlack),
+                            ),
+                            Text(
+                              "$sDate",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle2!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .lightBlack,
+                                  ),
                             ),
                             Padding(
                                 padding:
@@ -511,7 +524,7 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
             ]),
           ]),
           onTap: () async {
-          // print(searchList[index]);
+            // print(searchList[index]);
             FocusScope.of(context).unfocus();
             final result = await Navigator.push(
               context,
@@ -519,11 +532,11 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
                   builder: (context) => OrderDetail(model: searchList[index])),
             );
             print("Back My order List : $result");
-            if (mounted&&result == "update") {
+            if (mounted && result == "update") {
               print("Order List Data-------------: $result");
               setState(() {
                 _isLoading = true;
-                isLoadingmore  =true;
+                isLoadingmore = true;
                 offset = 0;
                 total = 0;
                 searchList.clear();

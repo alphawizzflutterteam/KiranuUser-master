@@ -533,6 +533,11 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             ? Container()
             : _getDrawerItem(getTranslated(context, 'LOGOUT')!,
                 'assets/images/pro_logout.svg'),
+        CUR_USERID == "" || CUR_USERID == null
+            ? Container()
+            : _getDrawerItem(
+                getTranslated(context, 'Delete Account') ?? 'Delete Account',
+                'assets/images/pro_logout.svg'),
       ],
     );
   }
@@ -684,6 +689,9 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             openChangePasswordBottomSheet();
           } else if (title == getTranslated(context, 'CHANGE_LANGUAGE_LBL')) {
             openChangeLanguageBottomSheet();
+          } else if (title ==
+              (getTranslated(context, 'Delete Account') ?? 'Delete Account')) {
+            deleteAccountDailog();
           }
         },
       ),
@@ -861,6 +869,54 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
   //
   // microsoftStoreId: 'microsoftStoreId',
   // );
+
+  deleteAccountDailog() async {
+    await dialogAnimate(context,
+        StatefulBuilder(builder: (BuildContext context, StateSetter setStater) {
+      return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setStater) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5.0))),
+          content: Text(
+            getTranslated(context, 'Delete Account') ?? 'Delete Account',
+            style: Theme.of(this.context)
+                .textTheme
+                .subtitle1!
+                .copyWith(color: Theme.of(context).colorScheme.fontColor),
+          ),
+          actions: <Widget>[
+            TextButton(
+                child: Text(
+                  getTranslated(context, 'NO')!,
+                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                      color: Theme.of(context).colorScheme.lightBlack,
+                      fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                }),
+            TextButton(
+                child: Text(
+                  getTranslated(context, 'YES')!,
+                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                      color: Theme.of(context).colorScheme.fontColor,
+                      fontWeight: FontWeight.bold),
+                ),
+                onPressed: () {
+                  deleteAccount(CUR_USERID);
+                  SettingProvider settingProvider =
+                      Provider.of<SettingProvider>(context, listen: false);
+                  settingProvider.clearUserSession(context);
+                  //favList.clear();
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/home', (Route<dynamic> route) => false);
+                })
+          ],
+        );
+      });
+    }));
+  }
 
   logOutDailog() async {
     await dialogAnimate(context,

@@ -55,6 +55,8 @@ final Uri flutterwaveApi = Uri.parse(baseUrl + 'flutterwave_webview');
 final Uri getMsgApi = Uri.parse(baseUrl + 'get_messages');
 final Uri setBankProofApi = Uri.parse(baseUrl + 'send_bank_transfer_proof');
 final Uri checkDeliverableApi = Uri.parse(baseUrl + "is_product_delivarable");
+final Uri getDeleteAccountApi = Uri.parse(baseUrl + 'delete_user');
+
 final Uri checkCartDelApi =
     Uri.parse(baseUrl + 'check_cart_products_delivarable');
 
