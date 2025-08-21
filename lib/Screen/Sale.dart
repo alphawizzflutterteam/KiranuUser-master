@@ -169,7 +169,7 @@ class _SaleState extends State<Sale>
               children: [
                 Expanded(
                   child: Text(saleList[index].shortDesc ?? "",
-                      style: Theme.of(context).textTheme.subtitle2),
+                      style: Theme.of(context).textTheme.titleSmall),
                 ),
                 InkWell(
                   child: Padding(
@@ -178,7 +178,7 @@ class _SaleState extends State<Sale>
                       getTranslated(context, 'seeAll')!,
                       style: Theme.of(context)
                           .textTheme
-                          .caption!
+                          .bodySmall!
                           .copyWith(color: colors.primary),
                     ),
                   ),
@@ -204,7 +204,7 @@ class _SaleState extends State<Sale>
                        // padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)),
                     child: Text(
                       getTranslated(context, 'SHOP_NOW')!,
-                      style: Theme.of(context).textTheme.caption!.copyWith(
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
                           color: Theme.of(context).colorScheme.fontColor, fontWeight: FontWeight.bold),
                     ),
                     onPressed: () {
@@ -320,7 +320,7 @@ class _SaleState extends State<Sale>
                                 : "",
                             style: Theme.of(context)
                                 .textTheme
-                                .overline!
+                                .labelSmall!
                                 .copyWith(
                                     decoration: TextDecoration.lineThrough,
                                     letterSpacing: 0),
@@ -331,7 +331,7 @@ class _SaleState extends State<Sale>
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .overline!
+                                    .labelSmall!
                                     .copyWith(
                                         color: colors.primary,
                                         letterSpacing: 0)),
@@ -457,7 +457,7 @@ class _SaleState extends State<Sale>
                                 : "",
                             style: Theme.of(context)
                                 .textTheme
-                                .overline!
+                                .labelSmall!
                                 .copyWith(
                                     decoration: TextDecoration.lineThrough,
                                     letterSpacing: 0),
@@ -468,7 +468,7 @@ class _SaleState extends State<Sale>
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .overline!
+                                    .labelSmall!
                                     .copyWith(
                                         color: colors.primary,
                                         letterSpacing: 0)),
@@ -570,7 +570,7 @@ class _SaleState extends State<Sale>
                         getTranslated(context, 'seeAll')!,
                         style: Theme.of(context)
                             .textTheme
-                            .caption!
+                            .bodySmall!
                             .copyWith(color: colors.primary),
                       ),
                       trailing: Icon(
@@ -747,14 +747,14 @@ class _SaleState extends State<Sale>
           getTranslated(context, 'UPDATE_AVAIL')!,
           style: Theme.of(this.context)
               .textTheme
-              .subtitle1!
+              .titleMedium!
               .copyWith(color: Theme.of(context).colorScheme.fontColor),
         ),
         actions: <Widget>[
           new TextButton(
               child: Text(
                 getTranslated(context, 'NO')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.lightBlack,
                     fontWeight: FontWeight.bold),
               ),
@@ -764,7 +764,7 @@ class _SaleState extends State<Sale>
           new TextButton(
               child: Text(
                 getTranslated(context, 'YES')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.fontColor,
                     fontWeight: FontWeight.bold),
               ),
@@ -975,7 +975,7 @@ class _SaleState extends State<Sale>
                                 },
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme

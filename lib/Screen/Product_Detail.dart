@@ -24,7 +24,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
+// import 'package:share/share.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tuple/tuple.dart';
 import '../Helper/ApiBaseHelper.dart';
@@ -217,9 +218,14 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
       final File imageFile =
           File('$documentDirectory/${widget.model!.name}.png');
       imageFile.writeAsBytesSync(bytes1);
-      Share.shareFiles(['$documentDirectory/${widget.model!.name}.png'],
-          text:
-              "${widget.model!.name}\n${shortenedLink.shortUrl.toString()}\n$shareLink");
+      // Share.shareFiles(['$documentDirectory/${widget.model!.name}.png'],
+      //     text:
+      //         "${widget.model!.name}\n${shortenedLink.shortUrl.toString()}\n$shareLink");
+      SharePlus.instance.share(
+          ShareParams(
+            files: [XFile('$documentDirectory/${widget.model!.name}.png')],
+            text: '${widget.model!.name}\n${shortenedLink.shortUrl.toString()}\n$shareLink',
+          ));
     } catch (e) {
       print(e);
     }
@@ -396,7 +402,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                     "${_curSlider + 1}/${sliderList.length}",
                     style: Theme.of(context)
                         .textTheme
-                        .caption!
+                        .bodySmall!
                         .copyWith(color: colors.primary),
                   ),
                   decoration: BoxDecoration(
@@ -513,14 +519,14 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
             " " + widget.model!.rating!,
             style: Theme.of(context)
                 .textTheme
-                .caption!
+                .bodySmall!
                 .copyWith(color: Theme.of(context).colorScheme.lightBlack),
           ),
           Text(
             " | " + widget.model!.noOfRating! + " Ratings",
             style: Theme.of(context)
                 .textTheme
-                .caption!
+                .bodySmall!
                 .copyWith(color: Theme.of(context).colorScheme.lightBlack),
           )
         ],
@@ -540,7 +546,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
         children: [
           Text(
             CUR_CURRENCY! + " " + price.toString(),
-            //style: Theme.of(context).textTheme.headline6,
+            //style: Theme.of(context).textTheme.titleLarge,
             style: TextStyle(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.bold,
@@ -744,7 +750,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
           children: <Widget>[
             Text(
               CUR_CURRENCY! + " " + widget.model!.prVarientList![pos].price!,
-              style: Theme.of(context).textTheme.bodyText2!.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   decoration: TextDecoration.lineThrough,
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
@@ -772,7 +778,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
         widget.model!.name!,
         style: Theme.of(context)
             .textTheme
-            .subtitle1!
+            .titleMedium!
             .copyWith(color: Theme.of(context).colorScheme.lightBlack),
       ),
     );
@@ -829,7 +835,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                                       overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle2!
+                                          .titleSmall!
                                           .copyWith(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -843,7 +849,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                                       val[index],
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle2!
+                                          .titleSmall!
                                           .copyWith(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -908,7 +914,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                                 },
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -1057,7 +1063,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                     padding: const EdgeInsets.all(15.0),
                     child: Text(
                       getTranslated(context, 'selectVarient')!,
-                      //   style: Theme.of(context).textTheme.headline6,
+                      //   style: Theme.of(context).textTheme.titleLarge,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.fontColor,
                         fontWeight: FontWeight.bold,
@@ -1340,7 +1346,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                       ),
                       child: Text(getTranslated(context, 'APPLY')!,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.button!.copyWith(
+                          style: Theme.of(context).textTheme.labelLarge!.copyWith(
                                 color: Theme.of(context).colorScheme.white,
                               )),
                     ),
@@ -1916,7 +1922,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           getTranslated(context, 'MORE_PRODUCT')!,
-                          style: Theme.of(context).textTheme.subtitle1,
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       )
                     : Container(),
@@ -2120,7 +2126,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                 getTranslated(context, 'OUT_OF_STOCK_LBL')!,
                 style: Theme.of(context)
                     .textTheme
-                    .button!
+                    .labelLarge!
                     .copyWith(fontWeight: FontWeight.bold, color: Colors.red),
               )),
             ),
@@ -2155,7 +2161,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
               dense: true,
               title: Text(
                 getTranslated(context, 'MADE_IN')!,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
           )
@@ -2314,7 +2320,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                         ),
                         Text(
                           " (" + widget.model!.noOfRating! + ")",
-                          style: Theme.of(context).textTheme.overline,
+                          style: Theme.of(context).textTheme.labelSmall,
                         )
                       ],
                     ),
@@ -2346,7 +2352,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                                 "" +
                                 productList[index].prVarientList![0].price!
                             : "",
-                        style: Theme.of(context).textTheme.overline!.copyWith(
+                        style: Theme.of(context).textTheme.labelSmall!.copyWith(
                             decoration: TextDecoration.lineThrough,
                             letterSpacing: 0),
                       ),
@@ -2535,7 +2541,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
         dense: true,
         title: Text(
           getTranslated(context, 'RETURNABLE')!,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
       ),
     );
@@ -2554,7 +2560,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
         dense: true,
         title: Text(
           getTranslated(context, 'CANCELLABLE')!,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
       ),
     );
@@ -2637,7 +2643,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
           children: [
             Text(
               getTranslated(context, 'CUSTOMER_REVIEW_LBL')!,
-              style: Theme.of(context).textTheme.subtitle2!.copyWith(
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   color: Theme.of(context).colorScheme.lightBlack,
                   fontWeight: FontWeight.bold),
             ),
@@ -2719,7 +2725,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                 start: 8, end: 8, top: 8, bottom: 5),
             child: Text(
               widget.model!.shortDescription!,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           )
         : Container();
@@ -2742,7 +2748,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                         flex: 1,
                         child: Text(
                           widget.model!.attributeList![i].name!,
-                          style: Theme.of(context).textTheme.subtitle2,
+                          style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ),
                       Expanded(
@@ -2801,7 +2807,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
               dense: true,
               title: Text(
                 getTranslated(context, 'WARRENTY')!,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
           )
@@ -2955,7 +2961,7 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
               dense: true,
               title: Text(
                 getTranslated(context, 'GAURANTEE')!,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
             ),
           )

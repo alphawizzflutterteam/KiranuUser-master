@@ -222,7 +222,7 @@
 //             widget.title == getTranslated(context, 'SEND_OTP_TITLE')
 //                 ? getTranslated(context, 'CREATE_ACC_LBL')!
 //                 : getTranslated(context, 'FORGOT_PASSWORDTITILE')!,
-//             style: Theme.of(context).textTheme.subtitle1!.copyWith(
+//             style: Theme.of(context).textTheme.titleMedium!.copyWith(
 //                 color: Theme.of(context).colorScheme.fontColor,
 //                 fontWeight: FontWeight.bold),
 //           ),
@@ -237,7 +237,7 @@
 //           child: Text(
 //             getTranslated(context, 'SEND_VERIFY_CODE_LBL')!,
 //             textAlign: TextAlign.center,
-//             style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//             style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //                   color: Theme.of(context).colorScheme.fontColor,
 //                   fontWeight: FontWeight.normal,
 //                 ),
@@ -304,7 +304,7 @@
 //       maxLength: 10,
 //         keyboardType: TextInputType.number,
 //         controller: mobileController,
-//         style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//         style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //             color: Theme.of(context).colorScheme.fontColor,
 //             fontWeight: FontWeight.normal),
 //         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -318,7 +318,7 @@
 //         decoration: InputDecoration(
 //           counterText: '',
 //           hintText: getTranslated(context, 'MOBILEHINT_LBL'),
-//           hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+//           hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
 //               color: Theme.of(context).colorScheme.fontColor,
 //               fontWeight: FontWeight.normal),
 //           contentPadding:
@@ -358,7 +358,7 @@
 //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 //               children: [
 //                 Text(getTranslated(context, 'CONTINUE_AGREE_LBL')!,
-//                     style: Theme.of(context).textTheme.caption!.copyWith(
+//                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                         color: Theme.of(context).colorScheme.fontColor,
 //                         fontWeight: FontWeight.normal)),
 //                 const SizedBox(
@@ -376,7 +376,7 @@
 //                       },
 //                       child: Text(
 //                         getTranslated(context, 'TERMS_SERVICE_LBL')!,
-//                         style: Theme.of(context).textTheme.caption!.copyWith(
+//                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                             color: Theme.of(context).colorScheme.fontColor,
 //                             decoration: TextDecoration.underline,
 //                             fontWeight: FontWeight.normal),
@@ -385,7 +385,7 @@
 //                     width: 5.0,
 //                   ),
 //                   Text(getTranslated(context, 'AND_LBL')!,
-//                       style: Theme.of(context).textTheme.caption!.copyWith(
+//                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                           color: Theme.of(context).colorScheme.fontColor,
 //                           fontWeight: FontWeight.normal)),
 //                   const SizedBox(
@@ -402,7 +402,7 @@
 //                       },
 //                       child: Text(
 //                         getTranslated(context, 'PRIVACY')!,
-//                         style: Theme.of(context).textTheme.caption!.copyWith(
+//                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                             color: Theme.of(context).colorScheme.fontColor,
 //                             decoration: TextDecoration.underline,
 //                             fontWeight: FontWeight.normal),
@@ -811,7 +811,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
             widget.title == getTranslated(context, 'SEND_OTP_TITLE')
                 ? getTranslated(context, 'CREATE_ACC_LBL')!
                 : getTranslated(context, 'FORGOT_PASSWORDTITILE')!,
-            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 color: Theme.of(context).colorScheme.fontColor,
                 fontWeight: FontWeight.bold),
           ),
@@ -826,7 +826,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
           child: Text(
             getTranslated(context, 'SEND_VERIFY_CODE_LBL')!,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.subtitle2!.copyWith(
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal,
             ),
@@ -893,7 +893,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         maxLength: 10,
         keyboardType: TextInputType.number,
         controller: mobileController,
-        style: Theme.of(context).textTheme.subtitle2!.copyWith(
+        style: Theme.of(context).textTheme.titleSmall!.copyWith(
             color: Theme.of(context).colorScheme.fontColor,
             fontWeight: FontWeight.normal),
         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -907,7 +907,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         decoration: InputDecoration(
           counterText: '',
           hintText: getTranslated(context, 'MOBILEHINT_LBL'),
-          hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           contentPadding:
@@ -947,7 +947,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(getTranslated(context, 'CONTINUE_AGREE_LBL')!,
-              style: Theme.of(context).textTheme.caption!.copyWith(
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Theme.of(context).colorScheme.fontColor,
                   fontWeight: FontWeight.normal)),
           const SizedBox(
@@ -967,7 +967,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                 },
                 child: Text(
                   getTranslated(context, 'TERMS_SERVICE_LBL')!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.normal),
@@ -976,7 +976,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
               width: 5.0,
             ),
             Text(getTranslated(context, 'AND_LBL')!,
-                style: Theme.of(context).textTheme.caption!.copyWith(
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: Theme.of(context).colorScheme.fontColor,
                     fontWeight: FontWeight.normal)),
             const SizedBox(
@@ -993,7 +993,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                 },
                 child: Text(
                   getTranslated(context, 'PRIVACY')!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       decoration: TextDecoration.underline,
                       fontWeight: FontWeight.normal),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity/connectivity.dart';
+// import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:eshop_multivendor/Provider/UserProvider.dart';
 import 'package:eshop_multivendor/Screen/Cart.dart';
 import 'package:eshop_multivendor/Screen/Favorite.dart';
@@ -28,14 +29,24 @@ setPrefrenceBool(String key, bool value) async {
 }
 
 Future<bool> isNetworkAvailable() async {
-  var connectivityResult = await (Connectivity().checkConnectivity());
-  if (connectivityResult == ConnectivityResult.mobile) {
+  final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
+  if (connectivityResult.contains(ConnectivityResult.mobile)) {
     return true;
-  } else if (connectivityResult == ConnectivityResult.wifi) {
+  } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
     return true;
   }
   return false;
 }
+
+// Future<bool> isNetworkAvailable() async {
+//   var connectivityResult = await (Connectivity().checkConnectivity());
+//   if (connectivityResult == ConnectivityResult.mobile) {
+//     return true;
+//   } else if (connectivityResult == ConnectivityResult.wifi) {
+//     return true;
+//   }
+//   return false;
+// }
 
 back() {
   return BoxDecoration(
@@ -270,7 +281,7 @@ noIntText(BuildContext context) {
       child: Text(getTranslated(context, 'NO_INTERNET')!,
           style: Theme.of(context)
               .textTheme
-              .headline5!
+              .headlineSmall!
               .copyWith(color: colors.primary, fontWeight: FontWeight.normal)));
 }
 
@@ -279,7 +290,7 @@ noIntDec(BuildContext context) {
     padding: EdgeInsetsDirectional.only(top: 30.0, start: 30.0, end: 30.0),
     child: Text(getTranslated(context, 'NO_INTERNET_DISC')!,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.headline6!.copyWith(
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(
               color: Theme.of(context).colorScheme.lightBlack2,
               fontWeight: FontWeight.normal,
             )),

@@ -54,7 +54,7 @@ class SubCategory extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
-                .caption!
+                .bodySmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
           )
         ],

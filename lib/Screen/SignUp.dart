@@ -8,13 +8,14 @@ import 'package:eshop_multivendor/Provider/SettingProvider.dart';
 import 'package:eshop_multivendor/Provider/UserProvider.dart';
 import 'package:eshop_multivendor/Screen/Login.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
+// import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:provider/provider.dart';
 import '../Helper/AppBtn.dart';
 import '../Helper/Color.dart';
@@ -64,6 +65,8 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
 
   var genderSelect;
   var bankImg = null;
+  final picker = ImagePicker();
+  File? file;
   void validateAndSubmit() async {
     if (validateAndSave()) {
       _playAnimation();
@@ -261,7 +264,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       child: Align(
         alignment: Alignment.topLeft,
         child: Text(getTranslated(context, 'USER_REGISTER_DETAILS')!,
-            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 color: colors.primary,
                 fontWeight: FontWeight.bold,
                 fontSize: 25)),
@@ -305,7 +308,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             size: 17,
           ),
           hintText: getTranslated(context, 'NAMEHINT_LBL'),
-          hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           // filled: true,
@@ -362,7 +365,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             size: 17,
           ),
           hintText: getTranslated(context, 'EMAILHINT_LBL'),
-          hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           // filled: true,
@@ -411,7 +414,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             size: 17,
           ),
           hintText: getTranslated(context, 'REFER'),
-          hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           // filled: true,
@@ -471,7 +474,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             //   size: 17,
             // ),
             hintText: getTranslated(context, 'PASSHINT_LBL'),
-            hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+            hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: Theme.of(context).colorScheme.fontColor,
                 fontWeight: FontWeight.normal),
             // filled: true,
@@ -574,7 +577,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(getTranslated(context, 'ALREADY_A_CUSTOMER')!,
-              style: Theme.of(context).textTheme.caption!.copyWith(
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Theme.of(context).colorScheme.fontColor,
                   fontWeight: FontWeight.normal)),
           InkWell(
@@ -585,7 +588,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
               },
               child: Text(
                 getTranslated(context, 'LOG_IN_LBL')!,
-                style: Theme.of(context).textTheme.caption!.copyWith(
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     color: Theme.of(context).colorScheme.fontColor,
                     decoration: TextDecoration.underline,
                     fontWeight: FontWeight.normal),
@@ -897,35 +900,97 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
   }
 
 
-
-  Future getImage(context, ImgSource source) async {
-    print("dsafsadfasd");
-    var image = await ImagePickerGC.pickImage(
-        enableCloseButton: true,
-        closeIcon: Icon(
-          Icons.close,
-          color: Colors.red,
-          size: 12,
-        ),
-        context: context,
-        source: source,
-        barrierDismissible: true,
-        cameraIcon: Icon(
-          Icons.camera_alt,
-          color: Colors.red,
-        ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
-        cameraText: Text(
-          "From Camera",
-          style: TextStyle(color: Colors.red),
-        ),
-        galleryText: Text(
-          "From Gallery",
-          style: TextStyle(color: Colors.blue),
-        ));
+  Future getImage() async {
+    final pickedFile = await picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 50,
+        maxHeight: 500,
+        maxWidth: 500);
     setState(() {
-      bankImg = image;
+      if (pickedFile != null) {
+        file = File(pickedFile.path);
+      } else {
+        if (kDebugMode) {
+          print('No image selected.');
+        }
+      }
+    });
+    setState(() {
+      bankImg = file;
     });
   }
+  // Future<void> getImage(BuildContext context) async {
+  //   final ImagePicker picker = ImagePicker();
+  //
+  //   // Show bottom sheet with both options
+  //   showModalBottomSheet(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         padding: const EdgeInsets.all(16),
+  //         child: Wrap(
+  //           children: [
+  //             ListTile(
+  //               leading: const Icon(Icons.camera_alt, color: Colors.red),
+  //               title: const Text("From Camera", style: TextStyle(color: Colors.red)),
+  //               onTap: () async {
+  //                 Navigator.pop(context);
+  //                 final XFile? image = await picker.pickImage(source: ImageSource.camera);
+  //                 if (image != null) {
+  //                   // Do what you need with the file
+  //                   print('Selected from camera: ${image.path}');
+  //                 }
+  //               },
+  //             ),
+  //             ListTile(
+  //               leading: const Icon(Icons.photo_library, color: Colors.blue),
+  //               title: const Text("From Gallery", style: TextStyle(color: Colors.blue)),
+  //               onTap: () async {
+  //                 Navigator.pop(context);
+  //                 final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+  //                 if (image != null) {
+  //                   // Do what you need with the file
+  //                   print('Selected from gallery: ${image.path}');
+  //                 }
+  //               },
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
+
+
+  // Future getImage(context, ImgSource source) async {
+  //   print("dsafsadfasd");
+  //   var image = await ImagePickerGC.pickImage(
+  //       enableCloseButton: true,
+  //       closeIcon: Icon(
+  //         Icons.close,
+  //         color: Colors.red,
+  //         size: 12,
+  //       ),
+  //       context: context,
+  //       source: source,
+  //       barrierDismissible: true,
+  //       cameraIcon: Icon(
+  //         Icons.camera_alt,
+  //         color: Colors.red,
+  //       ), //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
+  //       cameraText: Text(
+  //         "From Camera",
+  //         style: TextStyle(color: Colors.red),
+  //       ),
+  //       galleryText: Text(
+  //         "From Gallery",
+  //         style: TextStyle(color: Colors.blue),
+  //       ));
+  //   setState(() {
+  //     bankImg = image;
+  //   });
+  // }
 
   // Future getImage(context, ) async {
   //   print("dsafsadfasd");

@@ -175,6 +175,7 @@ class _MyAppState extends State<MyApp> {
             title: appName,
 
             theme: ThemeData(
+              useMaterial3: false,
               canvasColor: Theme.of(context).colorScheme.lightWhite,
               cardColor: Theme.of(context).colorScheme.white,
               dialogBackgroundColor: Theme.of(context).colorScheme.white,
@@ -185,11 +186,11 @@ class _MyAppState extends State<MyApp> {
               fontFamily: 'opensans',
               brightness: Brightness.light,
               textTheme: TextTheme(
-                      headline6: TextStyle(
+                      titleLarge: TextStyle(
                         color: Theme.of(context).colorScheme.fontColor,
                         fontWeight: FontWeight.w600,
                       ),
-                      subtitle1: TextStyle(
+                      titleMedium: TextStyle(
                           color: Theme.of(context).colorScheme.fontColor,
                           fontWeight: FontWeight.bold))
                   .apply(bodyColor: Theme.of(context).colorScheme.fontColor),
@@ -203,6 +204,7 @@ class _MyAppState extends State<MyApp> {
 
             },
             darkTheme: ThemeData(
+              useMaterial3: false,
               canvasColor: colors.darkColor,
               cardColor: colors.darkColor2,
               dialogBackgroundColor: colors.darkColor2,
@@ -212,18 +214,19 @@ class _MyAppState extends State<MyApp> {
                   cursorColor: colors.darkIcon,
                   selectionColor: colors.darkIcon,
                   selectionHandleColor: colors.darkIcon),
-              toggleableActiveColor: colors.primary,
+              //toggleableActiveColor: colors.primary,
+              // colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
               fontFamily: 'opensans',
               brightness: Brightness.dark,
               // accentColor: colors.darkIcon,
               iconTheme:
                   Theme.of(context).iconTheme.copyWith(color: colors.secondary),
               textTheme: TextTheme(
-                      headline6: TextStyle(
+                      titleLarge: TextStyle(
                         color: Theme.of(context).colorScheme.fontColor,
                         fontWeight: FontWeight.w600,
                       ),
-                      subtitle1: TextStyle(
+                      titleMedium: TextStyle(
                           color: Theme.of(context).colorScheme.fontColor,
                           fontWeight: FontWeight.bold))
                   .apply(bodyColor: Theme.of(context).colorScheme.fontColor),

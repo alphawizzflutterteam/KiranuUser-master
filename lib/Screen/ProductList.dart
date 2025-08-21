@@ -204,7 +204,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
               alignment: Alignment.center,
               child: Text(getTranslated(context, 'TRY_AGAIN_INT_LBL')!,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
                       color: Theme.of(context).colorScheme.white,
                       fontWeight: FontWeight.normal)),
             ),
@@ -291,7 +291,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                       'OUT_OF_STOCK_LBL')!,
                                                   style: Theme.of(context)
                                                       .textTheme
-                                                      .caption!
+                                                      .bodySmall!
                                                       .copyWith(
                                                         color: Colors.red,
                                                         fontWeight:
@@ -350,7 +350,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             children: <Widget>[
                               Text(
                                 model.name!,
-                                style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                                style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
                                             .lightBlack),
@@ -361,7 +361,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Seller : ",
-                                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
                                           .lightBlack),
@@ -372,7 +372,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                   //   model.store_name!,
                                   //   style: Theme.of(context)
                                   //       .textTheme
-                                  //       .subtitle1!
+                                  //       .titleMedium!
                                   //       .copyWith(
                                   //       color: Theme.of(context)
                                   //           .colorScheme
@@ -386,7 +386,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                       model.store_name!,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1!
+                                          .titleMedium!
                                           .copyWith(
                                           color: Theme.of(context)
                                               .colorScheme
@@ -416,7 +416,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                               overflow: TextOverflow.ellipsis,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .subtitle2!
+                                                  .titleSmall!
                                                   .copyWith(
                                                       color: Theme.of(context)
                                                           .colorScheme
@@ -430,7 +430,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                               val[index],
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .subtitle2!
+                                                  .titleSmall!
                                                   .copyWith(
                                                       color: Theme.of(context)
                                                           .colorScheme
@@ -463,7 +463,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                           " (" + model.noOfRating! + ")",
                                           style: Theme.of(context)
                                               .textTheme
-                                              .overline,
+                                              .labelSmall,
                                         )
                                       ],
                                     ),
@@ -476,7 +476,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                           " ",
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle2!
+                                          .titleSmall!
                                           .copyWith(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -497,7 +497,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                         : "",
                                     style: Theme.of(context)
                                         .textTheme
-                                        .overline!
+                                        .labelSmall!
                                         .copyWith(
                                             decoration:
                                                 TextDecoration.lineThrough,
@@ -693,7 +693,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                   //     ? Text(getTranslated(context, 'OUT_OF_STOCK_LBL')!,
                   //         style: Theme.of(context)
                   //             .textTheme
-                  //             .subtitle2!
+                  //             .titleSmall!
                   //             .copyWith(
                   //                 color: Colors.red,
                   //                 fontWeight: FontWeight.bold))
@@ -1404,7 +1404,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                     getTranslated(context, 'OUT_OF_STOCK_LBL')!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .copyWith(
                                           color: Colors.red,
                                           fontWeight: FontWeight.bold,
@@ -1420,7 +1420,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                     //       ? Text(getTranslated(context, 'OUT_OF_STOCK_LBL')!,
                     //           style: Theme.of(context)
                     //               .textTheme
-                    //               .subtitle2!
+                    //               .titleSmall!
                     //               .copyWith(
                     //                   color: Colors.red,
                     //                   fontWeight: FontWeight.bold))
@@ -1712,7 +1712,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                         ),
                         Text(
                           " (" + model.noOfRating! + ")",
-                          style: Theme.of(context).textTheme.overline,
+                          style: Theme.of(context).textTheme.labelSmall,
                         )
                       ],
                     ),
@@ -1744,7 +1744,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                   overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .overline!
+                                      .labelSmall!
                                       .copyWith(
                                           decoration:
                                               TextDecoration.lineThrough,
@@ -1781,7 +1781,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                       overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .caption!
+                                          .bodySmall!
                                           .copyWith(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -1798,7 +1798,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                         overflow: TextOverflow.visible,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .caption!
+                                            .bodySmall!
                                             .copyWith(
                                                 color: Theme.of(context)
                                                     .colorScheme
@@ -1819,7 +1819,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                     const EdgeInsetsDirectional.only(start: 5.0, bottom: 5),
                 child: Text(
                   model.name!,
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
                       color: Theme.of(context).colorScheme.lightBlack),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -1875,7 +1875,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             EdgeInsetsDirectional.only(top: 19.0, bottom: 16.0),
                         child: Text(
                           getTranslated(context, 'SORT_BY')!,
-                          style: Theme.of(context).textTheme.headline6,
+                          style: Theme.of(context).textTheme.titleLarge,
                         )),
                   ),
                   InkWell(
@@ -1902,7 +1902,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                       child: Text(getTranslated(context, 'TOP_RATED')!,
                           style: Theme.of(context)
                               .textTheme
-                              .subtitle1!
+                              .titleMedium!
                               .copyWith(
                                   color: sortBy == ''
                                       ? Theme.of(context).colorScheme.white
@@ -1922,7 +1922,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                           child: Text(getTranslated(context, 'F_NEWEST')!,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(
                                       color: sortBy == 'p.date_added' &&
                                               orderBy == 'DESC'
@@ -1955,7 +1955,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             getTranslated(context, 'F_OLDEST')!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1!
+                                .titleMedium!
                                 .copyWith(
                                     color: sortBy == 'p.date_added' &&
                                             orderBy == 'ASC'
@@ -1989,7 +1989,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             getTranslated(context, 'F_LOW')!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1!
+                                .titleMedium!
                                 .copyWith(
                                     color: sortBy == 'pv.price' &&
                                             orderBy == 'ASC'
@@ -2023,7 +2023,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             getTranslated(context, 'F_HIGH')!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1!
+                                .titleMedium!
                                 .copyWith(
                                     color: sortBy == 'pv.price' &&
                                             orderBy == 'DESC'
@@ -2364,7 +2364,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                             'Price Range',
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle1!
+                                                .titleMedium!
                                                 .copyWith(
                                                     color: Theme.of(context)
                                                         .colorScheme
@@ -2496,7 +2496,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                       filterList[index]['name'],
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1!
+                                          .titleMedium!
                                           .copyWith(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -2536,7 +2536,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                   title: Text(attsubList![i],
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle1!
+                                          .titleMedium!
                                           .copyWith(
                                               color: Theme.of(context).colorScheme.lightBlack,
                                               fontWeight:

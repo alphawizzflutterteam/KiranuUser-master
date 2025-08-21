@@ -17,6 +17,7 @@ import 'package:eshop_multivendor/Screen/SendOtp.dart';
 import 'package:eshop_multivendor/Screen/Setting.dart';
 import 'package:eshop_multivendor/Screen/Login.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:file_picker/file_picker.dart';
@@ -24,10 +25,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
+// import 'package:image_picker_gallery_camera/image_picker_gallery_camera.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
+// import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../Helper/Constant.dart';
@@ -85,6 +87,9 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
   String _appStoreId = '';
   String _microsoftStoreId = '';
   Availability _availability = Availability.loading;
+
+  final picker = ImagePicker();
+  File? file;
 
   @override
   void initState() {
@@ -197,7 +202,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                                 : userName,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle1!
+                                .titleMedium!
                                 .copyWith(
                                   color:
                                       Theme.of(context).colorScheme.fontColor,
@@ -212,7 +217,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                                   userMobile,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subtitle2!
+                                      .titleSmall!
                                       .copyWith(
                                           color: Theme.of(context)
                                               .colorScheme
@@ -233,7 +238,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                                   userEmail,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subtitle2!
+                                      .titleSmall!
                                       .copyWith(
                                           color: Theme.of(context)
                                               .colorScheme
@@ -252,7 +257,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                               userProvider.mob,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(color: Theme.of(context).colorScheme.fontColor),
                             )
                           : Container(
@@ -269,7 +274,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                                         context, 'LOGIN_REGISTER_LBL')!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .copyWith(
                                           color: colors.primary,
                                           decoration: TextDecoration.underline,
@@ -360,7 +365,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                                 languageList[index]!,
                                 style: Theme.of(this.context)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -664,7 +669,10 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             var str =
                 "$appName\n\n${getTranslated(context, 'APPFIND')}$androidLink$packageName\n\n ${getTranslated(context, 'IOSLBL')}\n$iosLink";
 
-            Share.share(str);
+            // Share.share(str);
+            SharePlus.instance.share(
+                ShareParams(text: str)
+            );
           } else if (title == getTranslated(context, 'ABOUT_LBL')) {
             Navigator.push(
                 context,
@@ -748,7 +756,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                                 themeList[index]!,
                                 style: Theme.of(ctx)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -882,14 +890,14 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             getTranslated(context, 'Delete Account') ?? 'Delete Account',
             style: Theme.of(this.context)
                 .textTheme
-                .subtitle1!
+                .titleMedium!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
           ),
           actions: <Widget>[
             TextButton(
                 child: Text(
                   getTranslated(context, 'NO')!,
-                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                  style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).colorScheme.lightBlack,
                       fontWeight: FontWeight.bold),
                 ),
@@ -899,7 +907,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             TextButton(
                 child: Text(
                   getTranslated(context, 'YES')!,
-                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                  style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       fontWeight: FontWeight.bold),
                 ),
@@ -930,14 +938,14 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             getTranslated(context, 'LOGOUTTXT')!,
             style: Theme.of(this.context)
                 .textTheme
-                .subtitle1!
+                .titleMedium!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
           ),
           actions: <Widget>[
             new TextButton(
                 child: Text(
                   getTranslated(context, 'NO')!,
-                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                  style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).colorScheme.lightBlack,
                       fontWeight: FontWeight.bold),
                 ),
@@ -947,7 +955,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
             new TextButton(
                 child: Text(
                   getTranslated(context, 'YES')!,
-                  style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                  style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       fontWeight: FontWeight.bold),
                 ),
@@ -1137,7 +1145,8 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
                         }),
                     Container(
                       child: InkWell(
-                          onTap: () => getImage(ImgSource.Both),
+                         // onTap: () => getImage(ImgSource.Both),
+                          onTap: () => getImage(),
                           child: bankPass != null
                               ? SizedBox(
                                   height: 30,
@@ -1386,7 +1395,7 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
   Widget getHeading(String title) {
     return Text(
       getTranslated(context, title)!,
-      style: Theme.of(context).textTheme.headline6!.copyWith(
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(
           fontWeight: FontWeight.bold,
           color: Theme.of(context).colorScheme.fontColor),
     );
@@ -1645,33 +1654,101 @@ class StateProfile extends State<MyProfile> with TickerProviderStateMixin {
   //   });
   //   //  Navigator.pop(context);
   // }
-  Future getImage(ImgSource source) async {
-    var image = await ImagePickerGC.pickImage(
-        enableCloseButton: true,
-        closeIcon: Icon(
-          Icons.close,
-          color: Colors.red,
-          size: 12,
-        ),
-        context: context,
-        source: source,
-        barrierDismissible: true,
-        cameraIcon: Icon(
-          Icons.camera_alt,
-          color: Colors.red,
-        ),
-        //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
-        cameraText: Text(
-          "From Camera",
-          style: TextStyle(color: Colors.red),
-        ),
-        galleryText: Text(
-          "From Gallery",
-          style: TextStyle(color: Colors.blue),
-        ));
+
+
+  Future getImage() async {
+    final pickedFile = await picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 50,
+        maxHeight: 500,
+        maxWidth: 500);
     setState(() {
-      bankPass = image;
+      if (pickedFile != null) {
+        file = File(pickedFile.path);
+      } else {
+        if (kDebugMode) {
+          print('No image selected.');
+        }
+      }
     });
-    //  Navigator.pop(context);
+    setState(() {
+      bankPass = file;
+    });
   }
+
+  // Future<void> getImage(BuildContext context) async {
+  //   final ImagePicker picker = ImagePicker();
+  //
+  //   showModalBottomSheet(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return Container(
+  //         padding: const EdgeInsets.all(16),
+  //         child: Wrap(
+  //           children: [
+  //             ListTile(
+  //               leading: const Icon(Icons.camera_alt, color: Colors.red),
+  //               title: const Text("From Camera", style: TextStyle(color: Colors.red)),
+  //               onTap: () async {
+  //                 Navigator.pop(context);
+  //                 final XFile? image = await picker.pickImage(source: ImageSource.camera);
+  //                 if (image != null) {
+  //                   setState(() {
+  //                         bankPass = image;
+  //                       });
+  //                   print('Selected from camera: ${image.path}');
+  //                 }
+  //               },
+  //             ),
+  //             ListTile(
+  //               leading: const Icon(Icons.photo_library, color: Colors.blue),
+  //               title: const Text("From Gallery", style: TextStyle(color: Colors.blue)),
+  //               onTap: () async {
+  //                 Navigator.pop(context);
+  //                 final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+  //                 if (image != null) {
+  //                 setState(() {
+  //                     bankPass = image;
+  //                   });
+  //                   print('Selected from gallery: ${image.path}');
+  //                 }
+  //               },
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
+
+  // Future getImage(ImgSource source) async {
+  //   var image = await ImagePickerGC.pickImage(
+  //       enableCloseButton: true,
+  //       closeIcon: Icon(
+  //         Icons.close,
+  //         color: Colors.red,
+  //         size: 12,
+  //       ),
+  //       context: context,
+  //       source: source,
+  //       barrierDismissible: true,
+  //       cameraIcon: Icon(
+  //         Icons.camera_alt,
+  //         color: Colors.red,
+  //       ),
+  //       //cameraIcon and galleryIcon can change. If no icon provided default icon will be present
+  //       cameraText: Text(
+  //         "From Camera",
+  //         style: TextStyle(color: Colors.red),
+  //       ),
+  //       galleryText: Text(
+  //         "From Gallery",
+  //         style: TextStyle(color: Colors.blue),
+  //       ));
+  //   setState(() {
+  //     bankPass = image;
+  //   });
+  //   //  Navigator.pop(context);
+  // }
 }

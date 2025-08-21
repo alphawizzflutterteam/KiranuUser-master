@@ -378,7 +378,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
                               model.name!,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle2!
+                                  .titleSmall!
                                   .copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -395,7 +395,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
                                         price.toString() +
                                         " ",
                                     style:
-                                        Theme.of(context).textTheme.subtitle1),
+                                        Theme.of(context).textTheme.titleMedium),
                                 Text(
                                   double.parse(model
                                               .prVarientList![model.selVarient!]
@@ -409,7 +409,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
                                       : "",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .overline!
+                                      .labelSmall!
                                       .copyWith(
                                           decoration:
                                               TextDecoration.lineThrough,
@@ -433,7 +433,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
                                             overflow: TextOverflow.ellipsis,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle2!
+                                                .titleSmall!
                                                 .copyWith(
                                                     color: Theme.of(context)
                                                         .colorScheme
@@ -447,7 +447,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
                                             val[index],
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle2!
+                                                .titleSmall!
                                                 .copyWith(
                                                     color: Theme.of(context)
                                                         .colorScheme
@@ -471,14 +471,14 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
                                     Text(
                                       " " + productList[index].rating!,
                                       style:
-                                          Theme.of(context).textTheme.overline,
+                                          Theme.of(context).textTheme.labelSmall,
                                     ),
                                     Text(
                                       " (" +
                                           productList[index].noOfRating! +
                                           ")",
                                       style:
-                                          Theme.of(context).textTheme.overline,
+                                          Theme.of(context).textTheme.labelSmall,
                                     )
                                   ],
                                 ),
@@ -662,7 +662,7 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
               ),
               productList[index].availability == "0"
                   ? Text(getTranslated(context, 'OUT_OF_STOCK_LBL')!,
-                      style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Colors.red, fontWeight: FontWeight.bold))
                   : Container(),
             ],
@@ -1258,13 +1258,13 @@ class _SearchState extends State<Search> with TickerProviderStateMixin {
                 child: speech.isListening
                     ? Text(
                         "I'm listening...",
-                        style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.fontColor,
                             fontWeight: FontWeight.bold),
                       )
                     : Text(
                         'Not listening',
-                        style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.fontColor,
                             fontWeight: FontWeight.bold),
                       ),
@@ -1305,7 +1305,7 @@ class _SuggestionList extends StatelessWidget {
             title:
             Text(
               suggestion.name!,
-              style: Theme.of(context).textTheme.subtitle2!.copyWith(
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   color: Theme.of(context).colorScheme.lightBlack,
                   fontWeight: FontWeight.bold),
               maxLines: 2,

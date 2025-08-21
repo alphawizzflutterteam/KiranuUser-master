@@ -237,7 +237,7 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                                   context, 'USE_WALLET')!,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .subtitle1,
+                                                  .titleMedium,
                                             ),
                                             subtitle: Padding(
                                               padding:

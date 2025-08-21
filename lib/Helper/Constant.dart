@@ -19,6 +19,6 @@ final String baseUrl = 'https://kiranu.com/app/v1/api/';
 
 
 
-final String imageUrl = 'https://developmentalphawizz.com/kiranu/';
+final String imageUrl = 'https://kiranu.com/';
 
 final String jwtKey = "e1e421dceee9ea718ab764ea4fdef95629e7f415";

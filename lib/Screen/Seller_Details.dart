@@ -295,7 +295,7 @@ class _SellerProfileState extends State<SellerProfile>
   Widget getHeading(String title) {
     return Text(
       title,
-      style: Theme.of(context).textTheme.headline6!.copyWith(
+      style: Theme.of(context).textTheme.titleLarge!.copyWith(
             fontWeight: FontWeight.bold,
             color: Theme.of(context).colorScheme.fontColor,
           ),

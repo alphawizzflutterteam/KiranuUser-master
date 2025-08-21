@@ -250,7 +250,7 @@
 // //           alignment: Alignment.center,
 // //           child: new Text(
 // //             getTranslated(context, 'SIGNIN_LBL')!,
-// //             style: Theme.of(context).textTheme.subtitle1!.copyWith(
+// //             style: Theme.of(context).textTheme.titleMedium!.copyWith(
 // //                 color: Theme.of(context).colorScheme.fontColor,
 // //                 fontWeight: FontWeight.bold),
 // //           ),
@@ -292,7 +292,7 @@
 // //             size: 20,
 // //           ),
 // //           hintText: getTranslated(context, 'MOBILEHINT_LBL'),
-// //           hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+// //           hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
 // //               color: Theme.of(context).colorScheme.fontColor,
 // //               fontWeight: FontWeight.normal),
 // //           filled: true,
@@ -350,7 +350,7 @@
 // //             size: 17,
 // //           ),
 // //           hintText: getTranslated(context, 'MOBILEHINT_LBL'),
-// //           hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+// //           hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
 // //               color: Theme.of(context).colorScheme.fontColor,
 // //               fontWeight: FontWeight.normal),
 // //           filled: true,
@@ -429,7 +429,7 @@
 // //             ),
 // //           ),
 // //           hintText: getTranslated(context, "PASSHINT_LBL")!,
-// //           hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+// //           hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
 // //               color: Theme.of(context).colorScheme.fontColor,
 // //               fontWeight: FontWeight.normal),
 // //           //filled: true,
@@ -477,7 +477,7 @@
 // //                             )));
 // //               },
 // //               child: Text(getTranslated(context, 'FORGOT_PASSWORD_LBL')!,
-// //                   style: Theme.of(context).textTheme.subtitle2!.copyWith(
+// //                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
 // //                       color: Theme.of(context).colorScheme.fontColor,
 // //                       fontWeight: FontWeight.normal)),
 // //             ),
@@ -493,7 +493,7 @@
 // //         mainAxisAlignment: MainAxisAlignment.center,
 // //         children: <Widget>[
 // //           Text(getTranslated(context, 'DONT_HAVE_AN_ACC')!,
-// //               style: Theme.of(context).textTheme.caption!.copyWith(
+// //               style: Theme.of(context).textTheme.bodySmall!.copyWith(
 // //                   color: Theme.of(context).colorScheme.fontColor,
 // //                   fontWeight: FontWeight.normal,
 // //                 fontSize: 16
@@ -510,7 +510,7 @@
 // //               },
 // //               child: Text(
 // //                 getTranslated(context, 'SIGN_UP_LBL')!,
-// //                 style: Theme.of(context).textTheme.caption!.copyWith(
+// //                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
 // //                     color: Theme.of(context).colorScheme.fontColor,
 // //                     decoration: TextDecoration.underline,
 // //                     fontWeight: FontWeight.bold,
@@ -938,7 +938,7 @@
 //             widget.title == getTranslated(context, 'SEND_OTP_TITLE')
 //                 ? getTranslated(context, 'CREATE_ACC_LBL')!
 //                 : getTranslated(context, 'FORGOT_PASSWORDTITILE')!,
-//             style: Theme.of(context).textTheme.subtitle1!.copyWith(
+//             style: Theme.of(context).textTheme.titleMedium!.copyWith(
 //                 color: Theme.of(context).colorScheme.fontColor,
 //                 fontWeight: FontWeight.bold),
 //           ),
@@ -953,7 +953,7 @@
 //           child: Text(
 //             getTranslated(context, 'SEND_VERIFY_CODE_LBL')!,
 //             textAlign: TextAlign.center,
-//             style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//             style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //               color: Theme.of(context).colorScheme.fontColor,
 //               fontWeight: FontWeight.normal,
 //             ),
@@ -1020,7 +1020,7 @@
 //         maxLength: 10,
 //         keyboardType: TextInputType.number,
 //         controller: mobileController,
-//         style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//         style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //             color: Theme.of(context).colorScheme.fontColor,
 //             fontWeight: FontWeight.normal),
 //         inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -1034,7 +1034,7 @@
 //         decoration: InputDecoration(
 //           counterText: '',
 //           hintText: getTranslated(context, 'MOBILEHINT_LBL'),
-//           hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+//           hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
 //               color: Theme.of(context).colorScheme.fontColor,
 //               fontWeight: FontWeight.normal),
 //           contentPadding:
@@ -1074,7 +1074,7 @@
 //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 //         children: [
 //           Text(getTranslated(context, 'CONTINUE_AGREE_LBL')!,
-//               style: Theme.of(context).textTheme.caption!.copyWith(
+//               style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                   color: Theme.of(context).colorScheme.fontColor,
 //                   fontWeight: FontWeight.normal)),
 //           const SizedBox(
@@ -1092,7 +1092,7 @@
 //                 },
 //                 child: Text(
 //                   getTranslated(context, 'TERMS_SERVICE_LBL')!,
-//                   style: Theme.of(context).textTheme.caption!.copyWith(
+//                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                       color: Theme.of(context).colorScheme.fontColor,
 //                       decoration: TextDecoration.underline,
 //                       fontWeight: FontWeight.normal),
@@ -1101,7 +1101,7 @@
 //               width: 5.0,
 //             ),
 //             Text(getTranslated(context, 'AND_LBL')!,
-//                 style: Theme.of(context).textTheme.caption!.copyWith(
+//                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                     color: Theme.of(context).colorScheme.fontColor,
 //                     fontWeight: FontWeight.normal)),
 //             const SizedBox(
@@ -1118,7 +1118,7 @@
 //                 },
 //                 child: Text(
 //                   getTranslated(context, 'PRIVACY')!,
-//                   style: Theme.of(context).textTheme.caption!.copyWith(
+//                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                       color: Theme.of(context).colorScheme.fontColor,
 //                       decoration: TextDecoration.underline,
 //                       fontWeight: FontWeight.normal),
@@ -1553,7 +1553,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
           alignment: Alignment.center,
           child: new Text(
             getTranslated(context, 'SIGNIN_LBL')!,
-            style: Theme.of(context).textTheme.subtitle1!.copyWith(
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 color: Theme.of(context).colorScheme.fontColor,
                 fontWeight: FontWeight.bold),
           ),
@@ -1595,7 +1595,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
             size: 20,
           ),
           hintText: getTranslated(context, 'MOBILEHINT_LBL'),
-          hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           filled: true,
@@ -1653,7 +1653,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
             size: 17,
           ),
           hintText: getTranslated(context, 'MOBILEHINT_LBL'),
-          hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           filled: true,
@@ -1732,7 +1732,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
             ),
           ),
           hintText: getTranslated(context, "PASSHINT_LBL")!,
-          hintStyle: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+          hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           //filled: true,
@@ -1780,7 +1780,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
                         )));
               },
               child: Text(getTranslated(context, 'FORGOT_PASSWORD_LBL')!,
-                  style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       fontWeight: FontWeight.normal)),
             ),
@@ -1796,7 +1796,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(getTranslated(context, 'DONT_HAVE_AN_ACC')!,
-              style: Theme.of(context).textTheme.caption!.copyWith(
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Theme.of(context).colorScheme.fontColor,
                   fontWeight: FontWeight.normal,
                   fontSize: 16
@@ -1813,7 +1813,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
               },
               child: Text(
                 getTranslated(context, 'SIGN_UP_LBL')!,
-                style: Theme.of(context).textTheme.caption!.copyWith(
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Theme.of(context).colorScheme.fontColor,
                   decoration: TextDecoration.underline,
                   fontWeight: FontWeight.bold,

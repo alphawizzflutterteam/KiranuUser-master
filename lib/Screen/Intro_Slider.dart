@@ -113,7 +113,7 @@ class _GettingStartedScreenState extends State<IntroSlider>
                 Container(
                     margin: EdgeInsetsDirectional.only(top: 20),
                     child: Text(slideList[index].title,
-                        style: Theme.of(context).textTheme.headline5!.copyWith(
+                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                             color: Theme.of(context).colorScheme.fontColor,
                             fontWeight: FontWeight.bold))),
                 Container(
@@ -121,7 +121,7 @@ class _GettingStartedScreenState extends State<IntroSlider>
                       top: 30.0, start: 15.0, end: 15.0),
                   child: Text(slideList[index].description,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           color: Theme.of(context).colorScheme.fontColor,
                           fontWeight: FontWeight.normal)),
                 ),
@@ -203,7 +203,7 @@ class _GettingStartedScreenState extends State<IntroSlider>
                   },
                   child: Row(children: [
                     Text(getTranslated(context, 'SKIP')!,
-                        style: Theme.of(context).textTheme.caption!.copyWith(
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               color: Theme.of(context).colorScheme.fontColor,
                             )),
                     Icon(

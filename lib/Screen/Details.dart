@@ -23,6 +23,7 @@ class _DetailsState extends State<Details> {
   TextEditingController aadharC = TextEditingController();
   TextEditingController bussinessC = TextEditingController();
   File? aadharImage;
+  final ImagePicker picker = ImagePicker();
 
 
 
@@ -227,9 +228,8 @@ class _DetailsState extends State<Details> {
     ).then<void>((T? value) {});
   }
 
-
   Future<void> getAadharFromCamera() async {
-    PickedFile? pickedFile = await ImagePicker().getImage(
+    XFile? pickedFile = await picker.pickImage(
       source: ImageSource.camera,
     );
     if (pickedFile != null) {
@@ -242,7 +242,7 @@ class _DetailsState extends State<Details> {
   }
 
   Future<void> getAadharFromGallery() async {
-    PickedFile? pickedFile = await ImagePicker().getImage(
+    XFile? pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
     );
     if (pickedFile != null) {
@@ -253,6 +253,32 @@ class _DetailsState extends State<Details> {
       });
     }
   }
+
+  // Future<void> getAadharFromCamera() async {
+  //   PickedFile? pickedFile = await ImagePicker().getImage(
+  //     source: ImageSource.camera,
+  //   );
+  //   if (pickedFile != null) {
+  //     setState(() {
+  //       aadharImage =  File(pickedFile.path);
+  //       // imagePath = File(pickedFile.path) ;
+  //       // filePath = imagePath!.path.toString();
+  //     });
+  //   }
+  // }
+  //
+  // Future<void> getAadharFromGallery() async {
+  //   PickedFile? pickedFile = await ImagePicker().getImage(
+  //     source: ImageSource.gallery,
+  //   );
+  //   if (pickedFile != null) {
+  //     setState(() {
+  //       aadharImage =  File(pickedFile.path);
+  //       // imagePath = File(pickedFile.path) ;
+  //       // filePath = imagePath!.path.toString();
+  //     });
+  //   }
+  // }
 
   uploadAadharFromCamOrGallary(BuildContext context) {
     containerForSheet<String>(

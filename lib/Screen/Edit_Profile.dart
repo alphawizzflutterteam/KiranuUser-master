@@ -10,6 +10,8 @@ import 'package:flutter/services.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../Model/UserDetails.dart';
+
 
 class EditProfile extends StatefulWidget {
   const EditProfile({Key? key}) : super(key: key);
@@ -46,6 +48,7 @@ class _EditProfileState extends State<EditProfile> {
     });
   }
 
+
   // Future getImage() async {
   //
   //   final pickedFile =  await ImagePicker().pickImage(
@@ -65,13 +68,22 @@ class _EditProfileState extends State<EditProfile> {
   Future<Null> _cropImage(image) async {
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: image,
-      aspectRatioPresets: Platform.isAndroid
-          ? [
-              CropAspectRatioPreset.square,
-            ]
-          : [
-              CropAspectRatioPreset.square,
-            ],
+      aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1), // replaces aspectRatioPresets
+      uiSettings: [
+      AndroidUiSettings(
+      // toolbarTitle: 'ZuqZuq',
+      // toolbarColor: colors.primary,
+      // toolbarWidgetColor: Colors.white,
+      initAspectRatio: CropAspectRatioPreset.square,
+      lockAspectRatio: false,
+    ),],
+      // aspectRatioPresets: Platform.isAndroid
+      //     ? [
+      //         CropAspectRatioPreset.square,
+      //       ]
+      //     : [
+      //         CropAspectRatioPreset.square,
+      //       ],
       /* androidUiSettings: AndroidUiSettings(
             toolbarTitle: 'ZuqZuq',
             toolbarColor: colors.primary,
@@ -113,7 +125,8 @@ class _EditProfileState extends State<EditProfile> {
             future: userDetails(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                var user = snapshot.data;
+                var user = snapshot.data as UserDetails;
+                print("$imageUrl${user!.date![0].bankPass}");
                 return Scaffold(
                   appBar: AppBar(
                     leading: IconButton(
@@ -130,8 +143,8 @@ class _EditProfileState extends State<EditProfile> {
                                 setState(() {
                                   edit = false;
                                   userNameController.text =
-                                      user!.date![0].username;
-                                  emailController.text = user!.date![0].email;
+                                      user!.date![0].username ?? '';
+                                  emailController.text = user!.date![0].email ?? '';
                                   dob = user!.date![0].dob;
                                 });
                               },
@@ -248,9 +261,9 @@ class _EditProfileState extends State<EditProfile> {
                                             setState(() {
                                               edit = false;
                                               userNameController.text =
-                                                  user!.date![0].username;
+                                                  user!.date![0].username ?? '';
                                               emailController.text =
-                                                  user!.date![0].email;
+                                                  user!.date![0].email?? '';
                                               dob = user!.date![0].dob;
                                             });
                                           },

@@ -53,7 +53,7 @@ class _SignInUpAccState extends State<SignInUpAcc> {
       padding: EdgeInsetsDirectional.only(top: 30.0),
       child: new Text(
         getTranslated(context, 'WELCOME_ESHOP')!,
-        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+        style: Theme.of(context).textTheme.titleMedium!.copyWith(
             color: Theme.of(context).colorScheme.fontColor,
             fontWeight: FontWeight.bold),
       ),
@@ -67,7 +67,7 @@ class _SignInUpAccState extends State<SignInUpAcc> {
       ),
       child: new Text(
         getTranslated(context, 'ECOMMERCE_APP_FOR_ALL_BUSINESS')!,
-        style: Theme.of(context).textTheme.subtitle2!.copyWith(
+        style: Theme.of(context).textTheme.titleSmall!.copyWith(
             color: Theme.of(context).colorScheme.fontColor,
             fontWeight: FontWeight.normal),
       ),
@@ -79,7 +79,7 @@ class _SignInUpAccState extends State<SignInUpAcc> {
       padding: EdgeInsetsDirectional.only(top: 80.0, bottom: 40),
       child: new Text(
         getTranslated(context, 'SIGNIN_ACC_LBL')!,
-        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+        style: Theme.of(context).textTheme.titleMedium!.copyWith(
             color: Theme.of(context).colorScheme.fontColor,
             fontWeight: FontWeight.bold),
       ),
@@ -103,7 +103,7 @@ class _SignInUpAccState extends State<SignInUpAcc> {
           ),
           child: Text(getTranslated(context, 'SIGNIN_LBL')!,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   color: colors.blackTemp, fontWeight: FontWeight.normal))),
       onPressed: () {
         Navigator.push(context,
@@ -129,7 +129,7 @@ class _SignInUpAccState extends State<SignInUpAcc> {
           ),
           child: Text(getTranslated(context, 'CREATE_ACC_LBL')!,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   color: colors.blackTemp, fontWeight: FontWeight.normal))),
       onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
@@ -159,7 +159,7 @@ class _SignInUpAccState extends State<SignInUpAcc> {
           ),
           child: Text(getTranslated(context, 'SKIP_SIGNIN_LBL')!,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   color: colors.blackTemp, fontWeight: FontWeight.normal))),
       onPressed: () {
         Navigator.pushNamedAndRemoveUntil(context, "/home", (r) => false);
