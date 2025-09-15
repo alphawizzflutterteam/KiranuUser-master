@@ -217,19 +217,19 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
     if (form.validate()) {
       if (city == null || city!.isEmpty) {
         // setSnackbar(getTranslated(context, 'cityWarning')!);
-        Fluttertoast.showToast(msg: getTranslated(context, 'cityWarning')!,
-            backgroundColor: colors.primary
-        );
+        Fluttertoast.showToast(
+            msg: getTranslated(context, 'cityWarning')!,
+            backgroundColor: colors.primary);
       } else if (area == null || area!.isEmpty) {
         // setSnackbar(getTranslated(context, 'areaWarning')!);
-        Fluttertoast.showToast(msg: getTranslated(context, 'areaWarning')!,
-            backgroundColor: colors.primary
-        );
+        Fluttertoast.showToast(
+            msg: getTranslated(context, 'areaWarning')!,
+            backgroundColor: colors.primary);
       } else if (latitude == null || longitude == null) {
         // setSnackbar(getTranslated(context, 'locationWarning')!);
-        Fluttertoast.showToast(msg: getTranslated(context, 'locationWarning')!,
-            backgroundColor: colors.primary
-        );
+        Fluttertoast.showToast(
+            msg: getTranslated(context, 'locationWarning')!,
+            backgroundColor: colors.primary);
       } else {
         return true;
       }
@@ -750,12 +750,12 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
       ),
     );
   }
+
   String? latitude1, longitudes1;
 
   late String myLoction = "";
   setAddress() {
-    return
-      Row(
+    return Row(
       children: [
         Expanded(
           child: Padding(
@@ -805,22 +805,28 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                         Position position = await Geolocator.getCurrentPosition(
                             desiredAccuracy: LocationAccuracy.high);
 
-                      await  Navigator.push(
+                        await Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => PlacePicker(
                               apiKey: Platform.isAndroid
-                                  ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-                                  : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                                  ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
+                                  : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
                               onPlacePicked: (result) {
                                 print(result.formattedAddress);
                                 setState(() {
-                                  addressC?.text = result.formattedAddress.toString();
-                                  latitude1 = result.geometry!.location.lat.toString();
-                                  longitudes1 = result.geometry!.location.lng.toString();
-                                  myLoction = result.formattedAddress.toString();
-                                  print('adddrrresss${result.geometry!.location.lat.toString()}');
-                                  print('adddrrressslnngggggggggggg${result.geometry!.location.lng.toString()}');
+                                  addressC?.text =
+                                      result.formattedAddress.toString();
+                                  latitude1 =
+                                      result.geometry!.location.lat.toString();
+                                  longitudes1 =
+                                      result.geometry!.location.lng.toString();
+                                  myLoction =
+                                      result.formattedAddress.toString();
+                                  print(
+                                      'adddrrresss${result.geometry!.location.lat.toString()}');
+                                  print(
+                                      'adddrrressslnngggggggggggg${result.geometry!.location.lng.toString()}');
                                 });
                                 Navigator.of(context).pop();
                               },
@@ -879,19 +885,22 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                     Position position = await Geolocator.getCurrentPosition(
                         desiredAccuracy: LocationAccuracy.high);
 
-                    await  Navigator.push(
+                    await Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => PlacePicker(
                           apiKey: Platform.isAndroid
-                              ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-                              : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                              ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
+                              : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
                           onPlacePicked: (result) {
                             print(result.formattedAddress);
                             setState(() {
-                              addressC?.text = result.formattedAddress.toString();
-                              latitude1 = result.geometry!.location.lat.toString();
-                              longitudes1 = result.geometry!.location.lng.toString();
+                              addressC?.text =
+                                  result.formattedAddress.toString();
+                              latitude1 =
+                                  result.geometry!.location.lat.toString();
+                              longitudes1 =
+                                  result.geometry!.location.lng.toString();
                               myLoction = result.formattedAddress.toString();
                               print('adddrrresss${result.addressComponents}');
                             });
@@ -920,10 +929,8 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                     //                   getTranslated(context, 'ADDADDRESS'),
                     //             )));
                     if (mounted) setState(() {});
-                    List<Placemark> placemark =
-                    await placemarkFromCoordinates(
-                        double.parse(latitude!),
-                        double.parse(longitude!));
+                    List<Placemark> placemark = await placemarkFromCoordinates(
+                        double.parse(latitude!), double.parse(longitude!));
 
                     var address;
                     address = placemark[0].name;
@@ -953,15 +960,14 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
     );
   }
 
-
   // setAddress() async {
   //   Navigator.push(
   //     context,
   //     MaterialPageRoute(
   //       builder: (context) => PlacePicker(
   //         apiKey: Platform.isAndroid
-  //             ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-  //             : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+  //             ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
+  //             : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
   //         onPlacePicked: (result) {
   //           print(result.formattedAddress);
   //           setState(() {
@@ -1619,7 +1625,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     permission = await Geolocator.checkPermission();
-    if(permission == LocationPermission.denied){
+    if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         return Future.error('Location permissions are denied');
