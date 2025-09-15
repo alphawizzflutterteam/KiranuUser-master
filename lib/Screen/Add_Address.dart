@@ -12,8 +12,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
+
+// import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:http/http.dart';
+import 'package:map_location_picker/map_location_picker.dart';
 import 'package:provider/provider.dart';
 import '../Helper/AppBtn.dart';
 import '../Helper/Color.dart';
@@ -289,7 +291,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
             },
             style: Theme.of(context)
                 .textTheme
-                .subtitle2!
+                .titleSmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
             decoration: InputDecoration(
                 label: Text(getTranslated(context, "NAME_LBL")!),
@@ -324,7 +326,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
             focusNode: monoFocus,
             style: Theme.of(context)
                 .textTheme
-                .subtitle2!
+                .titleSmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
             validator: (val) => validateMob(
                 val!,
@@ -369,7 +371,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
             focusNode: almonoFocus,
             style: Theme.of(context)
                 .textTheme
-                .subtitle2!
+                .titleSmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
             // validator: (val) => validateMob(
             //     val!,
@@ -419,7 +421,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                       getTranslated(context, 'AREASELECT_LBL')!,
                       style: Theme.of(this.context)
                           .textTheme
-                          .subtitle1!
+                          .titleMedium!
                           .copyWith(
                               color: Theme.of(context).colorScheme.fontColor),
                     ),
@@ -504,7 +506,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                       getTranslated(context, 'CITYSELECT_LBL')!,
                       style: Theme.of(this.context)
                           .textTheme
-                          .subtitle1!
+                          .titleMedium!
                           .copyWith(
                               color: Theme.of(context).colorScheme.fontColor),
                     ),
@@ -592,7 +594,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     areaSearchList[index].name!,
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
               ),
@@ -633,7 +635,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     citySearchLIst[index].name!,
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
               ),
@@ -672,7 +674,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                           children: [
                             Text(
                               getTranslated(context, 'CITYSELECT_LBL')!,
-                              style: Theme.of(context).textTheme.caption,
+                              style: Theme.of(context).textTheme.bodySmall,
                             ),
                             Text(
                                 selCityPos != null && selCityPos != -1
@@ -725,7 +727,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                           children: [
                             Text(
                               getTranslated(context, 'AREASELECT_LBL')!,
-                              style: Theme.of(context).textTheme.caption,
+                              style: Theme.of(context).textTheme.bodySmall,
                             ),
                             Text(
                                 selAreaPos != null && selAreaPos != -1
@@ -754,6 +756,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
   String? latitude1, longitudes1;
 
   late String myLoction = "";
+
   setAddress() {
     return Row(
       children: [
@@ -775,7 +778,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                   textCapitalization: TextCapitalization.sentences,
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle2!
+                      .titleSmall!
                       .copyWith(color: Theme.of(context).colorScheme.fontColor),
                   focusNode: addFocus,
                   controller: addressC,
@@ -804,37 +807,71 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                         permission = await Geolocator.requestPermission();
                         Position position = await Geolocator.getCurrentPosition(
                             desiredAccuracy: LocationAccuracy.high);
-
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PlacePicker(
-                              apiKey: Platform.isAndroid
-                                  ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
-                                  : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
-                              onPlacePicked: (result) {
-                                print(result.formattedAddress);
-                                setState(() {
-                                  addressC?.text =
-                                      result.formattedAddress.toString();
-                                  latitude1 =
-                                      result.geometry!.location.lat.toString();
-                                  longitudes1 =
-                                      result.geometry!.location.lng.toString();
-                                  myLoction =
-                                      result.formattedAddress.toString();
-                                  print(
-                                      'adddrrresss${result.geometry!.location.lat.toString()}');
-                                  print(
-                                      'adddrrressslnngggggggggggg${result.geometry!.location.lng.toString()}');
-                                });
-                                Navigator.of(context).pop();
-                              },
-                              initialPosition: LatLng(22.719568, 75.857727),
-                              useCurrentLocation: true,
-                            ),
-                          ),
+                              builder: (context) => MapLocationPicker(
+                                    config: MapLocationPickerConfig(
+                                      apiKey: Platform.isAndroid
+                                          ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+                                          : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                                      initialPosition:
+                                          LatLng(22.719568, 75.857727),
+                                      onNext: (result) {
+                                        if (result != null) {
+                                          print(result.formattedAddress);
+                                          setState(() {
+                                            addressC?.text = result
+                                                .formattedAddress
+                                                .toString();
+                                            latitude1 = result
+                                                .geometry!.location.lat
+                                                .toString();
+                                            longitudes1 = result
+                                                .geometry!.location.lng
+                                                .toString();
+                                            myLoction = result.formattedAddress
+                                                .toString();
+                                            print(
+                                                'adddrrresss${result.addressComponents}');
+                                          });
+                                          Navigator.of(context).pop();
+                                        }
+                                      },
+                                    ),
+                                  )),
                         );
+
+                        // await Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => PlacePicker(
+                        //       apiKey: Platform.isAndroid
+                        //           ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+                        //           : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                        //       onPlacePicked: (result) {
+                        //         print(result.formattedAddress);
+                        //         setState(() {
+                        //           addressC?.text =
+                        //               result.formattedAddress.toString();
+                        //           latitude1 =
+                        //               result.geometry!.location.lat.toString();
+                        //           longitudes1 =
+                        //               result.geometry!.location.lng.toString();
+                        //           myLoction =
+                        //               result.formattedAddress.toString();
+                        //           print(
+                        //               'adddrrresss${result.geometry!.location.lat.toString()}');
+                        //           print(
+                        //               'adddrrressslnngggggggggggg${result.geometry!.location.lng.toString()}');
+                        //         });
+                        //         Navigator.of(context).pop();
+                        //       },
+                        //       initialPosition: LatLng(22.719568, 75.857727),
+                        //       useCurrentLocation: true,
+                        //     ),
+                        //   ),
+                        // );
 
                         //
                         // await Navigator.push(
@@ -888,29 +925,59 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                     await Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PlacePicker(
-                          apiKey: Platform.isAndroid
-                              ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
-                              : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
-                          onPlacePicked: (result) {
-                            print(result.formattedAddress);
-                            setState(() {
-                              addressC?.text =
-                                  result.formattedAddress.toString();
-                              latitude1 =
-                                  result.geometry!.location.lat.toString();
-                              longitudes1 =
-                                  result.geometry!.location.lng.toString();
-                              myLoction = result.formattedAddress.toString();
-                              print('adddrrresss${result.addressComponents}');
-                            });
-                            Navigator.of(context).pop();
-                          },
-                          initialPosition: LatLng(22.719568, 75.857727),
-                          useCurrentLocation: true,
-                        ),
-                      ),
+                          builder: (context) => MapLocationPicker(
+                                config: MapLocationPickerConfig(
+                                  apiKey: Platform.isAndroid
+                                      ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+                                      : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                                  initialPosition: LatLng(22.719568, 75.857727),
+                                  onNext: (result) {
+                                    if (result != null) {
+                                      print(result.formattedAddress);
+                                      setState(() {
+                                        addressC?.text =
+                                            result.formattedAddress.toString();
+                                        latitude1 = result
+                                            .geometry!.location.lat
+                                            .toString();
+                                        longitudes1 = result
+                                            .geometry!.location.lng
+                                            .toString();
+                                        myLoction =
+                                            result.formattedAddress.toString();
+                                        print(
+                                            'adddrrresss${result.addressComponents}');
+                                      });
+                                      Navigator.of(context).pop();
+                                    }
+                                  },
+                                ),
+                              )),
                     );
+
+                    // await  Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => PlacePicker(
+                    //       apiKey: Platform.isAndroid
+                    //           ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+                    //           : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                    //       onPlacePicked: (result) {
+                    //         print(result.formattedAddress);
+                    //         setState(() {
+                    //           addressC?.text = result.formattedAddress.toString();
+                    //           latitude1 = result.geometry!.location.lat.toString();
+                    //           longitudes1 = result.geometry!.location.lng.toString();
+                    //           myLoction = result.formattedAddress.toString();
+                    //           print('adddrrresss${result.addressComponents}');
+                    //         });
+                    //         Navigator.of(context).pop();
+                    //       },
+                    //       initialPosition: LatLng(22.719568, 75.857727),
+                    //       useCurrentLocation: true,
+                    //     ),
+                    //   ),
+                    // );
 
                     //
                     // await Navigator.push(
@@ -966,8 +1033,8 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
   //     MaterialPageRoute(
   //       builder: (context) => PlacePicker(
   //         apiKey: Platform.isAndroid
-  //             ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
-  //             : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
+  //             ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+  //             : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
   //         onPlacePicked: (result) {
   //           print(result.formattedAddress);
   //           setState(() {
@@ -1005,7 +1072,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
               controller: pincodeC,
               style: Theme.of(context)
                   .textTheme
-                  .subtitle2!
+                  .titleSmall!
                   .copyWith(color: Theme.of(context).colorScheme.fontColor),
               inputFormatters: [FilteringTextInputFormatter.digitsOnly],
               onSaved: (String? value) {
@@ -1157,7 +1224,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
             controller: landmarkC,
             style: Theme.of(context)
                 .textTheme
-                .subtitle2!
+                .titleSmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
             validator: (val) =>
                 validateField(val!, getTranslated(context, 'FIELD_REQUIRED')),
@@ -1194,7 +1261,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
             controller: stateC,
             style: Theme.of(context)
                 .textTheme
-                .subtitle2!
+                .titleSmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
             readOnly: true,
             //validator: validateField,
@@ -1235,7 +1302,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
             readOnly: true,
             style: Theme.of(context)
                 .textTheme
-                .subtitle2!
+                .titleSmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
             onSaved: (String? value) {
               country = value;
@@ -1546,7 +1613,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
           },
           title: Text(
             getTranslated(context, 'DEFAULT_ADD')!,
-            style: Theme.of(context).textTheme.subtitle2!.copyWith(
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: Theme.of(context).colorScheme.lightBlack,
                 fontWeight: FontWeight.bold),
           ),
@@ -1637,8 +1704,9 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
     longitude = position.longitude.toString();
 
     List<Placemark> placemark = await placemarkFromCoordinates(
-        double.parse(latitude!), double.parse(longitude!),
-        localeIdentifier: "en");
+      double.parse(latitude!), double.parse(longitude!),
+      // setLocaleIdentifier: "en"
+    );
 
     state = placemark[0].administrativeArea;
     country = placemark[0].country;
