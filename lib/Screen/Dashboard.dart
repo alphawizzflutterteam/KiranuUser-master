@@ -215,6 +215,8 @@ class _HomePageState extends State<Dashboard> with TickerProviderStateMixin {
         return true;
       },
       child: SafeArea(
+        top: false,
+        bottom: true,
         child: Scaffold(
           backgroundColor: Theme.of(context).colorScheme.lightWhite,
           appBar: _getAppBar(),

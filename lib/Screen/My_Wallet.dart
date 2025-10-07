@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:http/http.dart';
 import 'package:paytm/paytm.dart';
+// import 'package:paytm/paytm.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../Helper/AppBtn.dart';
@@ -232,7 +233,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                   getTranslated(context, 'ADD_MONEY')!,
                   style: Theme.of(this.context)
                       .textTheme
-                      .subtitle1!
+                      .titleMedium!
                       .copyWith(color: Theme.of(context).colorScheme.fontColor),
                 ),
               ),
@@ -260,7 +261,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                 hintText: getTranslated(context, "AMOUNT"),
                                 hintStyle: Theme.of(this.context)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -281,7 +282,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                 hintText: getTranslated(context, 'MSG'),
                                 hintStyle: Theme.of(this.context)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -295,7 +296,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                           padding: EdgeInsets.fromLTRB(20.0, 10, 20.0, 5),
                           child: Text(
                             getTranslated(context, 'SELECT_PAYMENT')!,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
                         Divider(),
@@ -307,7 +308,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                   getTranslated(context, 'payWarning')!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .caption!
+                                      .bodySmall!
                                       .copyWith(color: Colors.red),
                                 ),
                               )
@@ -326,7 +327,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
           new TextButton(
               child: Text(
                 getTranslated(context, 'CANCEL')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.lightBlack,
                     fontWeight: FontWeight.bold),
               ),
@@ -336,7 +337,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
           new TextButton(
               child: Text(
                 getTranslated(context, 'SEND')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.fontColor,
                     fontWeight: FontWeight.bold),
               ),
@@ -1020,7 +1021,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                             " " + getTranslated(context, 'CURBAL_LBL')!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle2!
+                                .titleSmall!
                                 .copyWith(
                                     color:
                                         Theme.of(context).colorScheme.fontColor,
@@ -1037,7 +1038,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                     .toStringAsFixed(2),
                             style: Theme.of(context)
                                 .textTheme
-                                .headline6!
+                                .titleLarge!
                                 .copyWith(
                                     color:
                                         Theme.of(context).colorScheme.fontColor,

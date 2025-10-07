@@ -24,7 +24,8 @@ import 'package:eshop_multivendor/Screen/Seller_Details.dart';
 import 'package:eshop_multivendor/Screen/SubCategory.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+// import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -94,33 +95,37 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _isNetworkAvail
-          ? RefreshIndicator(
-              color: colors.primary,
-              key: _refreshIndicatorKey,
-              onRefresh: _refresh,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _deliverPincode(),
-                    _catList(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    _slider(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    _section(),
-                    _seller()
-                  ],
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Scaffold(
+        body: _isNetworkAvail
+            ? RefreshIndicator(
+                color: colors.primary,
+                key: _refreshIndicatorKey,
+                onRefresh: _refresh,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _deliverPincode(),
+                      _catList(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _slider(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _section(),
+                      _seller()
+                    ],
+                  ),
                 ),
-              ),
-            )
-          : noInternet(context),
+              )
+            : noInternet(context),
+      ),
     );
   }
 
@@ -271,7 +276,7 @@ class _HomePageState extends State<HomePage>
                   title,
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle2!
+                      .titleSmall!
                       .copyWith(color: colors.blackTemp),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -293,7 +298,7 @@ class _HomePageState extends State<HomePage>
             children: [
               Expanded(
                 child: Text(sectionList[index].shortDesc ?? "",
-                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         color: Theme.of(context).colorScheme.fontColor)),
               ),
               TextButton(
@@ -303,7 +308,7 @@ class _HomePageState extends State<HomePage>
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)),
                 child: Text(
                   getTranslated(context, 'SHOP_NOW')!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       fontWeight: FontWeight.bold),
                 ),
@@ -700,7 +705,7 @@ print('pppppp${sectionList[i].productList!.length}');
                 ),
                 child: Text(
                   sectionList[secPos].productList![index].name!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: Theme.of(context).colorScheme.lightBlack,fontSize:14,fontWeight:FontWeight.bold),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -714,7 +719,7 @@ print('pppppp${sectionList[i].productList!.length}');
                 child:
                 Text("Seller : ${ sectionList[secPos].productList![index].store_name!}",style: Theme.of(context)
                     .textTheme
-                    .subtitle1!
+                    .titleMedium!
                     .copyWith(
                     color: Theme.of(context)
                         .colorScheme
@@ -730,7 +735,7 @@ print('pppppp${sectionList[i].productList!.length}');
               //   ),
               //   child: Text(
               //     sectionList[secPos].productList![index].store_name!,
-              //     style: Theme.of(context).textTheme.caption!.copyWith(
+              //     style: Theme.of(context).textTheme.bodySmall!.copyWith(
               //         color: Theme.of(context).colorScheme.lightBlack,fontSize: 14,fontWeight: FontWeight.bold),
               //     maxLines: 2,
               //     overflow: TextOverflow.ellipsis,
@@ -768,7 +773,7 @@ print('pppppp${sectionList[i].productList!.length}');
                                 : "",
                             style: Theme.of(context)
                                 .textTheme
-                                .overline!
+                                .labelSmall!
                                 .copyWith(
                                     decoration: TextDecoration.lineThrough,
                                     letterSpacing: 0,
@@ -782,7 +787,7 @@ print('pppppp${sectionList[i].productList!.length}');
                               overflow: TextOverflow.ellipsis,
                               style: Theme.of(context)
                                   .textTheme
-                                  .overline!
+                                  .labelSmall!
                                   .copyWith(
                                       color: colors.primary,
                                       letterSpacing: 0,
@@ -924,7 +929,7 @@ print('pppppp${sectionList[i].productList!.length}');
                             //     catList[index].name!,
                             //     style: Theme.of(context)
                             //         .textTheme
-                            //         .caption!
+                            //         .bodySmall!
                             //         .copyWith(
                             //             color: Theme.of(context)
                             //                 .colorScheme
@@ -941,7 +946,7 @@ print('pppppp${sectionList[i].productList!.length}');
                                 catList[index].name!.toUpperCase(),
                                 style: Theme.of(context)
                                     .textTheme
-                                    .caption!
+                                    .bodySmall!
                                     .copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -1019,7 +1024,7 @@ print('pppppp${sectionList[i].productList!.length}');
                     //           //     catList[index].name!,
                     //           //     style: Theme.of(context)
                     //           //         .textTheme
-                    //           //         .caption!
+                    //           //         .bodySmall!
                     //           //         .copyWith(
                     //           //             color: Theme.of(context)
                     //           //                 .colorScheme
@@ -1036,7 +1041,7 @@ print('pppppp${sectionList[i].productList!.length}');
                     //               catList[index].name!.toUpperCase(),
                     //               style: Theme.of(context)
                     //                   .textTheme
-                    //                   .caption!
+                    //                   .bodySmall!
                     //                   .copyWith(
                     //                       color: Theme.of(context)
                     //                           .colorScheme
@@ -1346,14 +1351,14 @@ print('pppppp${sectionList[i].productList!.length}');
           getTranslated(context, 'UPDATE_AVAIL')!,
           style: Theme.of(this.context)
               .textTheme
-              .subtitle1!
+              .titleMedium!
               .copyWith(color: Theme.of(context).colorScheme.fontColor),
         ),
         actions: <Widget>[
           new TextButton(
               child: Text(
                 getTranslated(context, 'NO')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.lightBlack,
                     fontWeight: FontWeight.bold),
               ),
@@ -1363,7 +1368,7 @@ print('pppppp${sectionList[i].productList!.length}');
           new TextButton(
               child: Text(
                 getTranslated(context, 'YES')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.fontColor,
                     fontWeight: FontWeight.bold),
               ),
@@ -1640,7 +1645,7 @@ print('pppppp${sectionList[i].productList!.length}');
                                 },
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -1998,7 +2003,7 @@ print('pppppp${sectionList[i].productList!.length}');
                                     sellerList[index].store_name!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme

@@ -18,7 +18,7 @@
     </queries>
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="KIRANU"
+        android:label="Kiranu"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
         >

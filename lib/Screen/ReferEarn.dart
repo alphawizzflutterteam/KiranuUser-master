@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:share/share.dart';
+// import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import '../Helper/Color.dart';
 import '../Helper/SimBtn.dart';
 import '../Helper/Constant.dart';
@@ -36,7 +37,7 @@ class _ReferEarnState extends State<ReferEarn> {
                   padding: const EdgeInsets.only(top: 28.0),
                   child: Text(
                     getTranslated(context, 'REFEREARN')!,
-                    style: Theme.of(context).textTheme.headline5!.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                         color: Theme.of(context).colorScheme.fontColor),
                   ),
                 ),
@@ -51,7 +52,7 @@ class _ReferEarnState extends State<ReferEarn> {
                   padding: const EdgeInsets.only(top: 28.0),
                   child: Text(
                     getTranslated(context, 'YOUR_CODE')!,
-                    style: Theme.of(context).textTheme.headline5!.copyWith(
+                    style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                         color: Theme.of(context).colorScheme.fontColor),
                   ),
                 ),
@@ -70,7 +71,7 @@ class _ReferEarnState extends State<ReferEarn> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         REFER_CODE!,
-                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: Theme.of(context).colorScheme.fontColor),
                       ),
                     ),
@@ -86,7 +87,7 @@ class _ReferEarnState extends State<ReferEarn> {
                               new BorderRadius.all(const Radius.circular(4.0))),
                       child: Text(getTranslated(context, 'TAP_TO_COPY')!,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.button!.copyWith(
+                          style: Theme.of(context).textTheme.labelLarge!.copyWith(
                                 color: Theme.of(context).colorScheme.fontColor,
                               ),),),
                   onPressed: () {
@@ -103,7 +104,10 @@ class _ReferEarnState extends State<ReferEarn> {
                   onBtnSelected: () {
                     var str =
                         "$appName\nRefer Code:$REFER_CODE\n${getTranslated(context, 'APPFIND')}$androidLink$packageName\n\n${getTranslated(context, 'IOSLBL')}\n$iosLink$iosPackage";
-                    Share.share(str);
+                    // Share.share(str);
+                    SharePlus.instance.share(
+                        ShareParams(text: str)
+                    );
                   },
                 ),
               ],

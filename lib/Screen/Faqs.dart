@@ -163,7 +163,7 @@ class StateFaqs extends State<Faqs> with TickerProviderStateMixin {
                         faqsList[index].question!,
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle1!
+                            .titleMedium!
                             .copyWith(color: Theme.of(context).colorScheme.lightBlack),
                       )),
                   selectedIndex != index || flag
@@ -179,7 +179,7 @@ class StateFaqs extends State<Faqs> with TickerProviderStateMixin {
                                 faqsList[index].answer!,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                     color: Theme.of(context).colorScheme.black.withOpacity(0.7)),
                                 maxLines: 1,
@@ -200,7 +200,7 @@ class StateFaqs extends State<Faqs> with TickerProviderStateMixin {
                                   faqsList[index].answer!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subtitle2!
+                                      .titleSmall!
                                       .copyWith(
                                       color: Theme.of(context).colorScheme.black.withOpacity(0.7)),
                                 ))),
