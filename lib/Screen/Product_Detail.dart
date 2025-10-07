@@ -1,23 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eshop_multivendor/Provider/CartProvider.dart';
 import 'package:eshop_multivendor/Provider/FavoriteProvider.dart';
 import 'package:eshop_multivendor/Provider/HomeProvider.dart';
-import 'package:eshop_multivendor/Provider/ProductDetailProvider.dart';
 import 'package:eshop_multivendor/Provider/UserProvider.dart';
 import 'package:eshop_multivendor/Screen/Cart.dart';
-import 'package:eshop_multivendor/Screen/CompareList.dart';
 import 'package:eshop_multivendor/Screen/ProductList.dart';
 import 'package:eshop_multivendor/Screen/ReviewList.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,6 +24,7 @@ import 'package:share_plus/share_plus.dart';
 // import 'package:share/share.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:tuple/tuple.dart';
+
 import '../Helper/ApiBaseHelper.dart';
 import '../Helper/AppBtn.dart';
 import '../Helper/Color.dart';
@@ -222,11 +218,11 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
       // Share.shareFiles(['$documentDirectory/${widget.model!.name}.png'],
       //     text:
       //         "${widget.model!.name}\n${shortenedLink.shortUrl.toString()}\n$shareLink");
-      SharePlus.instance.share(
-          ShareParams(
-            files: [XFile('$documentDirectory/${widget.model!.name}.png')],
-            text: '${widget.model!.name}\n${shortenedLink.shortUrl.toString()}\n$shareLink',
-          ));
+      SharePlus.instance.share(ShareParams(
+        files: [XFile('$documentDirectory/${widget.model!.name}.png')],
+        text:
+            '${widget.model!.name}\n${shortenedLink.shortUrl.toString()}\n$shareLink',
+      ));
     } catch (e) {
       print(e);
     }
@@ -1351,9 +1347,10 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                       ),
                       child: Text(getTranslated(context, 'APPLY')!,
                           textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                                color: Theme.of(context).colorScheme.white,
-                              )),
+                          style:
+                              Theme.of(context).textTheme.labelLarge!.copyWith(
+                                    color: Theme.of(context).colorScheme.white,
+                                  )),
                     ),
                     onPressed: available! ? applyVarient : null,
                   )
@@ -2062,14 +2059,14 @@ class StateItem extends State<ProductDetail> with TickerProviderStateMixin {
                         },
                         icon: Icon(
                           Icons.shopping_bag,
-                          color: Theme.of(context).colorScheme.white,
+                          color: Theme.of(context).colorScheme.black,
                         ),
                         label: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: Text(
                             getTranslated(context, 'BUYNOW')!,
                             style: TextStyle(
-                                color: Theme.of(context).colorScheme.white,
+                                color: Theme.of(context).colorScheme.black,
                                 fontWeight: FontWeight.bold),
                           ),
                         )),

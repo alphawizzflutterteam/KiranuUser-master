@@ -1,22 +1,20 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'dart:core';
+import 'dart:io';
+
 import 'package:eshop_multivendor/Helper/Constant.dart';
 import 'package:eshop_multivendor/Helper/Session.dart';
 import 'package:eshop_multivendor/Provider/SettingProvider.dart';
-import 'package:eshop_multivendor/Screen/Map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-
 // import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:http/http.dart';
 import 'package:map_location_picker/map_location_picker.dart';
 import 'package:provider/provider.dart';
+
 import '../Helper/AppBtn.dart';
 import '../Helper/Color.dart';
 import '../Helper/String.dart';
@@ -158,7 +156,8 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
       bottom: true,
       child: Scaffold(
         key: _scaffoldKey,
-        appBar: getSimpleAppBar(getTranslated(context, "ADDRESS_LBL")!, context),
+        appBar:
+            getSimpleAppBar(getTranslated(context, "ADDRESS_LBL")!, context),
         body: _isNetworkAvail ? _showContent() : noInternet(context),
       ),
     );
@@ -815,35 +814,36 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                           context,
                           MaterialPageRoute(
                               builder: (context) => MapLocationPicker(
-                                config: MapLocationPickerConfig(
-                                  apiKey: Platform.isAndroid
-                                      ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-                                      : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
-                                  initialPosition: LatLng(22.719568, 75.857727),
-                                  onNext: (result) {
-                                    if (result != null) {
-                                      print(result.formattedAddress);
-                                      setState(() {
-                                        addressC?.text =
-                                            result.formattedAddress.toString();
-                                        latitude1 = result
-                                            .geometry!.location.lat
-                                            .toString();
-                                        longitudes1 = result
-                                            .geometry!.location.lng
-                                            .toString();
-                                        myLoction =
-                                            result.formattedAddress.toString();
-                                        print(
-                                            'adddrrresss${result.addressComponents}');
-                                      });
-                                      Navigator.of(context).pop();
-                                    }
-                                  },
-                                ),
-                              )),
+                                    config: MapLocationPickerConfig(
+                                      apiKey: Platform.isAndroid
+                                          ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+                                          : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                                      initialPosition:
+                                          LatLng(22.719568, 75.857727),
+                                      onNext: (result) {
+                                        if (result != null) {
+                                          print(result.formattedAddress);
+                                          setState(() {
+                                            addressC?.text = result
+                                                .formattedAddress
+                                                .toString();
+                                            latitude1 = result
+                                                .geometry!.location.lat
+                                                .toString();
+                                            longitudes1 = result
+                                                .geometry!.location.lng
+                                                .toString();
+                                            myLoction = result.formattedAddress
+                                                .toString();
+                                            print(
+                                                'adddrrresss${result.addressComponents}');
+                                          });
+                                          Navigator.of(context).pop();
+                                        }
+                                      },
+                                    ),
+                                  )),
                         );
-
 
                         // await Navigator.push(
                         //   context,
@@ -1734,7 +1734,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                 const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8.0),
             child: MaterialButton(
               height: 45.0,
-              textColor: Theme.of(context).colorScheme.white,
+              textColor: Theme.of(context).colorScheme.black,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0)),
               onPressed: onBtnSelected,
