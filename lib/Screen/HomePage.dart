@@ -2017,7 +2017,7 @@ class _HomePageState extends State<HomePage>
                                                 .fontColor,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14),
-                                    // overflow: TextOverflow.ellipsis,
+                                    overflow: TextOverflow.ellipsis,
                                     maxLines: 3,
                                     textAlign: TextAlign.center,
                                   ),

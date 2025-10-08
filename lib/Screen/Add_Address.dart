@@ -80,11 +80,13 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
   int? selAreaPos = -1, selCityPos = -1;
   final TextEditingController _areaController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
+  double? lat,long;
 
   @override
   void initState() {
     super.initState();
-
+    // getCurrentLoc();
+    getUserCurrentLocation();
     buttonController = new AnimationController(
         duration: new Duration(milliseconds: 2000), vsync: this);
 
@@ -756,7 +758,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
     );
   }
 
-  String? latitude1, longitudes1;
+  double? latitude1, longitudes1;
 
   late String myLoction = "";
 
@@ -806,33 +808,33 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                       ),
                       focusNode: locationFocus,
                       onPressed: () async {
+                        print("dsfdfsdffdsf1111");
                         LocationPermission permission;
                         permission = await Geolocator.requestPermission();
                         Position position = await Geolocator.getCurrentPosition(
                             desiredAccuracy: LocationAccuracy.high);
+                        print("dsfdfsdffdsf234343");
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MapLocationPicker(
                                     config: MapLocationPickerConfig(
                                       apiKey: Platform.isAndroid
-                                          ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-                                          : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
-                                      initialPosition:
-                                          LatLng(22.719568, 75.857727),
+                                          ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
+                                          : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
+                                      initialPosition: LatLng(lat!, long!),
                                       onNext: (result) {
                                         if (result != null) {
                                           print(result.formattedAddress);
+                                          print("dfsadfsdf......${lat}");
                                           setState(() {
                                             addressC?.text = result
                                                 .formattedAddress
                                                 .toString();
-                                            latitude1 = result
-                                                .geometry!.location.lat
-                                                .toString();
-                                            longitudes1 = result
-                                                .geometry!.location.lng
-                                                .toString();
+                                            lat = result
+                                                .geometry?.location.lat ?? 0.0;
+                                            long = result
+                                                .geometry?.location.lng ?? 0.0;
                                             myLoction = result.formattedAddress
                                                 .toString();
                                             print(
@@ -876,7 +878,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                         //   ),
                         // );
 
-                        //
+
                         // await Navigator.push(
                         //     context,
                         //     MaterialPageRoute(
@@ -919,108 +921,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                       },
                     ),
                   ),
-                  onTap: () async {
-                    LocationPermission permission;
-                    permission = await Geolocator.requestPermission();
-                    Position position = await Geolocator.getCurrentPosition(
-                        desiredAccuracy: LocationAccuracy.high);
 
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => MapLocationPicker(
-                                config: MapLocationPickerConfig(
-                                  apiKey: Platform.isAndroid
-                                      ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-                                      : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
-                                  initialPosition: LatLng(22.719568, 75.857727),
-                                  onNext: (result) {
-                                    if (result != null) {
-                                      print(result.formattedAddress);
-                                      setState(() {
-                                        addressC?.text =
-                                            result.formattedAddress.toString();
-                                        latitude1 = result
-                                            .geometry!.location.lat
-                                            .toString();
-                                        longitudes1 = result
-                                            .geometry!.location.lng
-                                            .toString();
-                                        myLoction =
-                                            result.formattedAddress.toString();
-                                        print(
-                                            'adddrrresss${result.addressComponents}');
-                                      });
-                                      Navigator.of(context).pop();
-                                    }
-                                  },
-                                ),
-                              )),
-                    );
-
-                    // await  Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => PlacePicker(
-                    //       apiKey: Platform.isAndroid
-                    //           ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-                    //           : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
-                    //       onPlacePicked: (result) {
-                    //         print(result.formattedAddress);
-                    //         setState(() {
-                    //           addressC?.text = result.formattedAddress.toString();
-                    //           latitude1 = result.geometry!.location.lat.toString();
-                    //           longitudes1 = result.geometry!.location.lng.toString();
-                    //           myLoction = result.formattedAddress.toString();
-                    //           print('adddrrresss${result.addressComponents}');
-                    //         });
-                    //         Navigator.of(context).pop();
-                    //       },
-                    //       initialPosition: LatLng(22.719568, 75.857727),
-                    //       useCurrentLocation: true,
-                    //     ),
-                    //   ),
-                    // );
-
-                    //
-                    // await Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => Map(
-                    //               latitude:
-                    //                   latitude == null || latitude == ""
-                    //                       ? position.latitude
-                    //                       : double.parse(latitude!),
-                    //               longitude:
-                    //                   longitude == null || longitude == ""
-                    //                       ? position.longitude
-                    //                       : double.parse(longitude!),
-                    //               from:
-                    //                   getTranslated(context, 'ADDADDRESS'),
-                    //             )));
-                    if (mounted) setState(() {});
-                    List<Placemark> placemark = await placemarkFromCoordinates(
-                        double.parse(latitude!), double.parse(longitude!));
-
-                    var address;
-                    address = placemark[0].name;
-                    address = address + "," + placemark[0].subLocality;
-                    address = address + "," + placemark[0].locality;
-
-                    state = placemark[0].administrativeArea;
-                    country = placemark[0].country;
-                    // pincode = placemark[0].postalCode;
-                    //  address = placemark[0].name;
-                    if (mounted) {
-                      setState(() {
-                        countryC!.text = country!;
-                        stateC!.text = state!;
-                        //addressC!.text = address;
-                        //  pincodeC!.text = pincode!;
-                        // addressC!.text = address!;
-                      });
-                    }
-                  },
                 ),
               ),
             ),
@@ -1057,6 +958,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
   //
   //
   // }
+
   setPincode() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -1691,6 +1593,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
   }
 
   Future<void> getCurrentLoc() async {
+    print("kskahsdjhasdj");
     bool serviceEnabled;
     LocationPermission permission;
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -1701,11 +1604,12 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
         return Future.error('Location permissions are denied');
       }
     }
+    print("kskah111111111111111");
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     latitude = position.latitude.toString();
     longitude = position.longitude.toString();
-
+print("lat long ${latitude} asdjjdhajs ${longitude}");
     List<Placemark> placemark = await placemarkFromCoordinates(
       double.parse(latitude!), double.parse(longitude!),
       // setLocaleIdentifier: "en"
@@ -1721,6 +1625,37 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
         stateC!.text = state!;
         // pincodeC!.text = pincode!;
         // addressC!.text = address!;
+      });
+    }
+  }
+
+
+  Future<void> getUserCurrentLocation() async {
+
+    print("gfdgffgffg..........");
+    LocationPermission permission;
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      print("checking permission here $permission");
+      if (permission == LocationPermission.deniedForever) {
+        return Future.error('Location Not Available');
+      }
+    }
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    lat = double.parse(position.latitude.toString());
+    long = double.parse(position.longitude.toString());
+    print("lat longggg ${lat}");
+
+    List<Placemark> placemark = await placemarkFromCoordinates(
+      double.parse(lat.toString()), double.parse(long.toString()),
+      // localeIdentifier: "en",
+    );
+    if (mounted) {
+      setState(() {
+        lat = double.parse(position.latitude.toString());
+        long = double.parse(position.longitude.toString());
       });
     }
   }
