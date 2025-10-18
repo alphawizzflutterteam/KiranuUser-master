@@ -21,7 +21,8 @@
         android:label="Kiranu"
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
-        >
+        android:hardwareAccelerated="true"
+         >
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"/>
         <activity
             android:name=".MainActivity"
