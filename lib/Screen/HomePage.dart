@@ -958,7 +958,7 @@ class _HomePageState extends State<HomePage>
                                             .colorScheme
                                             .fontColor,
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 14),
+                                        fontSize: 15),
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
                                 maxLines: 2,

@@ -528,7 +528,7 @@ class _AllCategoryState extends State<AllCategory> {
                                                 .colorScheme
                                                 .fontColor,
                                             fontWeight: FontWeight.w600,
-                                            fontSize: 11),
+                                            fontSize: 15),
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
                                     maxLines: 2,

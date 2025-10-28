@@ -55,7 +55,7 @@ class SubCategory extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodySmall!
-                .copyWith(color: Theme.of(context).colorScheme.fontColor),
+                .copyWith(color: Theme.of(context).colorScheme.fontColor,fontSize: 16),
           )
         ],
       ),

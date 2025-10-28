@@ -763,8 +763,6 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
 
   late String myLoction = "";
 
-
-
   setAddress() {
     return Row(
       children: [
@@ -810,207 +808,160 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                         color: colors.primary,
                       ),
                       focusNode: locationFocus,
-                        onPressed: () async {
-                          print("Location button pressed");
+                      onPressed: () async {
+                        print("dsfdfsdffdsf1111");
+                        LocationPermission permission;
+                        permission = await Geolocator.requestPermission();
+                        Position position = await Geolocator.getCurrentPosition(
+                            desiredAccuracy: LocationAccuracy.high);
+                        print("dsfdfsdffdsf234343");
+                        // if (lat != null && long != null) {
+                        //   await Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => MapLocationPicker(
+                        //         config: MapLocationPickerConfig(
+                        //           apiKey: Platform.isAndroid
+                        //               ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
+                        //               : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
+                        //           initialPosition: LatLng(lat!, long!),
+                        //           onNext: (result) {
+                        //             if (result != null) {
+                        //               setState(() {
+                        //                 addressC?.text = result.formattedAddress ?? '';
+                        //                 lat = result.geometry?.location.lat ?? 0.0;
+                        //                 long = result.geometry?.location.lng ?? 0.0;
+                        //                 myLoction = result.formattedAddress ?? '';
+                        //               });
+                        //               Navigator.of(context).pop();
+                        //             }
+                        //           },
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   );
+                        // } else {
+                        //   debugPrint(' lat or long is null — cannot open MapLocationPicker');
+                        // }
 
-                          LocationPermission permission = await Geolocator.requestPermission();
-                          if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
-                            return;
-                          }
-
-                          Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-                          double latitudeValue = position.latitude;
-                          double longitudeValue = position.longitude;
-
-                          // Must set hybrid composition BEFORE map builds
-                          if (defaultTargetPlatform == TargetPlatform.android) {
-                            AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
-                          }
-
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
                               builder: (context) => MapLocationPicker(
-                                config: MapLocationPickerConfig(
-                                  apiKey: Platform.isAndroid
-                                      ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
-                                      : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
-                                  initialPosition: LatLng(latitudeValue, longitudeValue),
-                                  onMapCreated: (GoogleMapController controller) {
-                                    print("Map created successfully");
-                                  },
-                                  onNext: (result) {
-                                    if (result != null) {
-                                      print(result.formattedAddress);
-                                      setState(() {
-                                        addressC?.text = result.formattedAddress ?? '';
-                                        lat = result.geometry?.location.lat?.toString() ?? latitudeValue.toString();
-                                        long = result.geometry?.location.lng?.toString() ?? longitudeValue.toString();
-                                        myLoction = result.formattedAddress ?? '';
-                                      });
-                                      Navigator.of(context).pop();
-                                    }
-                                  },
-                                ),
-                              ),
-                            ),
-                          );
-                        }
+                                    config: MapLocationPickerConfig(
+                                      onMapCreated: (GoogleMapController controller) {
+                                        if (defaultTargetPlatform == TargetPlatform.android) {
+                                          AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
+                                        }
+                                      },
 
-                      // onPressed: () async {
-                      //   print("dsfdfsdffdsf1111");
-                      //   LocationPermission permission;
-                      //   permission = await Geolocator.requestPermission();
-                      //   // Position position = await Geolocator.getCurrentPosition(
-                      //   //     desiredAccuracy: LocationAccuracy.high);
-                      //   print("dsfdfsdffdsf234343");
-                      //   // if (lat != null && long != null) {
-                      //   //   await Navigator.push(
-                      //   //     context,
-                      //   //     MaterialPageRoute(
-                      //   //       builder: (context) => MapLocationPicker(
-                      //   //         config: MapLocationPickerConfig(
-                      //   //           apiKey: Platform.isAndroid
-                      //   //               ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
-                      //   //               : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
-                      //   //           initialPosition: LatLng(lat!, long!),
-                      //   //           onNext: (result) {
-                      //   //             if (result != null) {
-                      //   //               setState(() {
-                      //   //                 addressC?.text = result.formattedAddress ?? '';
-                      //   //                 lat = result.geometry?.location.lat ?? 0.0;
-                      //   //                 long = result.geometry?.location.lng ?? 0.0;
-                      //   //                 myLoction = result.formattedAddress ?? '';
-                      //   //               });
-                      //   //               Navigator.of(context).pop();
-                      //   //             }
-                      //   //           },
-                      //   //         ),
-                      //   //       ),
-                      //   //     ),
-                      //   //   );
-                      //   // } else {
-                      //   //   debugPrint(' lat or long is null — cannot open MapLocationPicker');
-                      //   // }
-                      //
-                      //   await Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => MapLocationPicker(
-                      //               config: MapLocationPickerConfig(
-                      //                 onMapCreated: (GoogleMapController controller) {
-                      //                   if (defaultTargetPlatform == TargetPlatform.android) {
-                      //                     AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
-                      //                   }
-                      //                 },
-                      //
-                      //                 apiKey: Platform.isAndroid
-                      //                     ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
-                      //                     : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
-                      //                 initialPosition: LatLng(
-                      //                   double.tryParse(lat.toString()) ??
-                      //                       0.0,
-                      //                   double.tryParse(
-                      //                       long.toString()) ??
-                      //                       0.0,
-                      //                 ),
-                      //
-                      //                 onNext: (result) {
-                      //                   if (result != null) {
-                      //                     print(result.formattedAddress);
-                      //                     print("dfsadfsdf......${lat}");
-                      //                     setState(() {
-                      //                       addressC?.text = result
-                      //                           .formattedAddress
-                      //                           .toString();
-                      //                       lat = result.geometry?.location.lat.toString() ?? latitude.toString();
-                      //                       long = result.geometry?.location.lng.toString() ?? longitude.toString();
-                      //
-                      //                       myLoction = result.formattedAddress
-                      //                           .toString();
-                      //                       print(
-                      //                           'adddrrresss${result.addressComponents}');
-                      //                     });
-                      //                     Navigator.of(context).pop();
-                      //                   }
-                      //                 },
-                      //               ),
-                      //             )),
-                      //   );
-                      //
-                      //
-                      //   // await Navigator.push(
-                      //   //   context,
-                      //   //   MaterialPageRoute(
-                      //   //     builder: (context) => PlacePicker(
-                      //   //       apiKey: Platform.isAndroid
-                      //   //           ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
-                      //   //           : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
-                      //   //       onPlacePicked: (result) {
-                      //   //         print(result.formattedAddress);
-                      //   //         setState(() {
-                      //   //           addressC?.text =
-                      //   //               result.formattedAddress.toString();
-                      //   //           latitude1 =
-                      //   //               result.geometry!.location.lat.toString();
-                      //   //           longitudes1 =
-                      //   //               result.geometry!.location.lng.toString();
-                      //   //           myLoction =
-                      //   //               result.formattedAddress.toString();
-                      //   //           print(
-                      //   //               'adddrrresss${result.geometry!.location.lat.toString()}');
-                      //   //           print(
-                      //   //               'adddrrressslnngggggggggggg${result.geometry!.location.lng.toString()}');
-                      //   //         });
-                      //   //         Navigator.of(context).pop();
-                      //   //       },
-                      //   //       initialPosition: LatLng(22.719568, 75.857727),
-                      //   //       useCurrentLocation: true,
-                      //   //     ),
-                      //   //   ),
-                      //   // );
-                      //
-                      //
-                      //   // await Navigator.push(
-                      //   //     context,
-                      //   //     MaterialPageRoute(
-                      //   //         builder: (context) => Map(
-                      //   //               latitude:
-                      //   //                   latitude == null || latitude == ""
-                      //   //                       ? position.latitude
-                      //   //                       : double.parse(latitude!),
-                      //   //               longitude:
-                      //   //                   longitude == null || longitude == ""
-                      //   //                       ? position.longitude
-                      //   //                       : double.parse(longitude!),
-                      //   //               from:
-                      //   //                   getTranslated(context, 'ADDADDRESS'),
-                      //   //             )));
-                      //   if (mounted) setState(() {});
-                      //   List<Placemark> placemark =
-                      //       await placemarkFromCoordinates(
-                      //           double.parse(latitude!),
-                      //           double.parse(longitude!));
-                      //
-                      //   var address;
-                      //   address = placemark[0].name;
-                      //   address = address + "," + placemark[0].subLocality;
-                      //   address = address + "," + placemark[0].locality;
-                      //
-                      //   state = placemark[0].administrativeArea;
-                      //   country = placemark[0].country;
-                      //   // pincode = placemark[0].postalCode;
-                      //   //  address = placemark[0].name;
-                      //   if (mounted) {
-                      //     setState(() {
-                      //       countryC!.text = country!;
-                      //       stateC!.text = state!;
-                      //       //addressC!.text = address;
-                      //       //  pincodeC!.text = pincode!;
-                      //       // addressC!.text = address!;
-                      //     });
-                      //   }
-                      // },
+                                      apiKey: Platform.isAndroid
+                                          ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
+                                          : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
+                                      initialPosition: LatLng(
+                                        double.tryParse(lat.toString()) ??
+                                            0.0,
+                                        double.tryParse(
+                                            long.toString()) ??
+                                            0.0,
+                                      ),
+
+                                      onNext: (result) {
+                                        if (result != null) {
+                                          print(result.formattedAddress);
+                                          print("dfsadfsdf......${lat}");
+                                          setState(() {
+                                            addressC?.text = result
+                                                .formattedAddress
+                                                .toString();
+                                            lat = result.geometry?.location.lat.toString() ?? latitude.toString();
+                                            long = result.geometry?.location.lng.toString() ?? longitude.toString();
+
+                                            myLoction = result.formattedAddress
+                                                .toString();
+                                            print(
+                                                'adddrrresss${result.addressComponents}');
+                                          });
+                                          Navigator.of(context).pop();
+                                        }
+                                      },
+                                    ),
+                                  )),
+                        );
+
+
+                        // await Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => PlacePicker(
+                        //       apiKey: Platform.isAndroid
+                        //           ? "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY"
+                        //           : "AIzaSyB0uPBgryG9RisP8_0v50Meds1ZePMwsoY",
+                        //       onPlacePicked: (result) {
+                        //         print(result.formattedAddress);
+                        //         setState(() {
+                        //           addressC?.text =
+                        //               result.formattedAddress.toString();
+                        //           latitude1 =
+                        //               result.geometry!.location.lat.toString();
+                        //           longitudes1 =
+                        //               result.geometry!.location.lng.toString();
+                        //           myLoction =
+                        //               result.formattedAddress.toString();
+                        //           print(
+                        //               'adddrrresss${result.geometry!.location.lat.toString()}');
+                        //           print(
+                        //               'adddrrressslnngggggggggggg${result.geometry!.location.lng.toString()}');
+                        //         });
+                        //         Navigator.of(context).pop();
+                        //       },
+                        //       initialPosition: LatLng(22.719568, 75.857727),
+                        //       useCurrentLocation: true,
+                        //     ),
+                        //   ),
+                        // );
+
+
+                        // await Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) => Map(
+                        //               latitude:
+                        //                   latitude == null || latitude == ""
+                        //                       ? position.latitude
+                        //                       : double.parse(latitude!),
+                        //               longitude:
+                        //                   longitude == null || longitude == ""
+                        //                       ? position.longitude
+                        //                       : double.parse(longitude!),
+                        //               from:
+                        //                   getTranslated(context, 'ADDADDRESS'),
+                        //             )));
+                        if (mounted) setState(() {});
+                        List<Placemark> placemark =
+                            await placemarkFromCoordinates(
+                                double.parse(latitude!),
+                                double.parse(longitude!));
+
+                        var address;
+                        address = placemark[0].name;
+                        address = address + "," + placemark[0].subLocality;
+                        address = address + "," + placemark[0].locality;
+
+                        state = placemark[0].administrativeArea;
+                        country = placemark[0].country;
+                        // pincode = placemark[0].postalCode;
+                        //  address = placemark[0].name;
+                        if (mounted) {
+                          setState(() {
+                            countryC!.text = country!;
+                            stateC!.text = state!;
+                            //addressC!.text = address;
+                            //  pincodeC!.text = pincode!;
+                            // addressC!.text = address!;
+                          });
+                        }
+                      },
                     ),
                   ),
 
