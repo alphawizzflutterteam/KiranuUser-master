@@ -730,8 +730,8 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
     try {
       var data = {MOBILE: mobile, "forgot_otp": widget.checkForgot};
       Response response =
-          await post(getVerifyUserApi, body: data, headers: headers)
-              .timeout(Duration(seconds: timeOut));
+      await post(getVerifyUserApi, body: data, headers: headers)
+          .timeout(Duration(seconds: timeOut));
 
       var getdata = json.decode(response.body);
       bool? error = getdata["error"];
@@ -739,9 +739,9 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
       await buttonController!.reverse();
 
       SettingProvider settingsProvider =
-          Provider.of<SettingProvider>(context, listen: false);
+      Provider.of<SettingProvider>(context, listen: false);
 
-      if (widget.checkForgot == "false") {
+      if(widget.checkForgot == "false"){
         if (widget.title == getTranslated(context, 'SEND_OTP_TITLE')) {
           if (!error!) {
             int otp = getdata["data"]["otp"];
@@ -758,11 +758,11 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                   context,
                   MaterialPageRoute(
                       builder: (context) => VerifyOtp(
-                            otp: otp,
-                            mobileNumber: mobile!,
-                            countryCode: countrycode,
-                            title: getTranslated(context, 'SEND_OTP_TITLE'),
-                          )));
+                        otp: otp,
+                        mobileNumber: mobile!,
+                        countryCode: countrycode,
+                        title: getTranslated(context, 'SEND_OTP_TITLE'),
+                      )));
             });
           } else {
             setSnackbar(msg!);
@@ -783,11 +783,11 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                   context,
                   MaterialPageRoute(
                       builder: (context) => VerifyOtp(
-                            otp: otp,
-                            mobileNumber: mobile!,
-                            countryCode: countrycode,
-                            title: getTranslated(context, 'FORGOT_PASS_TITLE'),
-                          )));
+                        otp: otp,
+                        mobileNumber: mobile!,
+                        countryCode: countrycode,
+                        title: getTranslated(context, 'FORGOT_PASS_TITLE'),
+                      )));
             });
           } else {
             setSnackbar(getTranslated(context, 'FIRSTSIGNUP_MSG')!);
@@ -827,9 +827,9 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
             getTranslated(context, 'SEND_VERIFY_CODE_LBL')!,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                  color: Theme.of(context).colorScheme.fontColor,
-                  fontWeight: FontWeight.normal,
-                ),
+              color: Theme.of(context).colorScheme.fontColor,
+              fontWeight: FontWeight.normal,
+            ),
             overflow: TextOverflow.ellipsis,
             softWrap: true,
             maxLines: 1,
@@ -911,7 +911,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
           contentPadding:
-              const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+          const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
           // focusedBorder: OutlineInputBorder(
           //   borderSide: BorderSide(color: Theme.of(context).colorScheme.lightWhite),
           // ),
@@ -921,7 +921,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.lightWhite),
+            BorderSide(color: Theme.of(context).colorScheme.lightWhite),
           ),
         ));
   }
@@ -941,83 +941,85 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
   Widget termAndPolicyTxt() {
     return widget.title == getTranslated(context, 'SEND_OTP_TITLE')
         ? Padding(
-            padding: const EdgeInsets.only(
-                bottom: 30.0, left: 25.0, right: 25.0, top: 10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(getTranslated(context, 'CONTINUE_AGREE_LBL')!,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: Theme.of(context).colorScheme.fontColor,
-                        fontWeight: FontWeight.normal)),
-                const SizedBox(
-                  height: 3.0,
-                ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PrivacyPolicy(
-                                      title: getTranslated(context, 'TERM'),
-                                    )));
-                      },
-                      child: Text(
-                        getTranslated(context, 'TERMS_SERVICE_LBL')!,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Theme.of(context).colorScheme.fontColor,
-                            decoration: TextDecoration.underline,
-                            fontWeight: FontWeight.normal),
-                      )),
-                  const SizedBox(
-                    width: 5.0,
-                  ),
-                  Text(getTranslated(context, 'AND_LBL')!,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: Theme.of(context).colorScheme.fontColor,
-                          fontWeight: FontWeight.normal)),
-                  const SizedBox(
-                    width: 5.0,
-                  ),
-                  InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => PrivacyPolicy(
-                                      title: getTranslated(context, 'PRIVACY'),
-                                    )));
-                      },
-                      child: Text(
-                        getTranslated(context, 'PRIVACY')!,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Theme.of(context).colorScheme.fontColor,
-                            decoration: TextDecoration.underline,
-                            fontWeight: FontWeight.normal),
-                      )),
-                ]),
-              ],
+      padding: const EdgeInsets.only(
+          bottom: 30.0, left: 25.0, right: 25.0, top: 10.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(getTranslated(context, 'CONTINUE_AGREE_LBL')!,
+              style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: Theme.of(context).colorScheme.fontColor,
+                  fontWeight: FontWeight.normal)),
+          const SizedBox(
+            height: 3.0,
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PrivacyPolicy(
+                            title: getTranslated(context, 'TERM'),
+                          )
+                      )
+                  );
+                },
+                child: Text(
+                  getTranslated(context, 'TERMS_SERVICE_LBL')!,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: Theme.of(context).colorScheme.fontColor,
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.normal),
+                )),
+            const SizedBox(
+              width: 5.0,
             ),
-          )
+            Text(getTranslated(context, 'AND_LBL')!,
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: Theme.of(context).colorScheme.fontColor,
+                    fontWeight: FontWeight.normal)),
+            const SizedBox(
+              width: 5.0,
+            ),
+            InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => PrivacyPolicy(
+                            title: getTranslated(context, 'PRIVACY'),
+                          )));
+                },
+                child: Text(
+                  getTranslated(context, 'PRIVACY')!,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: Theme.of(context).colorScheme.fontColor,
+                      decoration: TextDecoration.underline,
+                      fontWeight: FontWeight.normal),
+                )),
+          ]),
+        ],
+      ),
+    )
         : Container();
   }
 
   backBtn() {
     return Platform.isIOS
         ? Container(
-            padding: EdgeInsets.only(top: 20.0, left: 10.0),
-            alignment: Alignment.topLeft,
-            child: Card(
-              elevation: 0,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 4.0),
-                child: InkWell(
-                  child: Icon(Icons.keyboard_arrow_left, color: colors.primary),
-                  onTap: () => Navigator.of(context).pop(),
-                ),
-              ),
-            ))
+        padding: EdgeInsets.only(top: 20.0, left: 10.0),
+        alignment: Alignment.topLeft,
+        child: Card(
+          elevation: 0,
+          child: Padding(
+            padding: const EdgeInsets.only(right: 4.0),
+            child: InkWell(
+              child: Icon(Icons.keyboard_arrow_left, color: colors.primary),
+              onTap: () => Navigator.of(context).pop(),
+            ),
+          ),
+        ))
         : Container();
   }
 
@@ -1054,35 +1056,35 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         key: _scaffoldKey,
         body: _isNetworkAvail
             ? Stack(
-                children: [
-                  backBtn(),
-                  Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: back(),
-                  ),
-                  Image.asset(
-                    'assets/images/doodle.png',
-                    fit: BoxFit.fill,
-                    width: double.infinity,
-                    height: double.infinity,
-                  ),
-                  getLoginContainer(),
-                  getLogo(),
-                ],
-              )
-            // Container(
-            //     color: Theme.of(context).colorScheme.lightWhite,
-            //     padding: EdgeInsets.only(
-            //       bottom: 20.0,
-            //     ),
-            //     child: Column(
-            //       children: <Widget>[
-            //         backBtn(),
-            //         subLogo(),
-            //         expandedBottomView(),
-            //       ],
-            //     ))
+          children: [
+            backBtn(),
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: back(),
+            ),
+            Image.asset(
+              'assets/images/doodle.png',
+              fit: BoxFit.fill,
+              width: double.infinity,
+              height: double.infinity,
+            ),
+            getLoginContainer(),
+            getLogo(),
+          ],
+        )
+        // Container(
+        //     color: Theme.of(context).colorScheme.lightWhite,
+        //     padding: EdgeInsets.only(
+        //       bottom: 20.0,
+        //     ),
+        //     child: Column(
+        //       children: <Widget>[
+        //         backBtn(),
+        //         subLogo(),
+        //         expandedBottomView(),
+        //       ],
+        //     ))
             : noInternet(context));
   }
 
@@ -1124,10 +1126,10 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
                           alignment: Alignment.topLeft,
                           child: Text(
                             widget.title ==
-                                    getTranslated(context, 'SEND_OTP_TITLE')
+                                getTranslated(context, 'SEND_OTP_TITLE')
                                 ? getTranslated(context, 'SIGN_UP_LBL')!
                                 : getTranslated(
-                                    context, 'FORGOT_PASSWORDTITILE')!,
+                                context, 'FORGOT_PASSWORDTITILE')!,
                             style: const TextStyle(
                               color: colors.primary,
                               fontSize: 30,
@@ -1174,3 +1176,5 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
     );
   }
 }
+
+

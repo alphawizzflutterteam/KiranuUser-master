@@ -1357,7 +1357,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
 
   AnimationController? buttonController;
 
-  getToken() {
+  getToken(){
     FirebaseMessaging.instance.getToken().then((value) {
       fcmToken = value!;
     });
@@ -1366,6 +1366,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
 
   @override
   void initState() {
+
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.top]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -1489,8 +1490,8 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
     var data = {MOBILE: mobile, PASSWORD: password, "fcm_id": fcmToken};
     print(data);
     Response response =
-        await post(getUserLoginApi, body: data, headers: headers)
-            .timeout(Duration(seconds: timeOut));
+    await post(getUserLoginApi, body: data, headers: headers)
+        .timeout(Duration(seconds: timeOut));
     var getdata = json.decode(response.body);
 
     bool error = getdata["error"];
@@ -1515,13 +1516,13 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
       // CUR_USERNAME = username;
 
       UserProvider userProvider =
-          Provider.of<UserProvider>(this.context, listen: false);
+      Provider.of<UserProvider>(this.context, listen: false);
       userProvider.setName(username ?? "");
       userProvider.setEmail(email ?? "");
       userProvider.setProfilePic(image ?? "");
 
       SettingProvider settingProvider =
-          Provider.of<SettingProvider>(context, listen: false);
+      Provider.of<SettingProvider>(context, listen: false);
 
       settingProvider.saveUserDetail(id!, username, email, mobile, city, area,
           address, pincode, latitude, longitude, image, context);
@@ -1611,9 +1612,62 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
             minWidth: 40,
             maxHeight: 20,
           ),
+
           enabledBorder: UnderlineInputBorder(
             borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.lightBlack2),
+            BorderSide(color: Theme.of(context).colorScheme.lightBlack2),
+            borderRadius: BorderRadius.circular(7.0),
+          ),
+        ),
+      ),
+    );
+
+    return Container(
+      width: deviceWidth! * 0.7,
+      padding: EdgeInsetsDirectional.only(
+        top: 30.0,
+      ),
+      child: TextFormField(
+        onFieldSubmitted: (v) {
+          FocusScope.of(context).requestFocus(passFocus);
+        },
+        keyboardType: TextInputType.number,
+        controller: mobileController,
+        style: TextStyle(
+            color: Theme.of(context).colorScheme.fontColor,
+            fontWeight: FontWeight.normal),
+        focusNode: monoFocus,
+        textInputAction: TextInputAction.next,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        validator: (val) => validateMob(
+            val!,
+            getTranslated(context, 'MOB_REQUIRED'),
+            getTranslated(context, 'VALID_MOB')),
+        onSaved: (String? value) {
+          mobile = value;
+        },
+        decoration: InputDecoration(
+          prefixIcon: Icon(
+            Icons.call_outlined,
+            color: Theme.of(context).colorScheme.fontColor,
+            size: 17,
+          ),
+          hintText: getTranslated(context, 'MOBILEHINT_LBL'),
+          hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
+              color: Theme.of(context).colorScheme.fontColor,
+              fontWeight: FontWeight.normal),
+          filled: true,
+          fillColor: Theme.of(context).colorScheme.lightWhite,
+          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          prefixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+            BorderSide(color: Theme.of(context).colorScheme.fontColor),
+            borderRadius: BorderRadius.circular(7.0),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide:
+            BorderSide(color: Theme.of(context).colorScheme.lightWhite),
             borderRadius: BorderRadius.circular(7.0),
           ),
         ),
@@ -1716,9 +1770,9 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
                   context,
                   MaterialPageRoute(
                       builder: (context) => SendOtp(
-                            checkForgot: "true",
-                            title: getTranslated(context, 'FORGOT_PASS_TITLE'),
-                          )));
+                        checkForgot : "true",
+                        title: getTranslated(context, 'FORGOT_PASS_TITLE'),
+                      )));
             },
             child: Text(
               getTranslated(context, "FORGOT_LBL")!,
@@ -1748,7 +1802,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.lightBlack2),
+            BorderSide(color: Theme.of(context).colorScheme.lightBlack2),
             borderRadius: BorderRadius.circular(7.0),
           ),
         ),
@@ -1765,7 +1819,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
             InkWell(
               onTap: () {
                 SettingProvider settingsProvider =
-                    Provider.of<SettingProvider>(this.context, listen: false);
+                Provider.of<SettingProvider>(this.context, listen: false);
 
                 settingsProvider.setPrefrence(ID, id!);
                 settingsProvider.setPrefrence(MOBILE, mobile!);
@@ -1774,9 +1828,8 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
                     context,
                     MaterialPageRoute(
                         builder: (context) => SendOtp(
-                              title:
-                                  getTranslated(context, 'FORGOT_PASS_TITLE'),
-                            )));
+                          title: getTranslated(context, 'FORGOT_PASS_TITLE'),
+                        )));
               },
               child: Text(getTranslated(context, 'FORGOT_PASSWORD_LBL')!,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
@@ -1798,18 +1851,26 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                   color: Theme.of(context).colorScheme.fontColor,
                   fontWeight: FontWeight.normal,
-                  fontSize: 16)),
+                  fontSize: 16
+              )),
           InkWell(
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => SendOtp(
-                    checkForgot: "false",
-                    title: getTranslated(context, 'SEND_OTP_TITLE'),
-                  ),
+                  builder: (BuildContext context) =>
+                      SendOtp(
+                        checkForgot: "false",
+                        title: getTranslated(context, 'SEND_OTP_TITLE'),
+                      ),
                 ));
               },
               child: Text(
                 getTranslated(context, 'SIGN_UP_LBL')!,
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color: Theme.of(context).colorScheme.fontColor,
+                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       decoration: TextDecoration.underline,
@@ -1874,22 +1935,22 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
         key: _scaffoldKey,
         body: _isNetworkAvail
             ? Stack(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: back(),
-                  ),
-                  Image.asset(
-                    'assets/images/doodle.png',
-                    fit: BoxFit.fill,
-                    width: double.infinity,
-                    height: double.infinity,
-                  ),
-                  getLoginContainer(),
-                  getLogo(),
-                ],
-              )
+          children: [
+            Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: back(),
+            ),
+            Image.asset(
+              'assets/images/doodle.png',
+              fit: BoxFit.fill,
+              width: double.infinity,
+              height: double.infinity,
+            ),
+            getLoginContainer(),
+            getLogo(),
+          ],
+        )
             : noInternet(context));
   }
 

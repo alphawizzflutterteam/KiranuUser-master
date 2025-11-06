@@ -177,7 +177,7 @@ class _AllCategoryState extends State<AllCategory> {
   //                       //     catList[index].name!,
   //                       //     style: Theme.of(context)
   //                       //         .textTheme
-  //                       //         .caption!
+  //                       //         .bodySmall!
   //                       //         .copyWith(
   //                       //             color: Theme.of(context)
   //                       //                 .colorScheme
@@ -194,7 +194,7 @@ class _AllCategoryState extends State<AllCategory> {
   //                           catList[index].name!.toUpperCase(),
   //                           style: Theme.of(context)
   //                               .textTheme
-  //                               .caption!
+  //                               .bodySmall!
   //                               .copyWith(
   //                               color: Theme.of(context)
   //                                   .colorScheme
@@ -220,53 +220,57 @@ class _AllCategoryState extends State<AllCategory> {
   // }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: _catList()
-        // Column(
-        //   children: [_catList()],
-        // )
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Scaffold(body: _catList()
+          // Column(
+          //   children: [_catList()],
+          // )
 
-        // Consumer<HomeProvider>(
-        //   builder: (context, homeProvider, _) {
-        //     if (homeProvider.catLoading) {
-        //       return Center(
-        //         child: CircularProgressIndicator(),
-        //       );
-        //     }
-        //     return catList.length > 0
-        //         ? Column(
-        //             children: [
-        //               SizedBox(
-        //                 height: 10,
-        //               ),
-        //               Expanded(
-        //                 child: Selector<CategoryProvider, List<Product>>(
-        //                   builder: (context, data, child) {
-        //                     return catList.length > 0
-        //                         ? GridView.count(
-        //                             padding: EdgeInsets.symmetric(horizontal: 20),
-        //                             crossAxisCount: 3,
-        //                             shrinkWrap: true,
-        //                             crossAxisSpacing: 5,
-        //                             children: List.generate(
-        //                               catList.length,
-        //                               (index) {
-        //                                 return subCatItem(data, index, context);
-        //                               },
-        //                             ))
-        //                         : Center(
-        //                             child:
-        //                                 Text(getTranslated(context, 'noItem')!));
-        //                   },
-        //                   selector: (_, categoryProvider) =>
-        //                       categoryProvider.subList,
-        //                 ),
-        //               ),
-        //             ],
-        //           )
-        //         : Container();
-        //   },
-        // ),
-        );
+          // Consumer<HomeProvider>(
+          //   builder: (context, homeProvider, _) {
+          //     if (homeProvider.catLoading) {
+          //       return Center(
+          //         child: CircularProgressIndicator(),
+          //       );
+          //     }
+          //     return catList.length > 0
+          //         ? Column(
+          //             children: [
+          //               SizedBox(
+          //                 height: 10,
+          //               ),
+          //               Expanded(
+          //                 child: Selector<CategoryProvider, List<Product>>(
+          //                   builder: (context, data, child) {
+          //                     return catList.length > 0
+          //                         ? GridView.count(
+          //                             padding: EdgeInsets.symmetric(horizontal: 20),
+          //                             crossAxisCount: 3,
+          //                             shrinkWrap: true,
+          //                             crossAxisSpacing: 5,
+          //                             children: List.generate(
+          //                               catList.length,
+          //                               (index) {
+          //                                 return subCatItem(data, index, context);
+          //                               },
+          //                             ))
+          //                         : Center(
+          //                             child:
+          //                                 Text(getTranslated(context, 'noItem')!));
+          //                   },
+          //                   selector: (_, categoryProvider) =>
+          //                       categoryProvider.subList,
+          //                 ),
+          //               ),
+          //             ],
+          //           )
+          //         : Container();
+          //   },
+          // ),
+          ),
+    );
   }
 
   Widget catItem(int index, BuildContext context1) {
@@ -308,7 +312,7 @@ class _AllCategoryState extends State<AllCategory> {
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context1).textTheme.caption!.copyWith(
+                    style: Theme.of(context1).textTheme.bodySmall!.copyWith(
                         color: data == index
                             ? colors.primary
                             : Theme.of(context).colorScheme.fontColor),
@@ -359,7 +363,7 @@ class _AllCategoryState extends State<AllCategory> {
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context1).textTheme.caption!.copyWith(
+                    style: Theme.of(context1).textTheme.bodySmall!.copyWith(
                         color: data == index
                             ? colors.primary
                             : Theme.of(context).colorScheme.fontColor),
@@ -501,7 +505,7 @@ class _AllCategoryState extends State<AllCategory> {
                                 //     catList[index].name!,
                                 //     style: Theme.of(context)
                                 //         .textTheme
-                                //         .caption!
+                                //         .bodySmall!
                                 //         .copyWith(
                                 //             color: Theme.of(context)
                                 //                 .colorScheme
@@ -518,13 +522,13 @@ class _AllCategoryState extends State<AllCategory> {
                                     catList[index].name!.toUpperCase(),
                                     style: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme
                                                 .fontColor,
                                             fontWeight: FontWeight.w600,
-                                            fontSize: 11),
+                                            fontSize: 15),
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
                                     maxLines: 2,
@@ -600,7 +604,7 @@ class _AllCategoryState extends State<AllCategory> {
                     //             //     catList[index].name!,
                     //             //     style: Theme.of(context)
                     //             //         .textTheme
-                    //             //         .caption!
+                    //             //         .bodySmall!
                     //             //         .copyWith(
                     //             //             color: Theme.of(context)
                     //             //                 .colorScheme
@@ -617,7 +621,7 @@ class _AllCategoryState extends State<AllCategory> {
                     //                 catList[index].name!.toUpperCase(),
                     //                 style: Theme.of(context)
                     //                     .textTheme
-                    //                     .caption!
+                    //                     .bodySmall!
                     //                     .copyWith(
                     //                     color: Theme.of(context)
                     //                         .colorScheme
@@ -675,7 +679,7 @@ class _AllCategoryState extends State<AllCategory> {
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
-                .caption!
+                .bodySmall!
                 .copyWith(color: Theme.of(context).colorScheme.fontColor),
           )
         ],

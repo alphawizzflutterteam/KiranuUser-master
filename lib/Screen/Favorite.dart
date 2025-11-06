@@ -195,7 +195,7 @@ class StateFav extends State<Favorite> with TickerProviderStateMixin {
                                                     'OUT_OF_STOCK_LBL')!,
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .caption!
+                                                    .bodySmall!
                                                     .copyWith(
                                                       color: Colors.red,
                                                       fontWeight:
@@ -241,7 +241,7 @@ class StateFav extends State<Favorite> with TickerProviderStateMixin {
                                     favList[index].name!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subtitle1!
+                                        .titleMedium!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme
@@ -287,7 +287,7 @@ class StateFav extends State<Favorite> with TickerProviderStateMixin {
                                         " (" + favList[index].noOfRating! + ")",
                                         style: Theme.of(context)
                                             .textTheme
-                                            .overline,
+                                            .labelSmall,
                                       )
                                     ],
                                   )
@@ -315,7 +315,7 @@ class StateFav extends State<Favorite> with TickerProviderStateMixin {
                                       : "",
                                   style: Theme.of(context)
                                       .textTheme
-                                      .overline!
+                                      .labelSmall!
                                       .copyWith(
                                           decoration:
                                               TextDecoration.lineThrough,

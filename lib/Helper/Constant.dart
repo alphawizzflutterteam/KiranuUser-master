@@ -1,4 +1,4 @@
-final String appName = 'KIRANU';
+final String appName = 'Kiranu';
 
 final String packageName = 'com.kiranu.user';
 final String androidLink = 'https://play.google.com/store/apps/details?id=';

@@ -185,11 +185,11 @@ class _MyAppState extends State<MyApp> {
               fontFamily: 'opensans',
               brightness: Brightness.light,
               textTheme: TextTheme(
-                      headline6: TextStyle(
+                      titleLarge: TextStyle(
                         color: Theme.of(context).colorScheme.fontColor,
                         fontWeight: FontWeight.w600,
                       ),
-                      subtitle1: TextStyle(
+                      titleMedium: TextStyle(
                           color: Theme.of(context).colorScheme.fontColor,
                           fontWeight: FontWeight.bold))
                   .apply(bodyColor: Theme.of(context).colorScheme.fontColor),
@@ -212,18 +212,18 @@ class _MyAppState extends State<MyApp> {
                   cursorColor: colors.darkIcon,
                   selectionColor: colors.darkIcon,
                   selectionHandleColor: colors.darkIcon),
-              toggleableActiveColor: colors.primary,
+              // toggleableActiveColor: colors.primary,
               fontFamily: 'opensans',
               brightness: Brightness.dark,
               // accentColor: colors.darkIcon,
               iconTheme:
                   Theme.of(context).iconTheme.copyWith(color: colors.secondary),
               textTheme: TextTheme(
-                      headline6: TextStyle(
+                      titleLarge: TextStyle(
                         color: Theme.of(context).colorScheme.fontColor,
                         fontWeight: FontWeight.w600,
                       ),
-                      subtitle1: TextStyle(
+                      titleMedium: TextStyle(
                           color: Theme.of(context).colorScheme.fontColor,
                           fontWeight: FontWeight.bold))
                   .apply(bodyColor: Theme.of(context).colorScheme.fontColor),

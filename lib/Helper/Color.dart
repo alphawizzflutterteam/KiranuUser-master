@@ -20,8 +20,7 @@ extension colors on ColorScheme {
   static const Color primary = Color(0xFFF427C0);
   static const Color secondary = Color(0xffFFF100);
 
-  Color get btnColor =>
-      this.brightness == Brightness.dark ? whiteTemp : primary;
+  Color get btnColor => this.brightness == Brightness.dark ? primary : primary;
 
   Color get lightWhite =>
       this.brightness == Brightness.dark ? darkColor : const Color(0xffEEF2F9);
@@ -63,7 +62,7 @@ extension colors on ColorScheme {
   static const Color whiteTemp = Color(0xffFFFFFF);
 
   Color get black =>
-      this.brightness == Brightness.dark ? whiteTemp : const Color(0xff000000);
+      this.brightness == Brightness.dark ? whiteTemp : whiteTemp;
 
   static const Color white10 = Colors.white10;
   static const Color white30 = Colors.white30;

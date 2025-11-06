@@ -351,7 +351,7 @@
 //                                               'OUT_OF_STOCK_LBL')!,
 //                                           style: Theme.of(context)
 //                                               .textTheme
-//                                               .caption!
+//                                               .bodySmall!
 //                                               .copyWith(
 //                                             color: Colors.red,
 //                                             fontWeight:
@@ -400,7 +400,7 @@
 //                                     cartList[index].productList![0].name!,
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle1!
+//                                         .titleMedium!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -455,7 +455,7 @@
 //                                       overflow: TextOverflow.ellipsis,
 //                                       style: Theme.of(context)
 //                                           .textTheme
-//                                           .subtitle2!
+//                                           .titleSmall!
 //                                           .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -470,7 +470,7 @@
 //                                       val[index],
 //                                       style: Theme.of(context)
 //                                           .textTheme
-//                                           .subtitle2!
+//                                           .titleSmall!
 //                                           .copyWith(
 //                                           color: Theme.of(context)
 //                                               .colorScheme
@@ -498,7 +498,7 @@
 //                                     : "",
 //                                 style: Theme.of(context)
 //                                     .textTheme
-//                                     .overline!
+//                                     .labelSmall!
 //                                     .copyWith(
 //                                     decoration: TextDecoration.lineThrough,
 //                                     letterSpacing: 0.7),
@@ -784,7 +784,7 @@
 //                                   cartList[index].productList![0].name!,
 //                                   style: Theme.of(context)
 //                                       .textTheme
-//                                       .subtitle2!
+//                                       .titleSmall!
 //                                       .copyWith(
 //                                       color: Theme.of(context)
 //                                           .colorScheme
@@ -835,7 +835,7 @@
 //                                     overflow: TextOverflow.ellipsis,
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                       color: Theme.of(context)
 //                                           .colorScheme
@@ -850,7 +850,7 @@
 //                                     val[index],
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -886,7 +886,7 @@
 //                                       overflow: TextOverflow.ellipsis,
 //                                       style: Theme.of(context)
 //                                           .textTheme
-//                                           .overline!
+//                                           .labelSmall!
 //                                           .copyWith(
 //                                           decoration:
 //                                           TextDecoration.lineThrough,
@@ -1191,7 +1191,7 @@
 //                                               'OUT_OF_STOCK_LBL')!,
 //                                           style: Theme.of(context)
 //                                               .textTheme
-//                                               .caption!
+//                                               .bodySmall!
 //                                               .copyWith(
 //                                             color: Colors.red,
 //                                             fontWeight:
@@ -1247,7 +1247,7 @@
 //                                     saveLaterList[index].productList![0].name!,
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle1!
+//                                         .titleMedium!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -1294,7 +1294,7 @@
 //                                     : "",
 //                                 style: Theme.of(context)
 //                                     .textTheme
-//                                     .overline!
+//                                     .labelSmall!
 //                                     .copyWith(
 //                                     decoration: TextDecoration.lineThrough,
 //                                     letterSpacing: 0.7),
@@ -1461,7 +1461,7 @@
 //                                     BorderRadiusDirectional.circular(10)),
 //                                 child: TextField(
 //                                   controller: promoC,
-//                                   style: Theme.of(context).textTheme.subtitle2,
+//                                   style: Theme.of(context).textTheme.titleSmall,
 //                                   decoration: InputDecoration(
 //                                     contentPadding:
 //                                     EdgeInsets.symmetric(horizontal: 10),
@@ -1536,7 +1536,7 @@
 //                           padding: const EdgeInsets.symmetric(vertical: 18.0),
 //                           child: Text(
 //                             getTranslated(context, 'Choose_PROMO') ?? '',
-//                             style: Theme.of(context).textTheme.subtitle1!.copyWith(
+//                             style: Theme.of(context).textTheme.titleMedium!.copyWith(
 //                                 color: Theme.of(context).colorScheme.fontColor),
 //                           ),
 //                         ),
@@ -2258,7 +2258,7 @@
 //                                 context, 'SAVEFORLATER_BTN')!,
 //                             style: Theme.of(context)
 //                                 .textTheme
-//                                 .subtitle1!
+//                                 .titleMedium!
 //                                 .copyWith(
 //                                 color: Theme.of(context)
 //                                     .colorScheme
@@ -2308,7 +2308,7 @@
 //                           readOnly: true,
 //                           style: Theme.of(context)
 //                               .textTheme
-//                               .subtitle2,
+//                               .titleSmall,
 //                           decoration: InputDecoration(
 //                             contentPadding:
 //                             EdgeInsets.symmetric(
@@ -2366,7 +2366,7 @@
 //                               " ${oriPrice.toStringAsFixed(2)}",
 //                           style: Theme.of(context)
 //                               .textTheme
-//                               .subtitle1!
+//                               .titleMedium!
 //                               .copyWith(
 //                               color: Theme.of(context)
 //                                   .colorScheme
@@ -2384,7 +2384,7 @@
 //                               context, 'PROMO_CODE_DIS_LBL')!,
 //                           style: Theme.of(context)
 //                               .textTheme
-//                               .caption!
+//                               .bodySmall!
 //                               .copyWith(
 //                               color: Theme.of(context)
 //                                   .colorScheme
@@ -2396,7 +2396,7 @@
 //                               promoAmt.toString(),
 //                           style: Theme.of(context)
 //                               .textTheme
-//                               .caption!
+//                               .bodySmall!
 //                               .copyWith(
 //                               color: Theme.of(context)
 //                                   .colorScheme
@@ -2464,7 +2464,7 @@
 //   noCartText(BuildContext context) {
 //     return Container(
 //         child: Text(getTranslated(context, 'NO_CART')!,
-//             style: Theme.of(context).textTheme.headline5!.copyWith(
+//             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
 //                 color: colors.primary, fontWeight: FontWeight.normal)));
 //   }
 //
@@ -2473,7 +2473,7 @@
 //       padding: EdgeInsetsDirectional.only(top: 30.0, start: 30.0, end: 30.0),
 //       child: Text(getTranslated(context, 'CART_DESC')!,
 //           textAlign: TextAlign.center,
-//           style: Theme.of(context).textTheme.headline6!.copyWith(
+//           style: Theme.of(context).textTheme.titleLarge!.copyWith(
 //             color: Theme.of(context).colorScheme.lightBlack2,
 //             fontWeight: FontWeight.normal,
 //           )),
@@ -2499,7 +2499,7 @@
 //             ),
 //             child: Text(getTranslated(context, 'SHOP_NOW')!,
 //                 textAlign: TextAlign.center,
-//                 style: Theme.of(context).textTheme.headline6!.copyWith(
+//                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
 //                     color: Colors.white70))),
 //         onPressed: () {
 //           Navigator.of(context).pushNamedAndRemoveUntil(
@@ -3371,7 +3371,7 @@
 //                         addressList[selectedAddress!].country! +
 //                         ", " +
 //                         addressList[selectedAddress!].pincode!,
-//                     style: Theme.of(context).textTheme.caption!.copyWith(
+//                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
 //                         color: Theme.of(context).colorScheme.lightBlack),
 //                   ),
 //                   Padding(
@@ -3382,7 +3382,7 @@
 //                           addressList[selectedAddress!].mobile!,
 //                           style: Theme.of(context)
 //                               .textTheme
-//                               .caption!
+//                               .bodySmall!
 //                               .copyWith(
 //                               color: Theme.of(context)
 //                                   .colorScheme
@@ -3718,7 +3718,7 @@
 //                               getTranslated(context, 'CONFIRM_ORDER')!,
 //                               style: Theme.of(this.context)
 //                                   .textTheme
-//                                   .subtitle1!
+//                                   .titleMedium!
 //                                   .copyWith(
 //                                   color: Theme.of(context)
 //                                       .colorScheme
@@ -3739,7 +3739,7 @@
 //                                     getTranslated(context, 'SUBTOTAL')!,
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3751,7 +3751,7 @@
 //                                         oriPrice.toStringAsFixed(2),
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3768,7 +3768,7 @@
 //                                     getTranslated(context, 'DELIVERY_CHARGE')!,
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3780,7 +3780,7 @@
 //                                         dCharge.toStringAsFixed(2),
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3799,7 +3799,7 @@
 //                                         context, 'PROMO_CODE_DIS_LBL')!,
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3809,7 +3809,7 @@
 //                                         promoAmt.toStringAsFixed(2),
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3828,7 +3828,7 @@
 //                                     getTranslated(context, 'WALLET_BAL')!,
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3840,7 +3840,7 @@
 //                                         usedBal.toStringAsFixed(2),
 //                                     style: Theme.of(context)
 //                                         .textTheme
-//                                         .subtitle2!
+//                                         .titleSmall!
 //                                         .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -3861,7 +3861,7 @@
 //                                       getTranslated(context, 'TOTAL_PRICE')!,
 //                                       style: Theme.of(context)
 //                                           .textTheme
-//                                           .subtitle2!
+//                                           .titleSmall!
 //                                           .copyWith(
 //                                           color: Theme.of(context)
 //                                               .colorScheme
@@ -3890,7 +3890,7 @@
 //                                   child: TextField(
 //                                     controller: noteC,
 //                                     style:
-//                                     Theme.of(context).textTheme.subtitle2,
+//                                     Theme.of(context).textTheme.titleSmall,
 //                                     decoration: InputDecoration(
 //                                       contentPadding:
 //                                       EdgeInsets.symmetric(horizontal: 10),
@@ -3966,7 +3966,7 @@
 //                               getTranslated(context, 'BANKTRAN')!,
 //                               style: Theme.of(this.context)
 //                                   .textTheme
-//                                   .subtitle1!
+//                                   .titleMedium!
 //                                   .copyWith(
 //                                   color: Theme.of(context)
 //                                       .colorScheme
@@ -3977,7 +3977,7 @@
 //                         Padding(
 //                             padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
 //                             child: Text(getTranslated(context, 'BANK_INS')!,
-//                                 style: Theme.of(context).textTheme.caption)),
+//                                 style: Theme.of(context).textTheme.bodySmall)),
 //                         Padding(
 //                           padding: const EdgeInsets.symmetric(
 //                               horizontal: 20.0, vertical: 10),
@@ -3985,7 +3985,7 @@
 //                             getTranslated(context, 'ACC_DETAIL')!,
 //                             style: Theme.of(context)
 //                                 .textTheme
-//                                 .subtitle2!
+//                                 .titleSmall!
 //                                 .copyWith(
 //                                 color: Theme.of(context)
 //                                     .colorScheme
@@ -4000,7 +4000,7 @@
 //                             getTranslated(context, 'ACCNAME')! +
 //                                 " : " +
 //                                 acName!,
-//                             style: Theme.of(context).textTheme.subtitle2,
+//                             style: Theme.of(context).textTheme.titleSmall,
 //                           ),
 //                         ),
 //                         Padding(
@@ -4009,7 +4009,7 @@
 //                           ),
 //                           child: Text(
 //                             getTranslated(context, 'ACCNO')! + " : " + acNo!,
-//                             style: Theme.of(context).textTheme.subtitle2,
+//                             style: Theme.of(context).textTheme.titleSmall,
 //                           ),
 //                         ),
 //                         Padding(
@@ -4020,7 +4020,7 @@
 //                             getTranslated(context, 'BANKNAME')! +
 //                                 " : " +
 //                                 bankName!,
-//                             style: Theme.of(context).textTheme.subtitle2,
+//                             style: Theme.of(context).textTheme.titleSmall,
 //                           ),
 //                         ),
 //                         Padding(
@@ -4031,7 +4031,7 @@
 //                             getTranslated(context, 'BANKCODE')! +
 //                                 " : " +
 //                                 bankNo!,
-//                             style: Theme.of(context).textTheme.subtitle2,
+//                             style: Theme.of(context).textTheme.titleSmall,
 //                           ),
 //                         ),
 //                         Padding(
@@ -4042,7 +4042,7 @@
 //                             getTranslated(context, 'EXTRADETAIL')! +
 //                                 " : " +
 //                                 exDetails!,
-//                             style: Theme.of(context).textTheme.subtitle2,
+//                             style: Theme.of(context).textTheme.titleSmall,
 //                           ),
 //                         )
 //                       ]),
@@ -4159,7 +4159,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart';
-import 'package:paytm/paytm.dart';
+// import 'package:paytm/paytm.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../Helper/AppBtn.dart';
@@ -4363,6 +4363,8 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
     deviceWidth = MediaQuery.of(context).size.width;
 
     return SafeArea(
+        top: false,
+      bottom: true,
       child: Scaffold(
           appBar: widget.fromBottom
               ? null
@@ -4495,7 +4497,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                                     'OUT_OF_STOCK_LBL')!,
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .caption!
+                                                    .bodySmall!
                                                     .copyWith(
                                                       color: Colors.red,
                                                       fontWeight:
@@ -4544,7 +4546,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                     cartList[index].productList![0].name!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subtitle1!
+                                        .titleMedium!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme
@@ -4599,7 +4601,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                           overflow: TextOverflow.ellipsis,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subtitle2!
+                                              .titleSmall!
                                               .copyWith(
                                                 color: Theme.of(context)
                                                     .colorScheme
@@ -4614,7 +4616,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                           val[index],
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subtitle2!
+                                              .titleSmall!
                                               .copyWith(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -4642,7 +4644,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                     : "",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .overline!
+                                    .labelSmall!
                                     .copyWith(
                                         decoration: TextDecoration.lineThrough,
                                         letterSpacing: 0.7),
@@ -4943,7 +4945,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                   cartList[index].productList![0].name!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subtitle2!
+                                      .titleSmall!
                                       .copyWith(
                                           color: Theme.of(context)
                                               .colorScheme
@@ -4994,7 +4996,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                         overflow: TextOverflow.ellipsis,
                                         style: Theme.of(context)
                                             .textTheme
-                                            .subtitle2!
+                                            .titleSmall!
                                             .copyWith(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -5009,7 +5011,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                         val[index],
                                         style: Theme.of(context)
                                             .textTheme
-                                            .subtitle2!
+                                            .titleSmall!
                                             .copyWith(
                                                 color: Theme.of(context)
                                                     .colorScheme
@@ -5045,7 +5047,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                       overflow: TextOverflow.ellipsis,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .overline!
+                                          .labelSmall!
                                           .copyWith(
                                               decoration:
                                                   TextDecoration.lineThrough,
@@ -5425,7 +5427,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                                     'OUT_OF_STOCK_LBL')!,
                                                 style: Theme.of(context)
                                                     .textTheme
-                                                    .caption!
+                                                    .bodySmall!
                                                     .copyWith(
                                                       color: Colors.red,
                                                       fontWeight:
@@ -5481,7 +5483,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                     saveLaterList[index].productList![0].name!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subtitle1!
+                                        .titleMedium!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme
@@ -5528,7 +5530,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                     : "",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .overline!
+                                    .labelSmall!
                                     .copyWith(
                                         decoration: TextDecoration.lineThrough,
                                         letterSpacing: 0.7),
@@ -5725,7 +5727,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                     BorderRadiusDirectional.circular(10)),
                             child: TextField(
                               controller: promoC,
-                              style: Theme.of(context).textTheme.subtitle2,
+                              style: Theme.of(context).textTheme.titleSmall,
                               decoration: InputDecoration(
                                 contentPadding:
                                     EdgeInsets.symmetric(horizontal: 10),
@@ -5800,7 +5802,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                       padding: const EdgeInsets.symmetric(vertical: 18.0),
                       child: Text(
                         getTranslated(context, 'Choose_PROMO') ?? '',
-                        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
                             color: Theme.of(context).colorScheme.fontColor),
                       ),
                     ),
@@ -6522,7 +6524,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                                 context, 'SAVEFORLATER_BTN')!,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle1!
+                                                .titleMedium!
                                                 .copyWith(
                                                     color: Theme.of(context)
                                                         .colorScheme
@@ -6572,7 +6574,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                               readOnly: true,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .subtitle2,
+                                                  .titleSmall,
                                               decoration: InputDecoration(
                                                 contentPadding:
                                                     EdgeInsets.symmetric(
@@ -6634,7 +6636,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                             " ${oriPrice.toStringAsFixed(2)}",
                                         style: Theme.of(context)
                                             .textTheme
-                                            .subtitle1!
+                                            .titleMedium!
                                             .copyWith(
                                                 color: Theme.of(context)
                                                     .colorScheme
@@ -6652,7 +6654,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                                   'PROMO_CODE_DIS_LBL')!,
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .caption!
+                                                  .bodySmall!
                                                   .copyWith(
                                                       color: Theme.of(context)
                                                           .colorScheme
@@ -6664,7 +6666,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                                   promoAmt.toString(),
                                               style: Theme.of(context)
                                                   .textTheme
-                                                  .caption!
+                                                  .bodySmall!
                                                   .copyWith(
                                                       color: Theme.of(context)
                                                           .colorScheme
@@ -6733,7 +6735,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
   noCartText(BuildContext context) {
     return Container(
         child: Text(getTranslated(context, 'NO_CART')!,
-            style: Theme.of(context).textTheme.headline5!.copyWith(
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                 color: colors.primary, fontWeight: FontWeight.normal)));
   }
 
@@ -6742,7 +6744,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
       padding: EdgeInsetsDirectional.only(top: 30.0, start: 30.0, end: 30.0),
       child: Text(getTranslated(context, 'CART_DESC')!,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline6!.copyWith(
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(
                 color: Theme.of(context).colorScheme.lightBlack2,
                 fontWeight: FontWeight.normal,
               )),
@@ -6770,7 +6772,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
-                    .headline6!
+                    .titleLarge!
                     .copyWith(color: Colors.white70))),
         onPressed: () {
           Navigator.of(context).pushNamedAndRemoveUntil(
@@ -6801,7 +6803,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
             checkoutState = setState;
             return Container(
                 constraints: BoxConstraints(
-                    maxHeight: MediaQuery.of(context).size.height * 0.8),
+                    maxHeight: MediaQuery.of(context).size.height * 0.9),
                 child: Scaffold(
                   resizeToAvoidBottomInset: false,
                   key: _checkscaffoldKey,
@@ -6986,10 +6988,12 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                                     else
                                                       confirmDialog();
                                                   }
-                                                : null)
+                                                : null),
+
                                         //}),
                                       ]),
                                     ),
+                                    SizedBox(height: 40,)
                                   ],
                                 )
                       : noInternet(context),
@@ -7245,46 +7249,46 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
         // orderId, mId, txnToken, txnAmount, callback
         print(
             "para are $paytmMerId # $orderId # $txnToken # ${totalPrice.toString()} # $callBackUrl  $payTesting");
-        var paytmResponse = Paytm.payWithPaytm(
-            callBackUrl: callBackUrl,
-            mId: paytmMerId!,
-            orderId: orderId,
-            txnToken: txnToken,
-            txnAmount: totalPrice.toString(),
-            staging: payTesting);
-        paytmResponse.then((value) {
-          print("valie is $value");
-          value.forEach((key, value) {
-            print("key is $key");
-            print("value is $value");
-          });
-          context.read<CartProvider>().setProgress(false);
-          _placeOrder = true;
-          setState(() {});
-          checkoutState!(() {
-            if (value['error']) {
-              paymentResponse = value['errorMessage'];
-
-              if (value['response'] != null)
-                addTransaction(value['response']['TXNID'], orderId,
-                    value['response']['STATUS'] ?? '', paymentResponse, false);
-            } else {
-              if (value['response'] != null) {
-                paymentResponse = value['response']['STATUS'];
-                if (paymentResponse == "TXN_SUCCESS")
-                  placeOrder(value['response']['TXNID']);
-                else
-                  addTransaction(
-                      value['response']['TXNID'],
-                      orderId,
-                      value['response']['STATUS'],
-                      value['errorMessage'] ?? '',
-                      false);
-              }
-            }
-            setSnackbar(paymentResponse!, _checkscaffoldKey);
-          });
-        });
+        // var paytmResponse = Paytm.payWithPaytm(
+        //     callBackUrl: callBackUrl,
+        //     mId: paytmMerId!,
+        //     orderId: orderId,
+        //     txnToken: txnToken,
+        //     txnAmount: totalPrice.toString(),
+        //     staging: payTesting);
+        // paytmResponse.then((value) {
+        //   print("valie is $value");
+        //   value.forEach((key, value) {
+        //     print("key is $key");
+        //     print("value is $value");
+        //   });
+        //   context.read<CartProvider>().setProgress(false);
+        //   _placeOrder = true;
+        //   setState(() {});
+        //   checkoutState!(() {
+        //     if (value['error']) {
+        //       paymentResponse = value['errorMessage'];
+        //
+        //       if (value['response'] != null)
+        //         addTransaction(value['response']['TXNID'], orderId,
+        //             value['response']['STATUS'] ?? '', paymentResponse, false);
+        //     } else {
+        //       if (value['response'] != null) {
+        //         paymentResponse = value['response']['STATUS'];
+        //         if (paymentResponse == "TXN_SUCCESS")
+        //           placeOrder(value['response']['TXNID']);
+        //         else
+        //           addTransaction(
+        //               value['response']['TXNID'],
+        //               orderId,
+        //               value['response']['STATUS'],
+        //               value['errorMessage'] ?? '',
+        //               false);
+        //       }
+        //     }
+        //     setSnackbar(paymentResponse!, _checkscaffoldKey);
+        //   });
+        // });
       } else {
         checkoutState!(() {
           _placeOrder = true;
@@ -7643,7 +7647,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                               addressList[selectedAddress!].country! +
                               ", " +
                               addressList[selectedAddress!].pincode!,
-                          style: Theme.of(context).textTheme.caption!.copyWith(
+                          style: Theme.of(context).textTheme.bodySmall!.copyWith(
                               color: Theme.of(context).colorScheme.lightBlack),
                         ),
                         Padding(
@@ -7654,7 +7658,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                 addressList[selectedAddress!].mobile!,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .caption!
+                                    .bodySmall!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -8047,7 +8051,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                               getTranslated(context, 'CONFIRM_ORDER')!,
                               style: Theme.of(this.context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -8068,7 +8072,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                     getTranslated(context, 'SUBTOTAL')!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subtitle2!
+                                        .titleSmall!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme
@@ -8096,7 +8100,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                               //       getTranslated(context, 'DELIVERY_CHARGE')!,
                               //       style: Theme.of(context)
                               //           .textTheme
-                              //           .subtitle2!
+                              //           .titleSmall!
                               //           .copyWith(
                               //               color: Theme.of(context)
                               //                   .colorScheme
@@ -8110,7 +8114,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                               //       // dCharge.toStringAsFixed(2),
                               //       style: Theme.of(context)
                               //           .textTheme
-                              //           .subtitle2!
+                              //           .titleSmall!
                               //           .copyWith(
                               //               color: Theme.of(context)
                               //                   .colorScheme
@@ -8128,7 +8132,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                               //       getTranslated(context, 'GST')!,
                               //       style: Theme.of(context)
                               //           .textTheme
-                              //           .subtitle2!
+                              //           .titleSmall!
                               //           .copyWith(
                               //               color: Theme.of(context)
                               //                   .colorScheme
@@ -8156,7 +8160,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                               //           context, 'CONVENIENCE_CHARGE')!,
                               //       style: Theme.of(context)
                               //           .textTheme
-                              //           .subtitle2!
+                              //           .titleSmall!
                               //           .copyWith(
                               //               color: Theme.of(context)
                               //                   .colorScheme
@@ -8185,7 +8189,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                     getTranslated(context, 'DELIVERY_CHARGE')!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .subtitle2!
+                                        .titleSmall!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme
@@ -8214,7 +8218,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                               context, 'PROMO_CODE_DIS_LBL')!,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subtitle2!
+                                              .titleSmall!
                                               .copyWith(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -8230,7 +8234,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                           // promoAmt.toStringAsFixed(2),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subtitle2!
+                                              .titleSmall!
                                               .copyWith(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -8249,7 +8253,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                           getTranslated(context, 'WALLET_BAL')!,
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subtitle2!
+                                              .titleSmall!
                                               .copyWith(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -8265,7 +8269,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                           // usedBal.toStringAsFixed(2),
                                           style: Theme.of(context)
                                               .textTheme
-                                              .subtitle2!
+                                              .titleSmall!
                                               .copyWith(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -8286,7 +8290,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                       getTranslated(context, 'TOTAL_PRICE')!,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .subtitle2!
+                                          .titleSmall!
                                           .copyWith(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -8315,7 +8319,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                   child: TextField(
                                     controller: noteC,
                                     style:
-                                        Theme.of(context).textTheme.subtitle2,
+                                        Theme.of(context).textTheme.titleSmall,
                                     decoration: InputDecoration(
                                       contentPadding:
                                           EdgeInsets.symmetric(horizontal: 10),
@@ -8391,7 +8395,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                               getTranslated(context, 'BANKTRAN')!,
                               style: Theme.of(this.context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -8402,7 +8406,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                         Padding(
                             padding: EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                             child: Text(getTranslated(context, 'BANK_INS')!,
-                                style: Theme.of(context).textTheme.caption)),
+                                style: Theme.of(context).textTheme.bodySmall)),
                         Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 10),
@@ -8410,7 +8414,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                             getTranslated(context, 'ACC_DETAIL')!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle2!
+                                .titleSmall!
                                 .copyWith(
                                     color: Theme.of(context)
                                         .colorScheme
@@ -8425,7 +8429,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                             getTranslated(context, 'ACCNAME')! +
                                 " : " +
                                 acName!,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
                         Padding(
@@ -8434,7 +8438,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                           ),
                           child: Text(
                             getTranslated(context, 'ACCNO')! + " : " + acNo!,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
                         Padding(
@@ -8445,7 +8449,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                             getTranslated(context, 'BANKNAME')! +
                                 " : " +
                                 bankName!,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
                         Padding(
@@ -8456,7 +8460,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                             getTranslated(context, 'BANKCODE')! +
                                 " : " +
                                 bankNo!,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
                         Padding(
@@ -8467,7 +8471,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                             getTranslated(context, 'EXTRADETAIL')! +
                                 " : " +
                                 exDetails!,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         )
                       ]),

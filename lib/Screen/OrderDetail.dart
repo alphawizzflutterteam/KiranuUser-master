@@ -362,7 +362,7 @@
 //               Padding(
 //                   padding: EdgeInsetsDirectional.only(start: 15.0, end: 15.0),
 //                   child: Text(getTranslated(context, 'PRICE_DETAIL')!,
-//                       style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //                           color: Theme.of(context).colorScheme.fontColor,
 //                           fontWeight: FontWeight.bold))),
 //               Divider(
@@ -475,7 +475,7 @@
 //               Padding(
 //                   padding: EdgeInsetsDirectional.only(start: 15.0, end: 15.0),
 //                   child: Text(getTranslated(context, 'SHIPPING_DETAIL')!,
-//                       style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//                       style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //                           color: Theme.of(context).colorScheme.fontColor,
 //                           fontWeight: FontWeight.bold))),
 //               Divider(
@@ -563,7 +563,7 @@
 //                               orderItem.name!,
 //                               style: Theme.of(context)
 //                                   .textTheme
-//                                   .subtitle1!
+//                                   .titleMedium!
 //                                   .copyWith(
 //                                       color: Theme.of(context)
 //                                           .colorScheme
@@ -585,7 +585,7 @@
 //                                             overflow: TextOverflow.ellipsis,
 //                                             style: Theme.of(context)
 //                                                 .textTheme
-//                                                 .subtitle2!
+//                                                 .titleSmall!
 //                                                 .copyWith(
 //                                                     color: Theme.of(context)
 //                                                         .colorScheme
@@ -599,7 +599,7 @@
 //                                             val[index],
 //                                             style: Theme.of(context)
 //                                                 .textTheme
-//                                                 .subtitle2!
+//                                                 .titleSmall!
 //                                                 .copyWith(
 //                                                     color: Theme.of(context)
 //                                                         .colorScheme
@@ -615,7 +615,7 @@
 //                                 getTranslated(context, 'QUANTITY_LBL')! + ":",
 //                                 style: Theme.of(context)
 //                                     .textTheme
-//                                     .subtitle2!
+//                                     .titleSmall!
 //                                     .copyWith(
 //                                         color: Theme.of(context)
 //                                             .colorScheme
@@ -627,7 +627,7 @@
 //                                   orderItem.qty!,
 //                                   style: Theme.of(context)
 //                                       .textTheme
-//                                       .subtitle2!
+//                                       .titleSmall!
 //                                       .copyWith(
 //                                           color: Theme.of(context)
 //                                               .colorScheme
@@ -639,7 +639,7 @@
 //                               CUR_CURRENCY! + " " + orderItem.price!,
 //                               style: Theme.of(context)
 //                                   .textTheme
-//                                   .subtitle1!
+//                                   .titleMedium!
 //                                   .copyWith(
 //                                       color: Theme.of(context)
 //                                           .colorScheme
@@ -809,7 +809,7 @@
 //                     getTranslated(context, 'BANKRECEIPT')!,
 //                     style: Theme.of(context)
 //                         .textTheme
-//                         .subtitle2!
+//                         .titleSmall!
 //                         .copyWith(color: Theme.of(context).colorScheme.lightBlack),
 //                   ),
 //                   trailing: IconButton(
@@ -1516,7 +1516,7 @@
 //               getTranslated(context, 'DWNLD_INVOICE')!,
 //               style: Theme.of(context)
 //                   .textTheme
-//                   .subtitle2!
+//                   .titleSmall!
 //                   .copyWith(color: Theme.of(context).colorScheme.lightBlack),
 //             ),
 //           ),
@@ -1668,7 +1668,7 @@
 //             //               "${getTranslated(context, 'ORDER_ID_LBL')!} - ${model.id!}",
 //             //               style: Theme.of(context)
 //             //                   .textTheme
-//             //                   .subtitle2!
+//             //                   .titleSmall!
 //             //                   .copyWith(color: Theme.of(context).colorScheme.lightBlack2),
 //             //             )))),
 //             // model.otp != null && model.otp!.isNotEmpty && model.otp != "0"
@@ -1682,7 +1682,7 @@
 //             //                   "${getTranslated(context, 'OTP')!} - ${model.otp!}",
 //             //                   style: Theme.of(context)
 //             //                       .textTheme
-//             //                       .subtitle2!
+//             //                       .titleSmall!
 //             //                       .copyWith(color: Theme.of(context).colorScheme.lightBlack2),
 //             //                 ))))
 //             //     : Container(),
@@ -1696,7 +1696,7 @@
 //                         children: [
 //                           Text(
 //                             "${getTranslated(context, 'PREFER_DATE_TIME')!}: ${model.delDate!} - ${model.delTime!}",
-//                             style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//                             style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //                                 color: Theme.of(context).colorScheme.lightBlack2),
 //                           ),
 //
@@ -1731,7 +1731,7 @@
 //                     children: [
 //                       Text(
 //                         getTranslated(context, 'BANKRECEIPT')!,
-//                         style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//                         style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //                             color: Theme.of(context).colorScheme.lightBlack),
 //                       ),
 //                       Container(
@@ -1933,7 +1933,7 @@
 //       child: Text(
 //         getTranslated(context, 'REVIEW_OPINION')!,
 //         textAlign: TextAlign.center,
-//         style: Theme.of(context).textTheme.subtitle1!,
+//         style: Theme.of(context).textTheme.titleMedium!,
 //       ),
 //     );
 //   }
@@ -1943,7 +1943,7 @@
 //         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
 //         child: TextField(
 //           controller: commentTextController,
-//           style: Theme.of(context).textTheme.subtitle2,
+//           style: Theme.of(context).textTheme.titleSmall,
 //           keyboardType: TextInputType.multiline,
 //           maxLines: 5,
 //           decoration: InputDecoration(
@@ -1952,7 +1952,7 @@
 //                     color: Theme.of(context).colorScheme.lightBlack,
 //                     width: 1.0)),
 //             hintText: getTranslated(context, 'REVIEW_HINT_LBL'),
-//             hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+//             hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
 //                 color:
 //                     Theme.of(context).colorScheme.lightBlack2.withOpacity(0.7)),
 //           ),
@@ -2089,7 +2089,7 @@
 //       getTranslated(context, title)!,
 //       style: Theme.of(context)
 //           .textTheme
-//           .headline6!
+//           .titleLarge!
 //           .copyWith(fontWeight: FontWeight.bold),
 //     );
 //   }
@@ -2174,7 +2174,7 @@
 //                 ),
 //                 Text(
 //                   "${getTranslated(context, 'PAYMENT_MOD')}: ${model.payMethod!}",
-//                   style: Theme.of(context).textTheme.subtitle2!.copyWith(
+//                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
 //                       color: Theme.of(context).colorScheme.lightBlack2),
 //                 ),
 //               ],
@@ -2207,15 +2207,17 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
+// import 'package:downloads_path_provider_28/downloads_path_provider_28.dart';
 import 'package:eshop_multivendor/Helper/Session.dart';
 import 'package:eshop_multivendor/Model/Order_Model.dart';
 import 'package:eshop_multivendor/Screen/Seller_Details.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_html_to_pdf/flutter_html_to_pdf.dart';
+// import 'package:flutter_html_to_pdf/flutter_html_to_pdf.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:html_to_pdf_plus/html_to_pdf_plus.dart';
+ // import 'package:html_to_pdf_plus/html_to_pdf_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:in_app_review/in_app_review.dart';
@@ -2571,7 +2573,7 @@ class StateOrder extends State<OrderDetail>
               Padding(
                   padding: EdgeInsetsDirectional.only(start: 15.0, end: 15.0),
                   child: Text(getTranslated(context, 'PRICE_DETAIL')!,
-                      style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Theme.of(context).colorScheme.fontColor,
                           fontWeight: FontWeight.bold))),
               Divider(
@@ -2583,10 +2585,10 @@ class StateOrder extends State<OrderDetail>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("${getTranslated(context, 'PRICE_LBL')!} :",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2)),
                     Text("${CUR_CURRENCY!} ${widget.model!.subTotal!}",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2))
                   ],
                 ),
@@ -2597,10 +2599,10 @@ class StateOrder extends State<OrderDetail>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("${getTranslated(context, 'GST')!} :",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2)),
                     Text("${CUR_CURRENCY!} ${widget.model!.taxAmt}",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2))
                   ],
                 ),
@@ -2611,10 +2613,10 @@ class StateOrder extends State<OrderDetail>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("${getTranslated(context, 'CONVENIENCE_CHARGE')!} :",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2)),
                     Text("${CUR_CURRENCY!} ${widget.model!.chargeAmount!}",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2))
                   ],
                 ),
@@ -2625,10 +2627,10 @@ class StateOrder extends State<OrderDetail>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(getTranslated(context, 'DELIVERY_CHARGE')! + " " + ":",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2)),
                     Text("+ " + CUR_CURRENCY! + " " + widget.model!.delCharge!,
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2))
                   ],
                 ),
@@ -2642,10 +2644,10 @@ class StateOrder extends State<OrderDetail>
                         getTranslated(context, 'PROMO_CODE_DIS_LBL')! +
                             " " +
                             ":",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2)),
                     Text("- " + CUR_CURRENCY! + " " + widget.model!.promoDis!,
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2))
                   ],
                 ),
@@ -2656,10 +2658,10 @@ class StateOrder extends State<OrderDetail>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(getTranslated(context, 'WALLET_BAL')! + " " + ":",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2)),
                     Text("- " + CUR_CURRENCY! + " " + widget.model!.walBal!,
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2))
                   ],
                 ),
@@ -2689,11 +2691,11 @@ class StateOrder extends State<OrderDetail>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(getTranslated(context, 'PAYABLE')! + " " + ":",
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack,
                             fontWeight: FontWeight.bold)),
                     Text(CUR_CURRENCY! + " " + widget.model!.payable!,
-                        style: Theme.of(context).textTheme.button!.copyWith(
+                        style: Theme.of(context).textTheme.labelLarge!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack,
                             fontWeight: FontWeight.bold))
                   ],
@@ -2712,7 +2714,7 @@ class StateOrder extends State<OrderDetail>
               Padding(
                   padding: EdgeInsetsDirectional.only(start: 15.0, end: 15.0),
                   child: Text(getTranslated(context, 'SHIPPING_DETAIL')!,
-                      style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                      style: Theme.of(context).textTheme.titleSmall!.copyWith(
                           color: Theme.of(context).colorScheme.fontColor,
                           fontWeight: FontWeight.bold))),
               Divider(
@@ -2797,7 +2799,7 @@ class StateOrder extends State<OrderDetail>
                               orderItem.name!,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -2819,7 +2821,7 @@ class StateOrder extends State<OrderDetail>
                                             overflow: TextOverflow.ellipsis,
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle2!
+                                                .titleSmall!
                                                 .copyWith(
                                                     color: Theme.of(context)
                                                         .colorScheme
@@ -2833,7 +2835,7 @@ class StateOrder extends State<OrderDetail>
                                             val[index],
                                             style: Theme.of(context)
                                                 .textTheme
-                                                .subtitle2!
+                                                .titleSmall!
                                                 .copyWith(
                                                     color: Theme.of(context)
                                                         .colorScheme
@@ -2849,7 +2851,7 @@ class StateOrder extends State<OrderDetail>
                                 getTranslated(context, 'QUANTITY_LBL')! + ":",
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -2861,7 +2863,7 @@ class StateOrder extends State<OrderDetail>
                                   orderItem.qty!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .subtitle2!
+                                      .titleSmall!
                                       .copyWith(
                                           color: Theme.of(context)
                                               .colorScheme
@@ -2875,7 +2877,7 @@ class StateOrder extends State<OrderDetail>
                                   (orderItem.special_price ?? ''),
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle1!
+                                  .titleMedium!
                                   .copyWith(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -3046,7 +3048,7 @@ class StateOrder extends State<OrderDetail>
                     getTranslated(context, 'BANKRECEIPT')!,
                     style: Theme.of(context)
                         .textTheme
-                        .subtitle2!
+                        .titleSmall!
                         .copyWith(color: Theme.of(context).colorScheme.lightBlack),
                   ),
                   trailing: IconButton(
@@ -3520,7 +3522,7 @@ class StateOrder extends State<OrderDetail>
       : throw 'Could not launch $_url';
 
   _imgFromGallery() async {
-    var result = await FilePicker.platform.pickFiles(allowMultiple: true);
+    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true);
     if (result != null) {
       files = result.paths.map((path) => File(path!)).toList();
       if (mounted) setState(() {});
@@ -3923,7 +3925,7 @@ class StateOrder extends State<OrderDetail>
               getTranslated(context, 'DWNLD_INVOICE')!,
               style: Theme.of(context)
                   .textTheme
-                  .subtitle2!
+                  .titleSmall!
                   .copyWith(color: Theme.of(context).colorScheme.lightBlack),
             ),
           ),
@@ -3944,29 +3946,60 @@ class StateOrder extends State<OrderDetail>
               }
               var targetPath;
 
-              if (Platform.isIOS) {
+              if (Platform.isAndroid) {
                 var target = await getApplicationDocumentsDirectory();
                 targetPath = target.path.toString();
               } else {
-                var downloadsDirectory =
-                    await DownloadsPathProvider.downloadsDirectory;
+                // var downloadsDirectory =
+                //     await DownloadsPathProvider.downloadsDirectory;
+                Directory? downloadsDirectory = await getDownloadsDirectory();
+                if (downloadsDirectory == null) {
+                  downloadsDirectory = await getExternalStorageDirectory();
+                }
+
                 targetPath = downloadsDirectory!.path.toString();
               }
 
               var targetFileName = "Invoice_${widget.model!.id}";
               var generatedPdfFile, filePath;
               try {
-                generatedPdfFile =
-                    await FlutterHtmlToPdf.convertFromHtmlContent(
-                        widget.model!.invoice!, targetPath, targetFileName);
+                 generatedPdfFile = await HtmlToPdf.convertFromHtmlContent(
+                  htmlContent: widget.model!.invoice!,
+                  configuration: PdfConfiguration(
+                    targetDirectory: targetPath,
+                    targetName: targetFileName,
+                    printSize: PrintSize.A4,
+                    printOrientation: PrintOrientation.Portrait,
+                    linksClickable: true,
+                  ),
+                );
                 filePath = generatedPdfFile.path;
               } on Exception {
-                //  filePath = targetPath + "/" + targetFileName + ".html";
-                generatedPdfFile =
-                    await FlutterHtmlToPdf.convertFromHtmlContent(
-                        widget.model!.invoice!, targetPath, targetFileName);
-                filePath = generatedPdfFile.path;
+                  filePath = targetPath + "/" + targetFileName + ".html";
+                // generatedPdfFile = await HtmlToPdf.convertFromHtmlContent(
+                //   htmlContent: widget.model!.invoice!,
+                //   configuration: PdfConfiguration(
+                //     targetDirectory: targetPath,
+                //     targetName: targetFileName,
+                //     printSize: PrintSize.A4,
+                //     printOrientation: PrintOrientation.Portrait,
+                //     linksClickable: true,
+                //   ),
+                // );
+                // filePath = generatedPdfFile.path;
               }
+              // try {
+              //   generatedPdfFile =
+              //       await FlutterHtmlToPdf.convertFromHtmlContent(
+              //           widget.model!.invoice!, targetPath, targetFileName);
+              //   filePath = generatedPdfFile.path;
+              // } on Exception {
+              //   //  filePath = targetPath + "/" + targetFileName + ".html";
+              //   generatedPdfFile =
+              //       await FlutterHtmlToPdf.convertFromHtmlContent(
+              //           widget.model!.invoice!, targetPath, targetFileName);
+              //   filePath = generatedPdfFile.path;
+              // }
 
               if (mounted) {
                 setState(() {
@@ -4011,7 +4044,7 @@ class StateOrder extends State<OrderDetail>
               getTranslated(context, 'DWNLD_INVOICE')!,
               style: Theme.of(context)
                   .textTheme
-                  .subtitle2!
+                  .titleSmall!
                   .copyWith(color: Theme.of(context).colorScheme.lightBlack),
             ),
           ),
@@ -4030,26 +4063,59 @@ class StateOrder extends State<OrderDetail>
                 var target = await getApplicationDocumentsDirectory();
                 targetPath = target.path.toString();
               } else {
-                var downloadsDirectory =
-                    await DownloadsPathProvider.downloadsDirectory;
+                // var downloadsDirectory =
+                //     await DownloadsPathProvider.downloadsDirectory;
+                Directory? downloadsDirectory = await getDownloadsDirectory();
+                if (downloadsDirectory == null) {
+                  downloadsDirectory = await getExternalStorageDirectory();
+                }
+
                 targetPath = downloadsDirectory!.path.toString();
                 print('___________${targetPath}__________');
               }
 
               var targetFileName = "Invoice_${widget.model!.id}";
               var generatedPdfFile, filePath;
+
               try {
-                generatedPdfFile =
-                    await FlutterHtmlToPdf.convertFromHtmlContent(
-                        widget.model!.invoice!, targetPath, targetFileName);
+                generatedPdfFile = await HtmlToPdf.convertFromHtmlContent(
+                  htmlContent: widget.model!.invoice!,
+                  configuration: PdfConfiguration(
+                    targetDirectory: targetPath,
+                    targetName: targetFileName,
+                    printSize: PrintSize.A4,
+                    printOrientation: PrintOrientation.Portrait,
+                    linksClickable: true,
+                  ),
+                );
                 filePath = generatedPdfFile.path;
               } on Exception {
                 //  filePath = targetPath + "/" + targetFileName + ".html";
-                generatedPdfFile =
-                    await FlutterHtmlToPdf.convertFromHtmlContent(
-                        widget.model!.invoice!, targetPath, targetFileName);
+                generatedPdfFile = await HtmlToPdf.convertFromHtmlContent(
+                  htmlContent: widget.model!.invoice!,
+                  configuration: PdfConfiguration(
+                    targetDirectory: targetPath,
+                    targetName: targetFileName,
+                    printSize: PrintSize.A4,
+                    printOrientation: PrintOrientation.Portrait,
+                    linksClickable: true,
+                  ),
+                );
                 filePath = generatedPdfFile.path;
               }
+
+              // try {
+              //   generatedPdfFile =
+              //       await FlutterHtmlToPdf.convertFromHtmlContent(
+              //           widget.model!.invoice!, targetPath, targetFileName);
+              //   filePath = generatedPdfFile.path;
+              // } on Exception {
+              //   //  filePath = targetPath + "/" + targetFileName + ".html";
+              //   generatedPdfFile =
+              //       await FlutterHtmlToPdf.convertFromHtmlContent(
+              //           widget.model!.invoice!, targetPath, targetFileName);
+              //   filePath = generatedPdfFile.path;
+              // }
 
               if (mounted) {
                 setState(() {
@@ -4164,7 +4230,7 @@ class StateOrder extends State<OrderDetail>
             //               "${getTranslated(context, 'ORDER_ID_LBL')!} - ${model.id!}",
             //               style: Theme.of(context)
             //                   .textTheme
-            //                   .subtitle2!
+            //                   .titleSmall!
             //                   .copyWith(color: Theme.of(context).colorScheme.lightBlack2),
             //             )))),
             // model.otp != null && model.otp!.isNotEmpty && model.otp != "0"
@@ -4178,7 +4244,7 @@ class StateOrder extends State<OrderDetail>
             //                   "${getTranslated(context, 'OTP')!} - ${model.otp!}",
             //                   style: Theme.of(context)
             //                       .textTheme
-            //                       .subtitle2!
+            //                       .titleSmall!
             //                       .copyWith(color: Theme.of(context).colorScheme.lightBlack2),
             //                 ))))
             //     : Container(),
@@ -4189,7 +4255,7 @@ class StateOrder extends State<OrderDetail>
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
                         "${getTranslated(context, 'PREFER_DATE_TIME')!}: ${model.delDate!} - ${model.delTime!}",
-                        style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack2),
                       ),
                     ),
@@ -4223,7 +4289,7 @@ class StateOrder extends State<OrderDetail>
                     children: [
                       Text(
                         getTranslated(context, 'BANKRECEIPT')!,
-                        style: Theme.of(context).textTheme.subtitle2!.copyWith(
+                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
                             color: Theme.of(context).colorScheme.lightBlack),
                       ),
                       Container(
@@ -4425,7 +4491,7 @@ class StateOrder extends State<OrderDetail>
       child: Text(
         getTranslated(context, 'REVIEW_OPINION')!,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.subtitle1!,
+        style: Theme.of(context).textTheme.titleMedium!,
       ),
     );
   }
@@ -4435,7 +4501,7 @@ class StateOrder extends State<OrderDetail>
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
         child: TextField(
           controller: commentTextController,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
           keyboardType: TextInputType.multiline,
           maxLines: 5,
           decoration: InputDecoration(
@@ -4444,7 +4510,7 @@ class StateOrder extends State<OrderDetail>
                     color: Theme.of(context).colorScheme.lightBlack,
                     width: 1.0)),
             hintText: getTranslated(context, 'REVIEW_HINT_LBL'),
-            hintStyle: Theme.of(context).textTheme.subtitle2!.copyWith(
+            hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color:
                     Theme.of(context).colorScheme.lightBlack2.withOpacity(0.7)),
           ),
@@ -4581,7 +4647,7 @@ class StateOrder extends State<OrderDetail>
       getTranslated(context, title)!,
       style: Theme.of(context)
           .textTheme
-          .headline6!
+          .titleLarge!
           .copyWith(fontWeight: FontWeight.bold),
     );
   }

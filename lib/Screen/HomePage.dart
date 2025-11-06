@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eshop_multivendor/Helper/ApiBaseHelper.dart';
 import 'package:eshop_multivendor/Helper/AppBtn.dart';
@@ -24,11 +25,13 @@ import 'package:eshop_multivendor/Screen/Seller_Details.dart';
 import 'package:eshop_multivendor/Screen/SubCategory.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+// import 'package:package_info/package_info.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:version/version.dart';
+
 import 'Login.dart';
 import 'ProductList.dart';
 import 'Product_Detail.dart';
@@ -94,33 +97,37 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _isNetworkAvail
-          ? RefreshIndicator(
-              color: colors.primary,
-              key: _refreshIndicatorKey,
-              onRefresh: _refresh,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _deliverPincode(),
-                    _catList(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    _slider(),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    _section(),
-                    _seller()
-                  ],
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Scaffold(
+        body: _isNetworkAvail
+            ? RefreshIndicator(
+                color: colors.primary,
+                key: _refreshIndicatorKey,
+                onRefresh: _refresh,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _deliverPincode(),
+                      _catList(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _slider(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _section(),
+                      _seller()
+                    ],
+                  ),
                 ),
-              ),
-            )
-          : noInternet(context),
+              )
+            : noInternet(context),
+      ),
     );
   }
 
@@ -271,7 +278,7 @@ class _HomePageState extends State<HomePage>
                   title,
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle2!
+                      .titleSmall!
                       .copyWith(color: colors.blackTemp),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -293,7 +300,7 @@ class _HomePageState extends State<HomePage>
             children: [
               Expanded(
                 child: Text(sectionList[index].shortDesc ?? "",
-                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         color: Theme.of(context).colorScheme.fontColor)),
               ),
               TextButton(
@@ -303,7 +310,7 @@ class _HomePageState extends State<HomePage>
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5)),
                 child: Text(
                   getTranslated(context, 'SHOP_NOW')!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: Theme.of(context).colorScheme.fontColor,
                       fontWeight: FontWeight.bold),
                 ),
@@ -346,7 +353,6 @@ class _HomePageState extends State<HomePage>
         onTap: () {
           if (offerImages[index].type == "products") {
             Product? item = offerImages[index].list;
-
 
             Navigator.push(
               context,
@@ -392,7 +398,7 @@ class _HomePageState extends State<HomePage>
 
   _getSection(int i) {
     var orient = MediaQuery.of(context).orientation;
-print('pppppp${sectionList[i].productList!.length}');
+    print('pppppp${sectionList[i].productList!.length}');
     return sectionList[i].style == DEFAULT
         ? Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
@@ -431,7 +437,8 @@ print('pppppp${sectionList[i].productList!.length}');
         : sectionList[i].style == STYLE1
             ? sectionList[i].productList!.length > 0
                 ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: Row(
                       children: [
                         Flexible(
@@ -471,7 +478,8 @@ print('pppppp${sectionList[i].productList!.length}');
                 : Container()
             : sectionList[i].style == STYLE2
                 ? Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: Row(
                       children: [
                         Flexible(
@@ -509,7 +517,8 @@ print('pppppp${sectionList[i].productList!.length}');
                   )
                 : sectionList[i].style == STYLE3
                     ? Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -552,7 +561,8 @@ print('pppppp${sectionList[i].productList!.length}');
                       )
                     : sectionList[i].style == STYLE4
                         ? Padding(
-                           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 0),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -587,7 +597,8 @@ print('pppppp${sectionList[i].productList!.length}');
                             ),
                           )
                         : Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 0),
                             child: GridView.count(
                               padding: EdgeInsetsDirectional.only(top: 5),
                               crossAxisCount: 2,
@@ -700,8 +711,10 @@ print('pppppp${sectionList[i].productList!.length}');
                 ),
                 child: Text(
                   sectionList[secPos].productList![index].name!,
-                  style: Theme.of(context).textTheme.caption!.copyWith(
-                      color: Theme.of(context).colorScheme.lightBlack,fontSize:14,fontWeight:FontWeight.bold),
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: Theme.of(context).colorScheme.lightBlack,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -711,15 +724,13 @@ print('pppppp${sectionList[i].productList!.length}');
                   start: 5.0,
                   top: 3,
                 ),
-                child:
-                Text("Seller : ${ sectionList[secPos].productList![index].store_name!}",style: Theme.of(context)
-                    .textTheme
-                    .subtitle1!
-                    .copyWith(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .lightBlack,fontSize: 14,fontWeight: FontWeight.bold),
-                   maxLines: 2,
+                child: Text(
+                  "Seller : ${sectionList[secPos].productList![index].store_name!}",
+                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      color: Theme.of(context).colorScheme.lightBlack,
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold),
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -730,7 +741,7 @@ print('pppppp${sectionList[i].productList!.length}');
               //   ),
               //   child: Text(
               //     sectionList[secPos].productList![index].store_name!,
-              //     style: Theme.of(context).textTheme.caption!.copyWith(
+              //     style: Theme.of(context).textTheme.bodySmall!.copyWith(
               //         color: Theme.of(context).colorScheme.lightBlack,fontSize: 14,fontWeight: FontWeight.bold),
               //     maxLines: 2,
               //     overflow: TextOverflow.ellipsis,
@@ -768,7 +779,7 @@ print('pppppp${sectionList[i].productList!.length}');
                                 : "",
                             style: Theme.of(context)
                                 .textTheme
-                                .overline!
+                                .labelSmall!
                                 .copyWith(
                                     decoration: TextDecoration.lineThrough,
                                     letterSpacing: 0,
@@ -782,7 +793,7 @@ print('pppppp${sectionList[i].productList!.length}');
                               overflow: TextOverflow.ellipsis,
                               style: Theme.of(context)
                                   .textTheme
-                                  .overline!
+                                  .labelSmall!
                                   .copyWith(
                                       color: colors.primary,
                                       letterSpacing: 0,
@@ -860,13 +871,13 @@ print('pppppp${sectionList[i].productList!.length}');
                 height: 110,
                 padding: const EdgeInsets.only(top: 10, left: 10),
                 child: ListView.builder(
-                  itemCount: catList.length ,
-                   //   < 10 ? catList.length : 10,
+                  itemCount: catList.length,
+                  //   < 10 ? catList.length : 10,
                   scrollDirection: Axis.horizontal,
                   shrinkWrap: true,
                   physics: AlwaysScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return  Padding(
+                    return Padding(
                       padding: const EdgeInsetsDirectional.only(end: 10),
                       child: GestureDetector(
                         onTap: () async {
@@ -924,7 +935,7 @@ print('pppppp${sectionList[i].productList!.length}');
                             //     catList[index].name!,
                             //     style: Theme.of(context)
                             //         .textTheme
-                            //         .caption!
+                            //         .bodySmall!
                             //         .copyWith(
                             //             color: Theme.of(context)
                             //                 .colorScheme
@@ -941,13 +952,13 @@ print('pppppp${sectionList[i].productList!.length}');
                                 catList[index].name!.toUpperCase(),
                                 style: Theme.of(context)
                                     .textTheme
-                                    .caption!
+                                    .bodySmall!
                                     .copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .fontColor,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14),
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .fontColor,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15),
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
                                 maxLines: 2,
@@ -1019,7 +1030,7 @@ print('pppppp${sectionList[i].productList!.length}');
                     //           //     catList[index].name!,
                     //           //     style: Theme.of(context)
                     //           //         .textTheme
-                    //           //         .caption!
+                    //           //         .bodySmall!
                     //           //         .copyWith(
                     //           //             color: Theme.of(context)
                     //           //                 .colorScheme
@@ -1036,7 +1047,7 @@ print('pppppp${sectionList[i].productList!.length}');
                     //               catList[index].name!.toUpperCase(),
                     //               style: Theme.of(context)
                     //                   .textTheme
-                    //                   .caption!
+                    //                   .bodySmall!
                     //                   .copyWith(
                     //                       color: Theme.of(context)
                     //                           .colorScheme
@@ -1068,6 +1079,7 @@ print('pppppp${sectionList[i].productList!.length}');
     }
     return result;
   }
+
   Future<Null> callApi() async {
     UserProvider user = Provider.of<UserProvider>(context, listen: false);
     SettingProvider setting =
@@ -1346,14 +1358,14 @@ print('pppppp${sectionList[i].productList!.length}');
           getTranslated(context, 'UPDATE_AVAIL')!,
           style: Theme.of(this.context)
               .textTheme
-              .subtitle1!
+              .titleMedium!
               .copyWith(color: Theme.of(context).colorScheme.fontColor),
         ),
         actions: <Widget>[
           new TextButton(
               child: Text(
                 getTranslated(context, 'NO')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.lightBlack,
                     fontWeight: FontWeight.bold),
               ),
@@ -1363,7 +1375,7 @@ print('pppppp${sectionList[i].productList!.length}');
           new TextButton(
               child: Text(
                 getTranslated(context, 'YES')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.fontColor,
                     fontWeight: FontWeight.bold),
               ),
@@ -1640,7 +1652,7 @@ print('pppppp${sectionList[i].productList!.length}');
                                 },
                                 style: Theme.of(context)
                                     .textTheme
-                                    .subtitle2!
+                                    .titleSmall!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -1922,7 +1934,7 @@ print('pppppp${sectionList[i].productList!.length}');
                         )
                       : Container(),
                   Container(
-                    height: 120,
+                    height: 160,
                     padding: const EdgeInsets.only(top: 10, left: 10),
                     child: ListView.builder(
                       itemCount: sellerList.length,
@@ -1998,18 +2010,18 @@ print('pppppp${sectionList[i].productList!.length}');
                                     sellerList[index].store_name!,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .caption!
+                                        .bodySmall!
                                         .copyWith(
                                             color: Theme.of(context)
                                                 .colorScheme
                                                 .fontColor,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 14),
-                                    // overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 3,
                                     textAlign: TextAlign.center,
                                   ),
-                                  width: 50,
+                                  width: 60,
                                 ),
                               ],
                             ),

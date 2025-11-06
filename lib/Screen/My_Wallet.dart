@@ -9,7 +9,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_paystack/flutter_paystack.dart';
 import 'package:http/http.dart';
-import 'package:paytm/paytm.dart';
+// import 'package:paytm/paytm.dart';
+// import 'package:paytm/paytm.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../Helper/AppBtn.dart';
@@ -232,7 +233,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                   getTranslated(context, 'ADD_MONEY')!,
                   style: Theme.of(this.context)
                       .textTheme
-                      .subtitle1!
+                      .titleMedium!
                       .copyWith(color: Theme.of(context).colorScheme.fontColor),
                 ),
               ),
@@ -260,7 +261,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                 hintText: getTranslated(context, "AMOUNT"),
                                 hintStyle: Theme.of(this.context)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -281,7 +282,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                 hintText: getTranslated(context, 'MSG'),
                                 hintStyle: Theme.of(this.context)
                                     .textTheme
-                                    .subtitle1!
+                                    .titleMedium!
                                     .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -295,7 +296,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                           padding: EdgeInsets.fromLTRB(20.0, 10, 20.0, 5),
                           child: Text(
                             getTranslated(context, 'SELECT_PAYMENT')!,
-                            style: Theme.of(context).textTheme.subtitle2,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
                         Divider(),
@@ -307,7 +308,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                   getTranslated(context, 'payWarning')!,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .caption!
+                                      .bodySmall!
                                       .copyWith(color: Colors.red),
                                 ),
                               )
@@ -326,7 +327,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
           new TextButton(
               child: Text(
                 getTranslated(context, 'CANCEL')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.lightBlack,
                     fontWeight: FontWeight.bold),
               ),
@@ -336,7 +337,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
           new TextButton(
               child: Text(
                 getTranslated(context, 'SEND')!,
-                style: Theme.of(this.context).textTheme.subtitle2!.copyWith(
+                style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
                     color: Theme.of(context).colorScheme.fontColor,
                     fontWeight: FontWeight.bold),
               ),
@@ -358,8 +359,8 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                     // else if (payMethod!.trim() ==
                     //     getTranslated(context, 'PAYSTACK_LBL')!.trim())
                     //   paystackPayment(context, int.parse(amtC!.text));
-                    else if (payMethod == getTranslated(context, 'PAYTM_LBL'))
-                      paytmPayment(double.parse(amtC!.text));
+                    // else if (payMethod == getTranslated(context, 'PAYTM_LBL'))
+                    //   paytmPayment(double.parse(amtC!.text));
                     else if (payMethod ==
                         getTranslated(context, 'PAYPAL_LBL')) {
                       paypalPayment((amtC!.text).toString());
@@ -472,65 +473,65 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
     }
   }
 
-  void paytmPayment(double price) async {
-    String? payment_response;
-    setState(() {
-      _isProgress = true;
-    });
-    String orderId = DateTime.now().millisecondsSinceEpoch.toString();
-
-    String callBackUrl = (payTesting
-            ? 'https://securegw-stage.paytm.in'
-            : 'https://securegw.paytm.in') +
-        '/theia/paytmCallback?ORDER_ID=' +
-        orderId;
-
-    var parameter = {
-      AMOUNT: price.toString(),
-      USER_ID: CUR_USERID,
-      ORDER_ID: orderId
-    };
-
-    try {
-      final response = await post(
-        getPytmChecsumkApi,
-        body: parameter,
-        headers: headers,
-      );
-      var getdata = json.decode(response.body);
-      String? txnToken;
-      setState(() {
-        txnToken = getdata["txn_token"];
-      });
-
-      var paytmResponse = Paytm.payWithPaytm(
-          callBackUrl: callBackUrl,
-          mId: paytmMerId!,
-          orderId: orderId,
-          txnToken: txnToken!,
-          txnAmount: price.toString(),
-          staging: payTesting);
-      paytmResponse.then((value) {
-        setState(() {
-          _isProgress = false;
-
-          if (value['error']) {
-            payment_response = value['errorMessage'];
-          } else {
-            if (value['response'] != null) {
-              payment_response = value['response']['STATUS'];
-              if (payment_response == "TXN_SUCCESS")
-                sendRequest(orderId, "Paytm");
-            }
-          }
-
-          setSnackbar(payment_response!);
-        });
-      });
-    } catch (e) {
-      print(e);
-    }
-  }
+  // void paytmPayment(double price) async {
+  //   String? payment_response;
+  //   setState(() {
+  //     _isProgress = true;
+  //   });
+  //   String orderId = DateTime.now().millisecondsSinceEpoch.toString();
+  //
+  //   String callBackUrl = (payTesting
+  //           ? 'https://securegw-stage.paytm.in'
+  //           : 'https://securegw.paytm.in') +
+  //       '/theia/paytmCallback?ORDER_ID=' +
+  //       orderId;
+  //
+  //   var parameter = {
+  //     AMOUNT: price.toString(),
+  //     USER_ID: CUR_USERID,
+  //     ORDER_ID: orderId
+  //   };
+  //
+  //   try {
+  //     final response = await post(
+  //       getPytmChecsumkApi,
+  //       body: parameter,
+  //       headers: headers,
+  //     );
+  //     var getdata = json.decode(response.body);
+  //     String? txnToken;
+  //     setState(() {
+  //       txnToken = getdata["txn_token"];
+  //     });
+  //
+  //     var paytmResponse = Paytm.payWithPaytm(
+  //         callBackUrl: callBackUrl,
+  //         mId: paytmMerId!,
+  //         orderId: orderId,
+  //         txnToken: txnToken!,
+  //         txnAmount: price.toString(),
+  //         staging: payTesting);
+  //     paytmResponse.then((value) {
+  //       setState(() {
+  //         _isProgress = false;
+  //
+  //         if (value['error']) {
+  //           payment_response = value['errorMessage'];
+  //         } else {
+  //           if (value['response'] != null) {
+  //             payment_response = value['response']['STATUS'];
+  //             if (payment_response == "TXN_SUCCESS")
+  //               sendRequest(orderId, "Paytm");
+  //           }
+  //         }
+  //
+  //         setSnackbar(payment_response!);
+  //       });
+  //     });
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
 
   // stripePayment(int price) async {
   //   if (mounted)
@@ -1020,7 +1021,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                             " " + getTranslated(context, 'CURBAL_LBL')!,
                             style: Theme.of(context)
                                 .textTheme
-                                .subtitle2!
+                                .titleSmall!
                                 .copyWith(
                                     color:
                                         Theme.of(context).colorScheme.fontColor,
@@ -1037,7 +1038,7 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
                                     .toStringAsFixed(2),
                             style: Theme.of(context)
                                 .textTheme
-                                .headline6!
+                                .titleLarge!
                                 .copyWith(
                                     color:
                                         Theme.of(context).colorScheme.fontColor,
