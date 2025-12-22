@@ -1286,6 +1286,7 @@ class _HomePageState extends State<HomePage>
     if (_isNetworkAvail) {
       try {
         var parameter = {USER_ID: CUR_USERID, SAVE_LATER: save};
+        print('hfklafgvaf:_____${parameter}______');
         Response response =
             await post(getCartApi, body: parameter, headers: headers)
                 .timeout(Duration(seconds: timeOut));
@@ -2016,7 +2017,7 @@ class _HomePageState extends State<HomePage>
                                                 .colorScheme
                                                 .fontColor,
                                             fontWeight: FontWeight.w600,
-                                            fontSize: 14),
+                                            fontSize: 16),
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 3,
                                     textAlign: TextAlign.center,

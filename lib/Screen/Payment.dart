@@ -161,7 +161,7 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return SafeArea(
       top: false,
-        bottom: true,
+      bottom: true,
       child: Scaffold(
         key: _scaffoldKey,
         appBar: getSimpleAppBar(getTranslated(context, 'PAYMENT_METHOD_LBL')!,
@@ -170,8 +170,8 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
             ? _isLoading
                 ? getProgress()
                 : Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0, vertical: 5),
                     child: Column(
                       children: [
                         Expanded(
@@ -184,7 +184,8 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                   return Card(
                                     elevation: 0,
                                     child: userProvider.curBalance != "0" &&
-                                            userProvider.curBalance.isNotEmpty &&
+                                            userProvider
+                                                .curBalance.isNotEmpty &&
                                             userProvider.curBalance != ""
                                         ? Padding(
                                             padding: const EdgeInsets.symmetric(
@@ -254,7 +255,8 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                                           CUR_CURRENCY! +
                                                           " " +
                                                           remWalBal
-                                                              .toStringAsFixed(2)
+                                                              .toStringAsFixed(
+                                                                  2)
                                                       : getTranslated(context,
                                                               'TOTAL_BAL')! +
                                                           " : " +
@@ -263,7 +265,8 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                                           double.parse(
                                                                   userProvider
                                                                       .curBalance)
-                                                              .toStringAsFixed(2),
+                                                              .toStringAsFixed(
+                                                                  2),
                                                   style: TextStyle(
                                                       fontSize: 15,
                                                       color: Theme.of(context)
@@ -285,7 +288,8 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 getTranslated(
                                                     context, 'PREFERED_TIME')!,
@@ -307,8 +311,10 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                                   shrinkWrap: true,
                                                   scrollDirection:
                                                       Axis.horizontal,
-                                                  itemCount: int.parse(allowDay!),
-                                                  itemBuilder: (context, index) {
+                                                  itemCount:
+                                                      int.parse(allowDay!),
+                                                  itemBuilder:
+                                                      (context, index) {
                                                     return dateCell(index);
                                                   }),
                                             ),
@@ -334,7 +340,8 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 getTranslated(
                                                     context, 'SELECT_PAYMENT')!,
@@ -359,11 +366,14 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
                                                     return paymentItem(index);
                                                   else if (index == 2 && paypal)
                                                     return paymentItem(index);
-                                                  else if (index == 3 && paumoney)
+                                                  else if (index == 3 &&
+                                                      paumoney)
                                                     return paymentItem(index);
-                                                  else if (index == 4 && razorpay)
+                                                  else if (index == 4 &&
+                                                      razorpay)
                                                     return paymentItem(index);
-                                                  else if (index == 5 && paystack)
+                                                  else if (index == 5 &&
+                                                      paystack)
                                                     return paymentItem(index);
                                                   else if (index == 6 &&
                                                       flutterwave)
@@ -403,15 +413,36 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
     );
   }
 
-  setSnackbar(String msg) {
-    ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-      content: new Text(
+  //
+  // setSnackbar(String msg) {
+  //   ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+  //     content: new Text(
+  //       msg,
+  //       textAlign: TextAlign.center,
+  //       style: TextStyle(color: Theme.of(context).colorScheme.black),
+  //     ),
+  //     backgroundColor: Theme.of(context).colorScheme.white,
+  //     elevation: 1.0,
+  //   ));
+  // }
+  setSnackbar(
+    String msg,
+  ) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      duration: Duration(seconds: 2),
+      content: Text(
         msg,
         textAlign: TextAlign.center,
-        style: TextStyle(color: Theme.of(context).colorScheme.black),
+        style: TextStyle(color: Colors.white),
       ),
-      backgroundColor: Theme.of(context).colorScheme.white,
+      backgroundColor: Colors.black,
       elevation: 1.0,
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).size.height - 600,
+        left: 10,
+        right: 10,
+      ),
     ));
   }
 
@@ -499,8 +530,6 @@ class StatePayment extends State<Payment> with TickerProviderStateMixin {
       },
     );
   }
-
-
 
   Future<void> _getdateTime() async {
     _isNetworkAvail = await isNetworkAvailable();

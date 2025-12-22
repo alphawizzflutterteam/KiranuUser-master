@@ -317,6 +317,7 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
               LIMIT: perPage.toString(),
               SEARCH: _searchText.trim(),
             };
+            print('ghjfgjgf:_____${parameter}______');
             if (activeStatus != null) {
               if (activeStatus == awaitingPayment) activeStatus = "awaiting";
               parameter[ACTIVE_STATUS] = activeStatus;
@@ -622,8 +623,11 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
                           EdgeInsetsDirectional.only(top: 19.0, bottom: 16.0),
                       child: Text(
                         getTranslated(context, 'FILTER')!,
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                            color: Theme.of(context).colorScheme.fontColor),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(
+                                color: Theme.of(context).colorScheme.fontColor),
                       )),
                   Divider(color: Theme.of(context).colorScheme.lightBlack),
                   Flexible(

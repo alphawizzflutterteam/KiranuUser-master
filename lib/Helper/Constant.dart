@@ -13,11 +13,7 @@ final String deepLinkName = 'alpha.ecommerce.link';
 final int timeOut = 50;
 const int perPage = 10;
 
-// final String baseUrl = 'https://developmentalphawizz.com/kiranu/app/v1/api/';
-// final String baseUrl = 'https://kiranu.com/app/v1/api/';
 final String baseUrl = 'https://kiranu.com/app/v1/api/';
-
-
 
 final String imageUrl = 'https://developmentalphawizz.com/kiranu/';
 

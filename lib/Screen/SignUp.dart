@@ -197,6 +197,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       var responseData = await response.stream.toBytes();
       var responseString = String.fromCharCodes(responseData);
       print("sdfsdfsdfassdfsd=============");
+      print('registergff:_____${request.fields}______');
       print(request);
       print(request.fields);
       print(responseString);
@@ -225,9 +226,9 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       await buttonController!.reverse();
       if (!error) {
         // setSnackbar(getTranslated(context, 'REGISTER_SUCCESS_MSG')!);
-        Fluttertoast.showToast(msg: getTranslated(context, 'REGISTER_SUCCESS_MSG')!,
-            backgroundColor: colors.primary
-        );
+        Fluttertoast.showToast(
+            msg: getTranslated(context, 'REGISTER_SUCCESS_MSG')!,
+            backgroundColor: colors.primary);
         var i = getdata["data"][0];
 
         id = i[ID];
@@ -636,7 +637,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     registerTxt(),
-
                     setUserName(),
                     setEmail(),
                     setPass(),
@@ -781,7 +781,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
                       setPass(),
                       gender(),
                       // getDob(),
-                       setRefer(),
+                      setRefer(),
                       //showPass(),
                       //birthDate(),
                       // InkWell(
@@ -899,7 +899,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
     );
   }
 
-
   Future getImage() async {
     final pickedFile = await picker.pickImage(
         source: ImageSource.gallery,
@@ -960,8 +959,6 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
   //     },
   //   );
   // }
-
-
 
   // Future getImage(context, ImgSource source) async {
   //   print("dsafsadfasd");
@@ -1027,30 +1024,27 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
 
   _selectDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(1970),
-      lastDate: DateTime.now(),
-      builder: ( context,  child){
-        return Theme(
-          data: Theme.of(context).copyWith(
-            colorScheme: ColorScheme.light(
-              primary: Color(0xffFF00FF), // header background color
-              onPrimary: Colors.black, // header text color
-              onSurface: Colors.black, // body text color
-            ),
-            textButtonTheme: TextButtonThemeData(
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.black, // button text color
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(1970),
+        lastDate: DateTime.now(),
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: ColorScheme.light(
+                primary: Color(0xffFF00FF), // header background color
+                onPrimary: Colors.black, // header text color
+                onSurface: Colors.black, // body text color
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.black, // button text color
+                ),
               ),
             ),
-          ),
-          child: child!,
-        );
-      }
-
-
-    );
+            child: child!,
+          );
+        });
     if (selected != null && selected != selectedDate)
       setState(() {
         selectedDate = selected;

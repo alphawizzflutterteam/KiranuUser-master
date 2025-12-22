@@ -618,7 +618,6 @@
 //   }
 // }
 
-
 import 'dart:async';
 import 'dart:convert';
 import 'package:eshop_multivendor/Helper/Color.dart';
@@ -646,9 +645,10 @@ class VerifyOtp extends StatefulWidget {
   final otp;
   VerifyOtp(
       {Key? key,
-        required String this.mobileNumber,
-        this.countryCode,
-        this.title, this.otp})
+      required String this.mobileNumber,
+      this.countryCode,
+      this.title,
+      this.otp})
       : assert(mobileNumber != null),
         super(key: key);
 
@@ -699,8 +699,8 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     try {
       var data = {MOBILE: widget.mobileNumber, "forgot_otp": "false"};
       Response response =
-      await post(getVerifyUserApi, body: data, headers: headers)
-          .timeout(Duration(seconds: timeOut));
+          await post(getVerifyUserApi, body: data, headers: headers)
+              .timeout(Duration(seconds: timeOut));
       print(getVerifyUserApi.toString());
       print(data.toString());
 
@@ -710,43 +710,40 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       await buttonController!.reverse();
 
       SettingProvider settingsProvider =
-      Provider.of<SettingProvider>(context, listen: false);
+          Provider.of<SettingProvider>(context, listen: false);
 
       // if(widget.checkForgot == "false"){
       if (widget.title == getTranslated(context, 'SEND_OTP_TITLE')) {
         if (!error!) {
           String otp = getdata["data"];
           // setSnackbar(otp.toString());
-          Fluttertoast.showToast(msg: otp.toString(),
-              backgroundColor: colors.primary
-          );
+          Fluttertoast.showToast(
+              msg: otp.toString(), backgroundColor: colors.primary);
           // setSnackbar(msg!);
           // settingsProvider.setPrefrence(MOBILE, mobile!);
           // settingsProvider.setPrefrence(COUNTRY_CODE, countrycode!);
           Future.delayed(Duration(seconds: 1)).then((_) {
             Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => VerifyOtp(
-                      otp: otp,
-                      mobileNumber: widget.mobileNumber!,
-                      countryCode: widget.countryCode,
-                      title: getTranslated(context, 'SEND_OTP_TITLE'),
-                    ),
+              context,
+              MaterialPageRoute(
+                builder: (context) => VerifyOtp(
+                  otp: otp,
+                  mobileNumber: widget.mobileNumber!,
+                  countryCode: widget.countryCode,
+                  title: getTranslated(context, 'SEND_OTP_TITLE'),
                 ),
+              ),
             );
           });
         } else {
           setSnackbar(msg!);
         }
-      }
-      else {
+      } else {
         if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
           if (!error!) {
-            String otp = getdata["data"];
-            Fluttertoast.showToast(msg: otp.toString(),
-                backgroundColor: colors.primary
-            );
+            String otp = getdata["data"].toString();
+            Fluttertoast.showToast(
+                msg: otp.toString(), backgroundColor: colors.primary);
             // setSnackbar(otp.toString());
             // settingsProvider.setPrefrence(MOBILE, mobile!);
             // settingsProvider.setPrefrence(COUNTRY_CODE, countrycode!);
@@ -755,11 +752,11 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                   context,
                   MaterialPageRoute(
                       builder: (context) => VerifyOtp(
-                        otp: otp,
-                        mobileNumber: widget.mobileNumber!,
-                        countryCode: widget.countryCode,
-                        title: getTranslated(context, 'FORGOT_PASS_TITLE'),
-                      )));
+                            otp: otp,
+                            mobileNumber: widget.mobileNumber!,
+                            countryCode: widget.countryCode,
+                            title: getTranslated(context, 'FORGOT_PASS_TITLE'),
+                          )));
             });
           } else {
             setSnackbar(getTranslated(context, 'FIRSTSIGNUP_MSG')!);
@@ -779,10 +776,11 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
 
   getUserDetails() async {
     SettingProvider settingsProvider =
-    Provider.of<SettingProvider>(context, listen: false);
+        Provider.of<SettingProvider>(context, listen: false);
 
     if (mounted) setState(() {});
   }
+
   Future<void> checkNetworkOtp() async {
     bool avail = await isNetworkAvailable();
     if (avail) {
@@ -837,29 +835,30 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     ));
   }
 
-  otpCheck ()async {
+  otpCheck() async {
     if (widget.otp.toString() == otp.toString()) {
       SettingProvider settingsProvider =
-      Provider.of<SettingProvider>(context, listen: false);
+          Provider.of<SettingProvider>(context, listen: false);
 
       // setSnackbar(getTranslated(context, 'OTPMSG')!);
-      Fluttertoast.showToast(msg: getTranslated(context, 'OTPMSG')!,
-          backgroundColor: colors.primary
-      );
+      Fluttertoast.showToast(
+          msg: getTranslated(context, 'OTPMSG')!,
+          backgroundColor: colors.primary);
       settingsProvider.setPrefrence(MOBILE, widget.mobileNumber!);
       settingsProvider.setPrefrence(COUNTRY_CODE, widget.countryCode!);
-      if (widget.title == getTranslated(context, 'SEND_OTP_TITLE')) {
+      if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
         Future.delayed(Duration(seconds: 2)).then((_) {
           Navigator.pushReplacement(
-              // context, MaterialPageRoute(builder: (context) => Details()));
-              context, MaterialPageRoute(builder: (context) => SignUp()));
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      SetPass(mobileNumber: widget.mobileNumber!)));
         });
         // Future.delayed(Duration(seconds: 2)).then((_) {
         //   Navigator.pushReplacement(
         //       context, MaterialPageRoute(builder: (context) => SignUp()));
         // });
-      } else if (widget.title ==
-          getTranslated(context, 'FORGOT_PASS_TITLE')) {
+      } else if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
         Future.delayed(Duration(seconds: 2)).then((_) {
           Navigator.pushReplacement(
               context,
@@ -868,9 +867,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                       SetPass(mobileNumber: widget.mobileNumber!)));
         });
       }
-    }else{
-
-    }
+    } else {}
   }
 
   void _onVerifyCode() async {
@@ -885,7 +882,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
           .then((UserCredential value) {
         if (value.user != null) {
           SettingProvider settingsProvider =
-          Provider.of<SettingProvider>(context, listen: false);
+              Provider.of<SettingProvider>(context, listen: false);
 
           setSnackbar(getTranslated(context, 'OTPMSG')!);
           settingsProvider.setPrefrence(MOBILE, widget.mobileNumber!);
@@ -963,7 +960,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
           .then((UserCredential value) async {
         if (value.user != null) {
           SettingProvider settingsProvider =
-          Provider.of<SettingProvider>(context, listen: false);
+              Provider.of<SettingProvider>(context, listen: false);
 
           await buttonController!.reverse();
           setSnackbar(getTranslated(context, 'OTPMSG')!);
@@ -1056,16 +1053,17 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       ),
     );
   }
+
   OTPText() {
     return Padding(
       padding: EdgeInsetsDirectional.only(
           bottom: 10.0, start: 20.0, end: 20.0, top: 10.0),
       child: Center(
-        // child: Text("OTP: ${widget.otp}",
-        //     style: Theme.of(context).textTheme.titleMedium!.copyWith(
-        //         color: Theme.of(context).colorScheme.fontColor,
-        //         fontWeight: FontWeight.normal)),
-      ),
+          // child: Text("OTP: ${widget.otp}",
+          //     style: Theme.of(context).textTheme.titleMedium!.copyWith(
+          //         color: Theme.of(context).colorScheme.fontColor,
+          //         fontWeight: FontWeight.normal)),
+          ),
     );
   }
 
@@ -1107,7 +1105,6 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                 fontWeight: FontWeight.normal),
           ),
           InkWell(
-
             onTap: () async {
               await buttonController!.reverse();
               checkNetworkOtp();
@@ -1121,37 +1118,6 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  expandedBottomView() {
-    return Expanded(
-      flex: 6,
-      child: Container(
-        alignment: Alignment.bottomCenter,
-        child: ScrollConfiguration(
-            behavior: MyBehavior(),
-            child: SingleChildScrollView(
-              child: Card(
-                elevation: 0.5,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                margin: EdgeInsetsDirectional.only(start: 20.0, end: 20.0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    monoVarifyText(),
-                    otpText(),
-                    mobText(),
-                    OTPText(),
-                    otpLayout(),
-                    verifyBtn(),
-                    resendText(),
-                  ],
-                ),
-              ),
-            )),
       ),
     );
   }

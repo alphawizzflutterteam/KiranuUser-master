@@ -73,13 +73,13 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
 
   // late UserProvider userProvider;
 
-  checkStatus() async{
-   var onOff = await checkOnOff(widget.id);
-   print("seller id :========> ${widget.id}");
-   setState(() {
-     isOnOff = onOff;
-   });
-   print("is On off : $onOff");
+  checkStatus() async {
+    var onOff = await checkOnOff(widget.id);
+    print("seller id :========> ${widget.id}");
+    setState(() {
+      isOnOff = onOff;
+    });
+    print("is On off : $onOff");
   }
 
   @override
@@ -135,19 +135,23 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // userProvider = Provider.of<UserProvider>(context);
-    return Scaffold(
-        appBar: widget.fromSeller! ? null : getAppBar(widget.name!, context),
-        key: _scaffoldKey,
-        body: _isNetworkAvail
-            ? _isLoading
-                ? shimmer(context)
-                : Stack(
-                    children: <Widget>[
-                      _showForm(context),
-                      showCircularProgress(_isProgress, colors.primary),
-                    ],
-                  )
-            : noInternet(context));
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Scaffold(
+          appBar: widget.fromSeller! ? null : getAppBar(widget.name!, context),
+          key: _scaffoldKey,
+          body: _isNetworkAvail
+              ? _isLoading
+                  ? shimmer(context)
+                  : Stack(
+                      children: <Widget>[
+                        _showForm(context),
+                        showCircularProgress(_isProgress, colors.primary),
+                      ],
+                    )
+              : noInternet(context)),
+    );
   }
 
   Widget noInternet(BuildContext context) {
@@ -268,8 +272,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                               child: Stack(
                                 children: [
                                   FadeInImage(
-                                    image: NetworkImage(
-                                        model.image!),
+                                    image: NetworkImage(model.image!),
                                     height: 125.0,
                                     width: 135.0,
                                     fit: BoxFit.cover,
@@ -350,7 +353,10 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                             children: <Widget>[
                               Text(
                                 model.name!,
-                                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium!
+                                    .copyWith(
                                         color: Theme.of(context)
                                             .colorScheme
                                             .lightBlack),
@@ -360,13 +366,18 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text("Seller : ",
-                                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .lightBlack),
+                                  Text(
+                                    "Seller : ",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium!
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .lightBlack),
                                     maxLines: 1,
-                                    overflow: TextOverflow.ellipsis, ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                   // SizedBox(width: 3,),
                                   // Text(
                                   //   model.store_name!,
@@ -381,21 +392,21 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                   //   overflow: TextOverflow.ellipsis,
                                   // ),
                                   Container(
-                                     width: MediaQuery.of(context).size.width * 0.3, // Adjust the width as needed
+                                    width: MediaQuery.of(context).size.width *
+                                        0.3, // Adjust the width as needed
                                     child: Text(
                                       model.store_name!,
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleMedium!
                                           .copyWith(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .lightBlack),
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .lightBlack),
                                       maxLines: 2,
-                                       overflow: TextOverflow.ellipsis,
+                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
-
                                 ],
                               ),
                               model.prVarientList![model.selVarient!]
@@ -502,9 +513,8 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                             decoration:
                                                 TextDecoration.lineThrough,
                                             letterSpacing: 0,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold
-                                    ),
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
                                   ),
                                 ],
                               ),
@@ -531,7 +541,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                               child: Padding(
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .all(
+                                                                        .all(
                                                                         8.0),
                                                                 child: Icon(
                                                                   Icons.remove,
@@ -541,10 +551,10 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                             ),
                                                             onTap: () {
                                                               if (_isProgress ==
-                                                                  false &&
+                                                                      false &&
                                                                   (int.parse(_controller[
-                                                                  index]
-                                                                      .text) >
+                                                                              index]
+                                                                          .text) >
                                                                       0))
                                                                 removeFromCart(
                                                                     index);
@@ -558,13 +568,16 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                                 Selector<
                                                                     CartProvider,
                                                                     Tuple2<
-                                                                        List<dynamic>,
-                                                                        List<dynamic>>>(
+                                                                        List<
+                                                                            dynamic>,
+                                                                        List<
+                                                                            dynamic>>>(
                                                                   builder:
                                                                       (context,
                                                                           data,
                                                                           child) {
-                                                                    _controller[index]
+                                                                    _controller[
+                                                                            index]
                                                                         .text = data
                                                                             .item1
                                                                             .contains(model
@@ -657,7 +670,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                               child: Padding(
                                                                 padding:
                                                                     const EdgeInsets
-                                                                            .all(
+                                                                        .all(
                                                                         8.0),
                                                                 child: Icon(
                                                                   Icons.add,
@@ -671,7 +684,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                                 addToCart(
                                                                     index,
                                                                     (int.parse(model.prVarientList![model.selVarient!].cartCount!) +
-                                                                        int.parse(model.qtyStepSize!))
+                                                                            int.parse(model.qtyStepSize!))
                                                                         .toString());
                                                             },
                                                           )
@@ -725,7 +738,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                           addToCart(
                               index,
                               (int.parse(_controller[index].text) +
-                                  int.parse(model.qtyStepSize!))
+                                      int.parse(model.qtyStepSize!))
                                   .toString());
                       },
                       child: Card(
@@ -1095,7 +1108,8 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
           var data = getdata["data"];
 
           print("Product List Data ====================> : $data");
-          tempList = (data as List).map((data) => new Product.fromJson(data)).toList();
+          tempList =
+              (data as List).map((data) => new Product.fromJson(data)).toList();
 
           if (getdata.containsKey(TAG)) {
             List<String> tempList = List<String>.from(getdata[TAG]);
@@ -1485,10 +1499,11 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                         if (_isProgress == false)
                                           addToCart(
                                               index,
-                                              (int.parse(_controller[index].text) +
-                                                  int.parse(model.qtyStepSize!))
-                                                  .toString()
-                                          );
+                                              (int.parse(_controller[index]
+                                                          .text) +
+                                                      int.parse(
+                                                          model.qtyStepSize!))
+                                                  .toString());
                                       },
                                       child: Card(
                                         elevation: 1,
@@ -1528,7 +1543,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                             onTap: () {
                                               if (_isProgress == false &&
                                                   (int.parse(_controller[index]
-                                                      .text) >
+                                                          .text) >
                                                       0)) removeFromCart(index);
                                             },
                                           ),
@@ -1631,10 +1646,10 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
                                                 addToCart(
                                                     index,
                                                     (int.parse(_controller[
-                                                    index]
-                                                        .text) +
-                                                        int.parse(model
-                                                            .qtyStepSize!))
+                                                                    index]
+                                                                .text) +
+                                                            int.parse(model
+                                                                .qtyStepSize!))
                                                         .toString());
                                             },
                                           )
@@ -2568,7 +2583,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
             )),
             Container(
               color: Theme.of(context).colorScheme.white,
-              child:SimBtn(
+              child: SimBtn(
                   size: 1,
                   title: getTranslated(context, 'APPLY'),
                   onBtnSelected: () {

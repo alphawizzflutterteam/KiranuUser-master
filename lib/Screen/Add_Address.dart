@@ -81,7 +81,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
   int? selAreaPos = -1, selCityPos = -1;
   final TextEditingController _areaController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
-  String? lat,long;
+  String? lat, long;
 
   @override
   void initState() {
@@ -154,10 +154,15 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar: getSimpleAppBar(getTranslated(context, "ADDRESS_LBL")!, context),
-      body: _isNetworkAvail ? _showContent() : noInternet(context),
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar:
+            getSimpleAppBar(getTranslated(context, "ADDRESS_LBL")!, context),
+        body: _isNetworkAvail ? _showContent() : noInternet(context),
+      ),
     );
   }
 
@@ -844,23 +849,21 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                           MaterialPageRoute(
                               builder: (context) => MapLocationPicker(
                                     config: MapLocationPickerConfig(
-                                      onMapCreated: (GoogleMapController controller) {
-                                        if (defaultTargetPlatform == TargetPlatform.android) {
-                                          AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
+                                      onMapCreated:
+                                          (GoogleMapController controller) {
+                                        if (defaultTargetPlatform ==
+                                            TargetPlatform.android) {
+                                          AndroidGoogleMapsFlutter
+                                              .useAndroidViewSurface = true;
                                         }
                                       },
-
                                       apiKey: Platform.isAndroid
                                           ? "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU"
                                           : "AIzaSyAlxGMui3kS2rU51-n4iydztIwPORPLcrU",
                                       initialPosition: LatLng(
-                                        double.tryParse(lat.toString()) ??
-                                            0.0,
-                                        double.tryParse(
-                                            long.toString()) ??
-                                            0.0,
+                                        double.tryParse(lat.toString()) ?? 0.0,
+                                        double.tryParse(long.toString()) ?? 0.0,
                                       ),
-
                                       onNext: (result) {
                                         if (result != null) {
                                           print(result.formattedAddress);
@@ -869,8 +872,12 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                                             addressC?.text = result
                                                 .formattedAddress
                                                 .toString();
-                                            lat = result.geometry?.location.lat.toString() ?? latitude.toString();
-                                            long = result.geometry?.location.lng.toString() ?? longitude.toString();
+                                            lat = result.geometry?.location.lat
+                                                    .toString() ??
+                                                latitude.toString();
+                                            long = result.geometry?.location.lng
+                                                    .toString() ??
+                                                longitude.toString();
 
                                             myLoction = result.formattedAddress
                                                 .toString();
@@ -883,7 +890,6 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                                     ),
                                   )),
                         );
-
 
                         // await Navigator.push(
                         //   context,
@@ -915,7 +921,6 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                         //     ),
                         //   ),
                         // );
-
 
                         // await Navigator.push(
                         //     context,
@@ -959,7 +964,6 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
                       },
                     ),
                   ),
-
                 ),
               ),
             ),
@@ -1666,7 +1670,6 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
       });
     }
   }
-
 
   // Future<void> getUserCurrentLocation() async {
   //

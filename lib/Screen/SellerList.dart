@@ -68,26 +68,24 @@ class _SellerListState extends State<SellerList> {
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: Theme.of(context).colorScheme.fontColor),
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                color: Theme.of(context).colorScheme.fontColor, fontSize: 18),
           )
         ],
       ),
       onTap: () {
-        if(sellerList[index].open_close_status == "1"){
+        if (sellerList[index].open_close_status == "1") {
           Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => SellerProfile(
-                    sellerStoreName: sellerList[index].store_name ?? "",
-                    sellerRating: sellerList[index].seller_rating ?? "",
-                    sellerImage: sellerList[index].seller_profile ?? "",
-                    sellerName: sellerList[index].store_name ?? "",
-                    sellerID: sellerList[index].seller_id,
-                    storeDesc: sellerList[index].store_description,
-                  )));
+                        sellerStoreName: sellerList[index].store_name ?? "",
+                        sellerRating: sellerList[index].seller_rating ?? "",
+                        sellerImage: sellerList[index].seller_profile ?? "",
+                        sellerName: sellerList[index].store_name ?? "",
+                        sellerID: sellerList[index].seller_id,
+                        storeDesc: sellerList[index].store_description,
+                      )));
         } else {
           showToast("Currently Store is Off");
         }

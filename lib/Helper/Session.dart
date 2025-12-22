@@ -29,7 +29,8 @@ setPrefrenceBool(String key, bool value) async {
 }
 
 Future<bool> isNetworkAvailable() async {
-  final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
+  final List<ConnectivityResult> connectivityResult =
+      await (Connectivity().checkConnectivity());
   if (connectivityResult.contains(ConnectivityResult.mobile)) {
     return true;
   } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
@@ -260,16 +261,34 @@ noIntImage() {
   );
 }
 
+// setSnackbar(String msg, BuildContext context) {
+//   ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
+//     duration: Duration(seconds: 1),
+//     content: new Text(
+//       msg,
+//       textAlign: TextAlign.center,
+//       style: TextStyle(color: Theme.of(context).colorScheme.black),
+//     ),
+//     backgroundColor: Theme.of(context).colorScheme.white,
+//     elevation: 1.0,
+//   ));
+// }
 setSnackbar(String msg, BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(new SnackBar(
-    duration: Duration(seconds: 1),
-    content: new Text(
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    duration: Duration(seconds: 2),
+    content: Text(
       msg,
       textAlign: TextAlign.center,
-      style: TextStyle(color: Theme.of(context).colorScheme.black),
+      style: TextStyle(color: Colors.white),
     ),
-    backgroundColor: Theme.of(context).colorScheme.white,
+    backgroundColor: Colors.black,
     elevation: 1.0,
+    behavior: SnackBarBehavior.floating,
+    margin: EdgeInsets.only(
+      bottom: MediaQuery.of(context).size.height - 600,
+      left: 10,
+      right: 10,
+    ),
   ));
 }
 

@@ -138,7 +138,7 @@ class _SellerProfileState extends State<SellerProfile>
           Text(
             widget.sellerName!,
             style: TextStyle(
-                color: Theme.of(context).colorScheme.lightBlack2, fontSize: 16),
+                color: Theme.of(context).colorScheme.lightBlack2, fontSize: 18),
           ),
           SizedBox(
             height: 20,
@@ -296,9 +296,9 @@ class _SellerProfileState extends State<SellerProfile>
     return Text(
       title,
       style: Theme.of(context).textTheme.titleLarge!.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.fontColor,
-          ),
+          fontWeight: FontWeight.bold,
+          color: Theme.of(context).colorScheme.fontColor,
+          fontSize: 24),
     );
   }
 
