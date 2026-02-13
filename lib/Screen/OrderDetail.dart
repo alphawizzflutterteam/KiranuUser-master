@@ -2217,7 +2217,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_html_to_pdf/flutter_html_to_pdf.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:html_to_pdf_plus/html_to_pdf_plus.dart';
- // import 'package:html_to_pdf_plus/html_to_pdf_plus.dart';
+// import 'package:html_to_pdf_plus/html_to_pdf_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:in_app_review/in_app_review.dart';
@@ -2925,12 +2925,12 @@ class StateOrder extends State<OrderDetail>
                                 color: Theme.of(context).colorScheme.lightBlack,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Text(
-                            "${getTranslated(context, "OTP")!} : ",
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.lightBlack,
-                                fontWeight: FontWeight.bold),
-                          ),
+                          // Text(
+                          //   "${getTranslated(context, "OTP")!} : ",
+                          //   style: TextStyle(
+                          //       color: Theme.of(context).colorScheme.lightBlack,
+                          //       fontWeight: FontWeight.bold),
+                          // ),
                           Text(
                             "Order Remark : ",
                             style: TextStyle(
@@ -2984,12 +2984,12 @@ class StateOrder extends State<OrderDetail>
                                       )));
                             },
                           ),
-                          Text(
-                            "${orderItem.item_otp} ",
-                            style: TextStyle(
-                              color: Theme.of(context).colorScheme.lightBlack2,
-                            ),
-                          ),
+                          // Text(
+                          //   "${orderItem.item_otp} ",
+                          //   style: TextStyle(
+                          //     color: Theme.of(context).colorScheme.lightBlack2,
+                          //   ),
+                          // ),
                           Text(
                             "${model.orderNote}",
                             style: TextStyle(
@@ -3522,7 +3522,8 @@ class StateOrder extends State<OrderDetail>
       : throw 'Could not launch $_url';
 
   _imgFromGallery() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true);
+    FilePickerResult? result =
+        await FilePicker.platform.pickFiles(allowMultiple: true);
     if (result != null) {
       files = result.paths.map((path) => File(path!)).toList();
       if (mounted) setState(() {});
@@ -3963,7 +3964,7 @@ class StateOrder extends State<OrderDetail>
               var targetFileName = "Invoice_${widget.model!.id}";
               var generatedPdfFile, filePath;
               try {
-                 generatedPdfFile = await HtmlToPdf.convertFromHtmlContent(
+                generatedPdfFile = await HtmlToPdf.convertFromHtmlContent(
                   htmlContent: widget.model!.invoice!,
                   configuration: PdfConfiguration(
                     targetDirectory: targetPath,
@@ -3975,7 +3976,7 @@ class StateOrder extends State<OrderDetail>
                 );
                 filePath = generatedPdfFile.path;
               } on Exception {
-                  filePath = targetPath + "/" + targetFileName + ".html";
+                filePath = targetPath + "/" + targetFileName + ".html";
                 // generatedPdfFile = await HtmlToPdf.convertFromHtmlContent(
                 //   htmlContent: widget.model!.invoice!,
                 //   configuration: PdfConfiguration(

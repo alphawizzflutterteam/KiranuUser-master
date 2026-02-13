@@ -1495,7 +1495,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
     var getdata = json.decode(response.body);
 
     bool error = getdata["error"];
-    String? msg = getdata["message"];
+    String? msg = getdata["message"].toString();
     await buttonController!.reverse();
     if (!error) {
       setSnackbar(msg!);

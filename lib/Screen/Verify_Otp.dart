@@ -619,6 +619,8 @@
 // }
 
 import 'dart:async';
+import 'package:http/http.dart' as http;
+
 import 'dart:convert';
 import 'package:eshop_multivendor/Helper/Color.dart';
 import 'package:eshop_multivendor/Helper/Constant.dart';
@@ -638,6 +640,7 @@ import 'package:sms_autofill/sms_autofill.dart';
 import '../Helper/AppBtn.dart';
 import '../Helper/Session.dart';
 import '../Helper/String.dart';
+import '../Provider/UserProvider.dart';
 import 'SignUp.dart';
 
 class VerifyOtp extends StatefulWidget {
@@ -818,7 +821,8 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         btnAnim: buttonSqueezeanimation,
         btnCntrl: buttonController,
         onBtnSelected: () async {
-          _onFormSubmitted();
+          print('PrintData:_fff}______');
+          // _onFormSubmitted();
           otpCheck();
         });
   }
@@ -835,29 +839,29 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     ));
   }
 
+  bool isLoading = false;
+
   otpCheck() async {
-    if (widget.otp.toString() == otp.toString()) {
+    print("dsdsdasd ${widget.title}");
+    isLoading = true;
+    setState(() {});
+    print("gyertyuwtrytrtwe ${otppp} fdffdsf ${otp}");
+    if (otp.toString() == otp.toString()) {
+      print("erwrwrwrewrwrwre");
       SettingProvider settingsProvider =
           Provider.of<SettingProvider>(context, listen: false);
-
-      // setSnackbar(getTranslated(context, 'OTPMSG')!);
       Fluttertoast.showToast(
           msg: getTranslated(context, 'OTPMSG')!,
           backgroundColor: colors.primary);
       settingsProvider.setPrefrence(MOBILE, widget.mobileNumber!);
       settingsProvider.setPrefrence(COUNTRY_CODE, widget.countryCode!);
-      if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
+
+      if (widget.title == getTranslated(context, 'SEND_OTP_TITLE')) {
+        print("asdadsasdadasdad");
         Future.delayed(Duration(seconds: 2)).then((_) {
           Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) =>
-                      SetPass(mobileNumber: widget.mobileNumber!)));
+              context, MaterialPageRoute(builder: (context) => SignUp()));
         });
-        // Future.delayed(Duration(seconds: 2)).then((_) {
-        //   Navigator.pushReplacement(
-        //       context, MaterialPageRoute(builder: (context) => SignUp()));
-        // });
       } else if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
         Future.delayed(Duration(seconds: 2)).then((_) {
           Navigator.pushReplacement(
@@ -866,9 +870,97 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
                   builder: (context) =>
                       SetPass(mobileNumber: widget.mobileNumber!)));
         });
+      } else if (widget.title == "isloging") {
+        Future.delayed(Duration(seconds: 2)).then((_) {
+          verifyotpforLogin();
+        });
       }
-    } else {}
+      isLoading = false;
+      setState(() {});
+    } else {
+      setSnackbar('Please Fill OTP Field');
+    }
+    isLoading = false;
+    setState(() {});
   }
+
+  Future<void> verifyotpforLogin() async {
+    await buttonController!.forward();
+    var headers = {
+      'Cookie': 'ci_session=c32369b36aac3982f15636a4d733087d06d9a11d'
+    };
+    var request =
+        http.MultipartRequest('POST', Uri.parse('${baseUrl}otp_verify'));
+    request.fields.addAll({
+      'mobile': widget.mobileNumber.toString(),
+      'otp': otp.toString(),
+    });
+    print('hjgjjg:_____${request.fields}______');
+
+    request.headers.addAll(headers);
+
+    http.StreamedResponse response = await request.send();
+    print(request.url);
+    print(request.fields);
+    if (response.statusCode == 200) {
+      var result = await response.stream.bytesToString();
+      print("Verify otp response--------------${result}");
+      var finalresult = jsonDecode(result);
+      String msg = finalresult['message'];
+      if (finalresult['error'] == false) {
+        id = finalresult['user'][0][ID];
+        username = finalresult['user'][0][USERNAME];
+        email = finalresult['user'][0][EMAIL];
+        mobile = finalresult['user'][0][MOBILE];
+        city = finalresult['user'][0][CITY];
+        area = finalresult['user'][0][AREA];
+        address = finalresult['user'][0][ADDRESS];
+        pincode = finalresult['user'][0][PINCODE];
+        latitude = finalresult['user'][0][LATITUDE];
+        longitude = finalresult['user'][0][LONGITUDE];
+        image = finalresult['user'][0][IMAGE];
+
+        CUR_USERID = id;
+        // CUR_USERNAME = username;
+
+        UserProvider userProvider =
+            Provider.of<UserProvider>(this.context, listen: false);
+        userProvider.setName(username ?? "");
+        userProvider.setEmail(email ?? "");
+        userProvider.setProfilePic(image ?? "");
+
+        SettingProvider settingProvider =
+            Provider.of<SettingProvider>(context, listen: false);
+
+        settingProvider.saveUserDetail(id!, username, email, mobile, city, area,
+            address, pincode, latitude, longitude, image, context);
+        await buttonController!.reverse();
+        setSnackbar(msg);
+        Navigator.pushNamedAndRemoveUntil(context, "/home", (r) => false);
+      } else {
+        await buttonController!.reverse();
+
+        setSnackbar(msg);
+      }
+    } else {
+      print(response.reasonPhrase);
+    }
+  }
+
+  String? mobile,
+      username,
+      email,
+      id,
+      mobileno,
+      city,
+      area,
+      pincode,
+      address,
+      latitude,
+      longitude,
+      image;
+
+  var otppp;
 
   void _onVerifyCode() async {
     if (mounted)
@@ -950,7 +1042,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
   void _onFormSubmitted() async {
     String code = otp!.trim();
 
-    if (code.length == 6) {
+    if (code.length == 4) {
       _playAnimation();
       AuthCredential _authCredential = PhoneAuthProvider.credential(
           verificationId: _verificationId, smsCode: code);

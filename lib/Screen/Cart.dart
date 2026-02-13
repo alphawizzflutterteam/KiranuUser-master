@@ -3114,8 +3114,9 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
       checkoutState!(() {});
 
       var options = {
-        'key': razorpayId,
-        'amount': amt, // ← Yaha final calculated amount jayega
+        // 'key': razorpayId,
+        'key': 'rzp_live_RyzBzUkUURI2Pj',
+        'amount': amt,
         NAME: "Kiranu",
         'prefill': {CONTACT: contact},
         'theme.color': '#FF00FF',
