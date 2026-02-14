@@ -708,7 +708,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       print(data.toString());
 
       var getdata = json.decode(response.body);
-      bool? error = getdata["error"];
+      bool error = getdata["error"];
       String? msg = getdata["message"];
       await buttonController!.reverse();
 
@@ -717,11 +717,17 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
 
       // if(widget.checkForgot == "false"){
       if (widget.title == getTranslated(context, 'SEND_OTP_TITLE')) {
-        if (!error!) {
-          String otp = getdata["data"];
+        if (!error) {
+          String otp = getdata["data"]["otp"].toString();
+
+          print("fsdfdsfsdfsdfdf $otp");
           // setSnackbar(otp.toString());
+          // Fluttertoast.showToast(
+          //     msg: otp.toString(), backgroundColor: colors.primary);
           Fluttertoast.showToast(
-              msg: otp.toString(), backgroundColor: colors.primary);
+            msg: "OTP resent successfully",
+            backgroundColor: colors.primary,
+          );
           // setSnackbar(msg!);
           // settingsProvider.setPrefrence(MOBILE, mobile!);
           // settingsProvider.setPrefrence(COUNTRY_CODE, countrycode!);
@@ -743,10 +749,14 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
         }
       } else {
         if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
-          if (!error!) {
-            String otp = getdata["data"].toString();
+          if (!error) {
+            String otp = getdata["data"]["otp"].toString();
             Fluttertoast.showToast(
                 msg: otp.toString(), backgroundColor: colors.primary);
+
+
+            print("dsfdsfsdfsdfff ${otp}");
+
             // setSnackbar(otp.toString());
             // settingsProvider.setPrefrence(MOBILE, mobile!);
             // settingsProvider.setPrefrence(COUNTRY_CODE, countrycode!);
@@ -846,7 +856,10 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
     isLoading = true;
     setState(() {});
     print("gyertyuwtrytrtwe ${otppp} fdffdsf ${otp}");
-    if (otp.toString() == otp.toString()) {
+    if(otp.toString().isEmpty){
+      setSnackbar('Please Fill OTP Field');
+    }
+    else if (widget.otp.toString() == otp.toString()) {
       print("erwrwrwrewrwrwre");
       SettingProvider settingsProvider =
           Provider.of<SettingProvider>(context, listen: false);
@@ -878,7 +891,7 @@ class _MobileOTPState extends State<VerifyOtp> with TickerProviderStateMixin {
       isLoading = false;
       setState(() {});
     } else {
-      setSnackbar('Please Fill OTP Field');
+      setSnackbar('Please enter a valid OTP');
     }
     isLoading = false;
     setState(() {});

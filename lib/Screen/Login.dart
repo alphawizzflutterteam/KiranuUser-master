@@ -1335,6 +1335,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
   final passwordController = TextEditingController();
   String? countryName;
   FocusNode? passFocus, monoFocus = FocusNode();
+  bool showPass = false;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   bool visible = false;
@@ -1685,7 +1686,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
           FocusScope.of(context).requestFocus(passFocus);
         },
         keyboardType: TextInputType.text,
-        obscureText: true,
+        obscureText: !showPass,
         controller: passwordController,
         style: TextStyle(
             color: Theme.of(context).colorScheme.fontColor,
@@ -1705,30 +1706,44 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
             color: Theme.of(context).colorScheme.fontColor,
           ),
 
-          suffixIcon: InkWell(
-            onTap: () {
-              // SettingProvider settingsProvider =
-              // Provider.of<SettingProvider>(this.context, listen: false);
-              //
-              // settingsProvider.setPrefrence(ID, id!);
-              // settingsProvider.setPrefrence(MOBILE, mobile!);
-
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SendOtp(
-                            checkForgot: "true",
-                            title: getTranslated(context, 'FORGOT_PASS_TITLE'),
-                          )));
-            },
-            child: Text(
-              getTranslated(context, "FORGOT_LBL")!,
-              style: TextStyle(
-                color: colors.primary,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
+          // suffixIcon: InkWell(
+          //   onTap: () {
+          //     // SettingProvider settingsProvider =
+          //     // Provider.of<SettingProvider>(this.context, listen: false);
+          //     //
+          //     // settingsProvider.setPrefrence(ID, id!);
+          //     // settingsProvider.setPrefrence(MOBILE, mobile!);
+          //
+          //     Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //             builder: (context) => SendOtp(
+          //                   checkForgot: "true",
+          //                   title: getTranslated(context, 'FORGOT_PASS_TITLE'),
+          //                 )));
+          //   },
+          //   child: Text(
+          //     getTranslated(context, "FORGOT_LBL")!,
+          //     style: TextStyle(
+          //       color: colors.primary,
+          //       fontSize: 12,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   ),
+          // ),
+          suffixIcon: IconButton(
+            icon: Icon(
+              showPass
+                  ? Icons.visibility
+                  : Icons.visibility_off,
+              color: Theme.of(context).colorScheme.fontColor,
+              size: 20,
             ),
+            onPressed: () {
+              setState(() {
+                showPass= !showPass;
+              });
+            },
           ),
           hintText: getTranslated(context, "PASSHINT_LBL")!,
           hintStyle: Theme.of(this.context).textTheme.titleSmall!.copyWith(
@@ -1736,8 +1751,8 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
               fontWeight: FontWeight.normal),
           //filled: true,
           fillColor: Theme.of(context).colorScheme.white,
-          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          suffixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
+          contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          // suffixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
           prefixIconConstraints: BoxConstraints(minWidth: 40, maxHeight: 20),
           // focusedBorder: OutlineInputBorder(
           //     //   borderSide: BorderSide(color: fontColor),
@@ -1765,11 +1780,11 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
           children: <Widget>[
             InkWell(
               onTap: () {
-                SettingProvider settingsProvider =
-                    Provider.of<SettingProvider>(this.context, listen: false);
-
-                settingsProvider.setPrefrence(ID, id!);
-                settingsProvider.setPrefrence(MOBILE, mobile!);
+                // SettingProvider settingsProvider =
+                //     Provider.of<SettingProvider>(this.context, listen: false);
+                //
+                // settingsProvider.setPrefrence(ID, id??'');
+                // settingsProvider.setPrefrence(MOBILE, mobile!);
 
                 Navigator.push(
                     context,
@@ -1780,9 +1795,11 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
                             )));
               },
               child: Text(getTranslated(context, 'FORGOT_PASSWORD_LBL')!,
-                  style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                      color: Theme.of(context).colorScheme.fontColor,
-                      fontWeight: FontWeight.normal)),
+                style: TextStyle(
+                  color: colors.primary,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),),
             ),
           ],
         ));
@@ -1929,6 +1946,7 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
                       setSignInLabel(),
                       setMobileNo(),
                       setPass(),
+                      forgetPass(),
                       loginBtn(),
                       termAndPolicyTxt(),
                       SizedBox(
@@ -1948,14 +1966,14 @@ class _LoginPageState extends State<Login> with TickerProviderStateMixin {
   Widget getLogo() {
     return Positioned(
       // textDirection: Directionality.of(context),
-      left: (MediaQuery.of(context).size.width / 2.3) - 50,
+      left: (MediaQuery.of(context).size.width / 2) - 50,
       // right: ((MediaQuery.of(context).size.width /2)-55),
 
-      top: (MediaQuery.of(context).size.height * 0.17) - 50,
+      top: (MediaQuery.of(context).size.height * 0.2) - 50,
       //  bottom: height * 0.1,
       child: SizedBox(
-        width: 150,
-        height: 150,
+        width: 100,
+        height: 110,
         child: Image.asset(
           'assets/images/loginlogo.png',
         ),

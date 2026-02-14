@@ -16,6 +16,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:in_app_update/in_app_update.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Helper/Demo_Localization.dart';
@@ -99,6 +100,27 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         _locale = locale;
       });
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    checkNewUpdate();
+  }
+
+  Future<void> checkNewUpdate() async {
+    AppUpdateInfo? _updateInfo;
+    await InAppUpdate.checkForUpdate().then((info) {
+      _updateInfo = info;
+    }).catchError((e) {});
+
+    if (_updateInfo?.updateAvailability == UpdateAvailability.updateAvailable) {
+      InAppUpdate.performImmediateUpdate().catchError((e) {
+        // showSnack(e.toString());
+        return AppUpdateResult.inAppUpdateFailed;
+      });
+    }
   }
 
   @override

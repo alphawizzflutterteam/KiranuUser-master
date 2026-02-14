@@ -728,29 +728,36 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
 
   Future<void> getVerifyUser() async {
     try {
-      var data = {MOBILE: mobile, "forgot_otp": widget.checkForgot};
+      // var data = {MOBILE: mobile, "forgot_otp": widget.checkForgot};
+      Map<String, String> data = {
+        MOBILE: mobile!,
+        "forgot_otp": widget.checkForgot ?? "false",
+      };
       print('sejgfhg:_____${data}______');
       Response response =
           await post(getVerifyUserApi, body: data, headers: headers)
               .timeout(Duration(seconds: timeOut));
 
       var getdata = json.decode(response.body);
-      bool? error = getdata["error"];
+      bool error = getdata["error"];
       String? msg = getdata["message"];
-      await buttonController!.reverse();
+      // await buttonController!.reverse();
+      print("sadadasasdad $getdata");
 
       SettingProvider settingsProvider =
           Provider.of<SettingProvider>(context, listen: false);
 
       if (widget.checkForgot == "false") {
         if (widget.title == getTranslated(context, 'SEND_OTP_TITLE')) {
-          if (!error!) {
+          if (!error) {
             int otp = getdata["data"]["otp"];
             // setSnackbar(otp.toString());
             // Fluttertoast.showToast(msg: otp.toString(),
             //   backgroundColor: colors.primary
             // );
             // setSnackbar(msg!);
+
+            print("dfdfdfsdf ${otp}");
             settingsProvider.setPrefrence(MOBILE, mobile!);
             settingsProvider.setPrefrence(COUNTRY_CODE, countrycode!);
 
@@ -771,7 +778,7 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
         }
       } else {
         if (widget.title == getTranslated(context, 'FORGOT_PASS_TITLE')) {
-          if (!error!) {
+          if (!error) {
             int otp = getdata["data"]["otp"];
             // Fluttertoast.showToast(msg: otp.toString(),
             //     backgroundColor: colors.primary
@@ -1163,11 +1170,12 @@ class _SendOtpState extends State<SendOtp> with TickerProviderStateMixin {
       // textDirection: Directionality.of(context),
       left: (MediaQuery.of(context).size.width / 2) - 50,
       // right: ((MediaQuery.of(context).size.width /2)-55),
+
       top: (MediaQuery.of(context).size.height * 0.2) - 50,
       //  bottom: height * 0.1,
       child: SizedBox(
         width: 100,
-        height: 100,
+        height: 110,
         child: Image.asset(
           'assets/images/loginlogo.png',
         ),

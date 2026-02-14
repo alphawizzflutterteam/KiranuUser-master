@@ -34,6 +34,9 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
   String? password, comfirmpass;
   bool _isNetworkAvail = true;
+  bool isShowPass=false;
+  bool isShowConfirmPass=false;
+
   Animation? buttonSqueezeanimation;
 
   AnimationController? buttonController;
@@ -180,7 +183,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
         padding: EdgeInsetsDirectional.only(start: 25.0, end: 25.0, top: 30.0),
         child: TextFormField(
           keyboardType: TextInputType.text,
-          obscureText: true,
+          obscureText: !isShowPass,
           style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
@@ -196,6 +199,20 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
             prefixIcon: SvgPicture.asset(
               "assets/images/password.svg",
               color: Theme.of(context).colorScheme.fontColor,
+            ),
+            suffixIcon: IconButton(
+              icon: Icon(
+                isShowPass
+                    ? Icons.visibility
+                    : Icons.visibility_off,
+                color: Theme.of(context).colorScheme.fontColor,
+                size: 20,
+              ),
+              onPressed: () {
+                setState(() {
+                  isShowPass = !isShowPass;
+                });
+              },
             ),
             hintText: getTranslated(context, 'PASSHINT_LBL'),
             hintStyle: TextStyle(
@@ -227,7 +244,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
         padding: EdgeInsetsDirectional.only(start: 25.0, end: 25.0, top: 20.0),
         child: TextFormField(
           keyboardType: TextInputType.text,
-          obscureText: true,
+          obscureText: !isShowConfirmPass,
           style: Theme.of(this.context).textTheme.titleSmall!.copyWith(
               color: Theme.of(context).colorScheme.fontColor,
               fontWeight: FontWeight.normal),
@@ -248,6 +265,20 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
             prefixIcon: SvgPicture.asset(
               "assets/images/password.svg",
               color: Theme.of(context).colorScheme.fontColor,
+            ),
+            suffixIcon: IconButton(
+              icon: Icon(
+                isShowConfirmPass
+                    ? Icons.visibility
+                    : Icons.visibility_off,
+                color: Theme.of(context).colorScheme.fontColor,
+                size: 20,
+              ),
+              onPressed: () {
+                setState(() {
+                  isShowConfirmPass = !isShowConfirmPass;
+                });
+              },
             ),
             hintText: getTranslated(context, 'CONFIRMPASSHINT_LBL'),
             hintStyle: TextStyle(
@@ -382,7 +413,7 @@ class _LoginPageState extends State<SetPass> with TickerProviderStateMixin {
       top: (MediaQuery.of(context).size.height * 0.2) - 50,
       //  bottom: height * 0.1,
       child: SizedBox(
-        width: 110,
+        width: 100,
         height: 110,
         child: Image.asset(
           'assets/images/loginlogo.png',

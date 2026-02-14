@@ -86,7 +86,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     controller.addListener(_scrollListener);
-    getProduct("0");
+    getProduct("1");
 
     buttonController = new AnimationController(
         duration: new Duration(milliseconds: 2000), vsync: this);
@@ -1085,6 +1085,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
         _currentRangeValues!.end.round().toString() != "0") {
       parameter[MAXPRICE] = _currentRangeValues!.end.round().toString();
     }
+    print("sdfsdfsdfdsfsdf $getProductApi    and    $parameter}");
 
     apiBaseHelper.postAPICall(getProductApi, parameter).then((getdata) {
       bool error = getdata["error"];

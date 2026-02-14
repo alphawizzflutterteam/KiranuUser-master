@@ -3011,15 +3011,30 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
     placeOrder(response.paymentId);
   }
 
+  // void _handlePaymentError(PaymentFailureResponse response) {
+  //   var getdata = json.decode(response.message!);
+  //   String errorMsg = getdata["error"]["description"];
+  //
+  //
+  //   setSnackbar(errorMsg, _checkscaffoldKey);
+  //
+  //   if (mounted)
+  //     checkoutState!(() {
+  //       _placeOrder = true;
+  //     });
+  //   context.read<CartProvider>().setProgress(false);
+  // }
   void _handlePaymentError(PaymentFailureResponse response) {
-    var getdata = json.decode(response.message!);
-    String errorMsg = getdata["error"]["description"];
+    String errorMsg =  "Payment Failed";
+
     setSnackbar(errorMsg, _checkscaffoldKey);
 
-    if (mounted)
+    if (mounted) {
       checkoutState!(() {
-        _placeOrder = true;
+        _placeOrder = false;
       });
+    }
+
     context.read<CartProvider>().setProgress(false);
   }
 
@@ -3114,8 +3129,8 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
       checkoutState!(() {});
 
       var options = {
-        // 'key': razorpayId,
-        'key': 'rzp_live_RyzBzUkUURI2Pj',
+        'key': razorpayId,
+        // 'key': 'rzp_live_RyzBzUkUURI2Pj',
         'amount': amt,
         NAME: "Kiranu",
         'prefill': {CONTACT: contact},

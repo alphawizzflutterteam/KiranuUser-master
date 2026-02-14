@@ -29,6 +29,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
   bool? _showPassword = false;
+  bool showPassword = false;
   bool visible = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final nameController = TextEditingController();
@@ -441,7 +442,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
         padding: EdgeInsetsDirectional.only(start: 15.0, end: 15.0, top: 10.0),
         child: TextFormField(
           keyboardType: TextInputType.text,
-          obscureText: !_showPassword!,
+          obscureText: !showPassword,
           focusNode: passFocus,
           onFieldSubmitted: (v) {
             _fieldFocusChange(context, passFocus!, referFocus);
@@ -474,6 +475,22 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
             //   color: Theme.of(context).colorScheme.lightBlack2,
             //   size: 17,
             // ),
+
+            suffixIcon: IconButton(
+              icon: Icon(
+                showPassword
+                    ? Icons.visibility
+                    : Icons.visibility_off,
+                color: Theme.of(context).colorScheme.fontColor,
+                size: 20,
+              ),
+              onPressed: () {
+                setState(() {
+                  showPassword = !showPassword;
+                });
+              },
+            ),
+
             hintText: getTranslated(context, 'PASSHINT_LBL'),
             hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
                 color: Theme.of(context).colorScheme.fontColor,
@@ -832,7 +849,7 @@ class _SignUpPageState extends State<SignUp> with TickerProviderStateMixin {
       //  bottom: height * 0.1,
       child: SizedBox(
         width: 100,
-        height: 100,
+        height: 110,
         child: Image.asset(
           'assets/images/loginlogo.png',
         ),
