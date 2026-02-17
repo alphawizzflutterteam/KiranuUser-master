@@ -62,7 +62,7 @@ extension colors on ColorScheme {
   static const Color whiteTemp = Color(0xffFFFFFF);
 
   Color get black =>
-      this.brightness == Brightness.dark ? whiteTemp : whiteTemp;
+      this.brightness == Brightness.dark ? whiteTemp : Color(0xff000000);
 
   static const Color white10 = Colors.white10;
   static const Color white30 = Colors.white30;

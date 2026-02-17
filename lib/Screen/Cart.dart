@@ -2771,11 +2771,13 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                               )),
                                           Spacer(),
                                           SimBtn(
+
                                               size: 0.4,
                                               title: getTranslated(
                                                   context, 'PLACE_ORDER'),
                                               onBtnSelected: _placeOrder
                                                   ? () {
+                                                print("MyPrint:==========place==============");
                                                       checkoutState!(() {
                                                         _placeOrder = false;
                                                       });
@@ -2872,6 +2874,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
                                                         confirmDialog();
                                                     }
                                                   : null),
+
 
                                           //}),
                                         ]),
@@ -3031,7 +3034,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
 
     if (mounted) {
       checkoutState!(() {
-        _placeOrder = false;
+        _placeOrder = true;
       });
     }
 
@@ -3041,7 +3044,8 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
   void _handleExternalWallet(ExternalWalletResponse response) {}
 
   updateCheckout() {
-    if (mounted) checkoutState!(() {});
+    if (mounted) checkoutState!(() {
+    });
   }
 
   // razorpayPayment() async {
@@ -3257,6 +3261,9 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
         quantity = quantity != null ? quantity + "," + sec.qty! : sec.qty;
       }
       String? payVia;
+
+      print("MyPrint:==========${payMethod}==============");
+
       if (payMethod == getTranslated(context, 'COD_LBL'))
         payVia = "COD";
       else if (payMethod == getTranslated(context, 'PAYPAL_LBL'))
@@ -4492,6 +4499,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
 
           setSnackbar(msg!, _checkscaffoldKey);
         } else {
+
           deliverableList = (data as List)
               .map((data) => new Model.checkDeliverable(data))
               .toList();

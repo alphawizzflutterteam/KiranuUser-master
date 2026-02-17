@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eshop_multivendor/Helper/AppBtn.dart';
 import 'package:eshop_multivendor/Helper/Public%20Api/api.dart';
@@ -71,17 +72,6 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
   ChoiceChip? tagChip, choiceChip;
   RangeValues? _currentRangeValues;
 
-  // late UserProvider userProvider;
-
-  checkStatus() async {
-    var onOff = await checkOnOff(widget.id);
-    print("seller id :========> ${widget.id}");
-    setState(() {
-      isOnOff = onOff;
-    });
-    print("is On off : $onOff");
-  }
-
   @override
   void initState() {
     super.initState();
@@ -101,7 +91,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
         0.150,
       ),
     ));
-    checkStatus();
+    // checkStatus();
   }
 
   _scrollListener() {
@@ -112,7 +102,8 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
           setState(() {
             isLoadingmore = true;
 
-            if (offset < total) getProduct("0");
+            if (/*offset < total*/tempList.isNotEmpty) getProduct("1");
+            print("total in load more ${total}");
           });
       }
     }
@@ -1059,7 +1050,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
       SORT: sortBy,
       ORDER: orderBy,
       LIMIT: perPage.toString(),
-      OFFSET: offset.toString(),
+      OFFSET:  offset.toString(),
       TOP_RETAED: top,
     };
     print("prouduct parameter $parameter");
@@ -1091,8 +1082,8 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
       bool error = getdata["error"];
       String? msg = getdata["message"];
       if (!error) {
-        total = int.parse(getdata["total"]);
-
+        total = 20;//int.parse(getdata["total"]);
+        print("total in api ${total}");
         if (_isFirstLoad) {
           filterList = getdata["filters"];
 
@@ -1102,13 +1093,12 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
               RangeValues(double.parse(minPrice), double.parse(maxPrice));
           _isFirstLoad = false;
         }
-
-        if ((offset) < total) {
-          tempList.clear();
+        if (/*(offset) < total*/true) {
+          //tempList.clear();
 
           var data = getdata["data"];
 
-          print("Product List Data ====================> : $data");
+          log("Product List Data ====================> : $data");
           tempList =
               (data as List).map((data) => new Product.fromJson(data)).toList();
 
@@ -1119,7 +1109,8 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
 
           getAvailVarient();
 
-          offset = offset + perPage;
+          if(tempList.isNotEmpty) offset = offset + perPage;
+          //print("herere offset ${offset}");
         } else {
           if (msg != "Products Not Found !") setSnackbar(msg!, context);
           isLoadingmore = false;
