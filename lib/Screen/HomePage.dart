@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage>
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _deliverPincode(),
+                      // _deliverPincode(),
                       _catList(),
                       SizedBox(
                         height: 10,
@@ -1769,6 +1769,8 @@ class _HomePageState extends State<HomePage>
     Map parameter = {
       CAT_FILTER: "false",
     };
+
+    print("MyPrintcategories:==========${getCatApi}======${parameter}========");
     apiBaseHelper.postAPICall(getCatApi, parameter).then((getdata) {
       bool error = getdata["error"];
       String? msg = getdata["message"];
@@ -1874,6 +1876,8 @@ class _HomePageState extends State<HomePage>
         ZIPCODE: pin,
       };
     }
+
+    print("MyPrintseller:==========${getSellerApi}=========  and${parameter}=====");
 
     apiBaseHelper.postAPICall(getSellerApi, parameter).then((getdata) {
       bool error = getdata["error"];

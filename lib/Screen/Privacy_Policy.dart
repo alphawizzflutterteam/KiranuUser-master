@@ -5,6 +5,7 @@ import 'package:eshop_multivendor/Helper/Session.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+
 //import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 // import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart';
@@ -32,6 +33,7 @@ class StatePrivacy extends State<PrivacyPolicy> with TickerProviderStateMixin {
   Animation? buttonSqueezeanimation;
   AnimationController? buttonController;
   bool _isNetworkAvail = true;
+
   // final flutterWebViewPlugin = FlutterWebviewPlugin();
   // late StreamSubscription<WebViewStateChanged> _onStateChanged;
   //InAppWebViewController? _webViewController;
@@ -134,51 +136,57 @@ class StatePrivacy extends State<PrivacyPolicy> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return _isLoading
-        ? Scaffold(
-            key: _scaffoldKey,
-            appBar: getSimpleAppBar(widget.title!, context),
-            body: getProgress(),
+        ? SafeArea(
+            top: false,
+            child: Scaffold(
+              key: _scaffoldKey,
+              appBar: getSimpleAppBar(widget.title!, context),
+              body: getProgress(),
+            ),
           )
         : privacy != null
-            ? Scaffold(
-                key: _scaffoldKey,
-                appBar: getSimpleAppBar(widget.title!, context),
-                body: SingleChildScrollView(
-                    child: Html(
-                  data: privacy,
-                )) /*InAppWebView(
-                    initialData: InAppWebViewInitialData(
-                        baseUrl: Uri.dataFromString(privacy!,
-                            mimeType: 'text/html', encoding: utf8),
-                        data: privacy!.toString(),
-                        mimeType: 'text/html',
-                        encoding: "utf8"),
-                    initialOptions: InAppWebViewGroupOptions(
-                        crossPlatform: InAppWebViewOptions(
-                          mediaPlaybackRequiresUserGesture: false,
-                          transparentBackground: true,
-                          supportZoom: true,
-                          verticalScrollBarEnabled: true,
-                          javaScriptEnabled: true,
-                          cacheEnabled: true,
-                        ),
-                        android: AndroidInAppWebViewOptions(
-                          defaultFontSize: 30,
-                        ),
-                        ios: IOSInAppWebViewOptions(
+            ? SafeArea(
+                top: false,
+                child: Scaffold(
+                    key: _scaffoldKey,
+                    appBar: getSimpleAppBar(widget.title!, context),
+                    body: SingleChildScrollView(
+                        child: Html(
+                      data: privacy,
+                    )) /*InAppWebView(
+                      initialData: InAppWebViewInitialData(
+                          baseUrl: Uri.dataFromString(privacy!,
+                              mimeType: 'text/html', encoding: utf8),
+                          data: privacy!.toString(),
+                          mimeType: 'text/html',
+                          encoding: "utf8"),
+                      initialOptions: InAppWebViewGroupOptions(
+                          crossPlatform: InAppWebViewOptions(
+                            mediaPlaybackRequiresUserGesture: false,
+                            transparentBackground: true,
+                            supportZoom: true,
+                            verticalScrollBarEnabled: true,
+                            javaScriptEnabled: true,
+                            cacheEnabled: true,
+                          ),
+                          android: AndroidInAppWebViewOptions(
+                            defaultFontSize: 30,
+                          ),
+                          ios: IOSInAppWebViewOptions(
 
-                        )),
-                    onWebViewCreated: (InAppWebViewController controller) {
-                      _webViewController = controller;
-                    },
-                    androidOnPermissionRequest:
-                        (InAppWebViewController controller, String origin,
-                            List<String> resources) async {
-                      return PermissionRequestResponse(
-                          resources: resources,
-                          action: PermissionRequestResponseAction.GRANT);
-                    })*/
-                )
+                          )),
+                      onWebViewCreated: (InAppWebViewController controller) {
+                        _webViewController = controller;
+                      },
+                      androidOnPermissionRequest:
+                          (InAppWebViewController controller, String origin,
+                              List<String> resources) async {
+                        return PermissionRequestResponse(
+                            resources: resources,
+                            action: PermissionRequestResponseAction.GRANT);
+                      })*/
+                    ),
+              )
             /*WebviewScaffold(
                 appBar: getSimpleAppBar(widget.title!, context),
                 withJavascript: true,
@@ -191,10 +199,13 @@ class StatePrivacy extends State<PrivacyPolicy> with TickerProviderStateMixin {
                     ? "^tel:|^https:\/\/api.whatsapp.com\/send|^mailto:"
                     : "^tel:|^mailto:",
               )*/
-            : Scaffold(
-                key: _scaffoldKey,
-                appBar: getSimpleAppBar(widget.title!, context),
-                body: _isNetworkAvail ? Container() : noInternet(context),
+            : SafeArea(
+                top: false,
+                child: Scaffold(
+                  key: _scaffoldKey,
+                  appBar: getSimpleAppBar(widget.title!, context),
+                  body: _isNetworkAvail ? Container() : noInternet(context),
+                ),
               );
   }
 

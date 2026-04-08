@@ -2171,7 +2171,7 @@ class StateProduct extends State<ProductList> with TickerProviderStateMixin {
           padding: EdgeInsets.symmetric(vertical: 15),
           child: Column(
             children: [
-              if (widget.fromSeller!) Container() else _tags(),
+              // if (widget.fromSeller!) Container() else _tags(),
               filterOptions(),
             ],
           ),

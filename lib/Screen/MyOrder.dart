@@ -182,103 +182,106 @@ class StateMyOrder extends State<MyOrder> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      backgroundColor: Theme.of(context).colorScheme.lightWhite,
-      appBar: getAppBar(getTranslated(context, "MY_ORDERS_LBL")!, context),
-      body: _isNetworkAvail
-          ? _isLoading
-              ? shimmer(context)
-              : Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    //crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Container(
-                      //     padding:
-                      //         EdgeInsetsDirectional.only(start: 5.0, end: 5.0),
-                      //     child: TextField(
-                      //       controller: _controller,
-                      //       style: TextStyle(
-                      //         color: Theme.of(context).colorScheme.fontColor,
-                      //       ),
-                      //       decoration: InputDecoration(
-                      //         filled: true,
-                      //         isDense: true,
-                      //         fillColor: Theme.of(context).colorScheme.white,
-                      //         prefixIconConstraints: const BoxConstraints(
-                      //             minWidth: 40, maxHeight: 20),
-                      //         contentPadding: const EdgeInsets.symmetric(
-                      //             horizontal: 10, vertical: 10),
-                      //         prefixIcon: SvgPicture.asset(
-                      //           'assets/images/search.svg',
-                      //           color: colors.primary,
-                      //         ),
-                      //         hintText: getTranslated(
-                      //             context, 'FIND_ORDER_ITEMS_LBL'),
-                      //         hintStyle: TextStyle(
-                      //             color: Theme.of(context)
-                      //                 .colorScheme
-                      //                 .fontColor
-                      //                 .withOpacity(0.3),
-                      //             fontWeight: FontWeight.normal),
-                      //         border: const OutlineInputBorder(
-                      //           borderSide: BorderSide(
-                      //             width: 0,
-                      //             style: BorderStyle.none,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     )),
-                      Expanded(
-                        child: searchList.length == 0
-                            ? Center(
-                                child: Text(getTranslated(context, 'noItem')!))
-                            : RefreshIndicator(
-                                color: colors.primary,
-                                key: _refreshIndicatorKey,
-                                onRefresh: _refresh,
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  controller: scrollController,
-                                  padding: EdgeInsetsDirectional.only(top: 5.0),
-                                  itemCount: searchList.length,
-                                  physics: AlwaysScrollableScrollPhysics(),
-                                  itemBuilder: (context, index) {
-                                    OrderItem? orderItem;
-                                    try {
-                                      if (searchList[index] != null &&
-                                          searchList[index].itemList!.length >
-                                              0) {
-                                        orderItem =
-                                            searchList[index].itemList![0];
-                                      }
-                                      if (isLoadingmore &&
-                                          index == (searchList.length - 1) &&
-                                          scrollController.position.pixels <=
-                                              0) {
-                                        getOrder();
-                                      }
-                                    } on Exception catch (_) {}
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        key: _scaffoldKey,
+        backgroundColor: Theme.of(context).colorScheme.lightWhite,
+        appBar: getAppBar(getTranslated(context, "MY_ORDERS_LBL")!, context),
+        body: _isNetworkAvail
+            ? _isLoading
+                ? shimmer(context)
+                : Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Column(
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Container(
+                        //     padding:
+                        //         EdgeInsetsDirectional.only(start: 5.0, end: 5.0),
+                        //     child: TextField(
+                        //       controller: _controller,
+                        //       style: TextStyle(
+                        //         color: Theme.of(context).colorScheme.fontColor,
+                        //       ),
+                        //       decoration: InputDecoration(
+                        //         filled: true,
+                        //         isDense: true,
+                        //         fillColor: Theme.of(context).colorScheme.white,
+                        //         prefixIconConstraints: const BoxConstraints(
+                        //             minWidth: 40, maxHeight: 20),
+                        //         contentPadding: const EdgeInsets.symmetric(
+                        //             horizontal: 10, vertical: 10),
+                        //         prefixIcon: SvgPicture.asset(
+                        //           'assets/images/search.svg',
+                        //           color: colors.primary,
+                        //         ),
+                        //         hintText: getTranslated(
+                        //             context, 'FIND_ORDER_ITEMS_LBL'),
+                        //         hintStyle: TextStyle(
+                        //             color: Theme.of(context)
+                        //                 .colorScheme
+                        //                 .fontColor
+                        //                 .withOpacity(0.3),
+                        //             fontWeight: FontWeight.normal),
+                        //         border: const OutlineInputBorder(
+                        //           borderSide: BorderSide(
+                        //             width: 0,
+                        //             style: BorderStyle.none,
+                        //           ),
+                        //         ),
+                        //       ),
+                        //     )),
+                        Expanded(
+                          child: searchList.length == 0
+                              ? Center(
+                                  child: Text(getTranslated(context, 'noItem')!))
+                              : RefreshIndicator(
+                                  color: colors.primary,
+                                  key: _refreshIndicatorKey,
+                                  onRefresh: _refresh,
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    controller: scrollController,
+                                    padding: EdgeInsetsDirectional.only(top: 5.0),
+                                    itemCount: searchList.length,
+                                    physics: AlwaysScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      OrderItem? orderItem;
+                                      try {
+                                        if (searchList[index] != null &&
+                                            searchList[index].itemList!.length >
+                                                0) {
+                                          orderItem =
+                                              searchList[index].itemList![0];
+                                        }
+                                        if (isLoadingmore &&
+                                            index == (searchList.length - 1) &&
+                                            scrollController.position.pixels <=
+                                                0) {
+                                          getOrder();
+                                        }
+                                      } on Exception catch (_) {}
 
-                                    return orderItem == null
-                                        ? Container()
-                                        : productItem(index, orderItem);
-                                  },
-                                )),
-                      ),
-                      isGettingdata
-                          ? Padding(
-                              padding:
-                                  EdgeInsetsDirectional.only(top: 5, bottom: 5),
-                              child: CircularProgressIndicator(),
-                            )
-                          : Container(),
-                    ],
-                  ),
-                )
-          //))
-          : noInternet(context),
+                                      return orderItem == null
+                                          ? Container()
+                                          : productItem(index, orderItem);
+                                    },
+                                  )),
+                        ),
+                        isGettingdata
+                            ? Padding(
+                                padding:
+                                    EdgeInsetsDirectional.only(top: 5, bottom: 5),
+                                child: CircularProgressIndicator(),
+                              )
+                            : Container(),
+                      ],
+                    ),
+                  )
+            //))
+            : noInternet(context),
+      ),
     );
   }
 

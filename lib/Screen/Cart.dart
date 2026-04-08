@@ -3131,6 +3131,7 @@ class StateCart extends State<Cart> with TickerProviderStateMixin {
     if (contact != '') {
       context.read<CartProvider>().setProgress(true);
       checkoutState!(() {});
+      print("razorpayid:==========${razorpayId}==============");
 
       var options = {
         'key': razorpayId,

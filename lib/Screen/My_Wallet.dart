@@ -115,19 +115,22 @@ class StateWallet extends State<MyWallet> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: getAppBar(getTranslated(context, 'MYWALLET')!, context),
-        body: _isNetworkAvail
-            ? _isLoading
-                ? shimmer(context)
-                : Stack(
-                    children: <Widget>[
-                      showContent(),
-                      showCircularProgress(_isProgress, colors.primary),
-                    ],
-                  )
-            : noInternet(context));
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+          key: _scaffoldKey,
+          appBar: getAppBar(getTranslated(context, 'MYWALLET')!, context),
+          body: _isNetworkAvail
+              ? _isLoading
+                  ? shimmer(context)
+                  : Stack(
+                      children: <Widget>[
+                        showContent(),
+                        showCircularProgress(_isProgress, colors.primary),
+                      ],
+                    )
+              : noInternet(context)),
+    );
   }
 
   Widget paymentItem(int index) {

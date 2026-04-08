@@ -57,14 +57,17 @@ class _TransactionHistoryState extends State<TransactionHistory>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: _scaffoldKey,
-        appBar: getAppBar(getTranslated(context, 'MYTRANSACTION')!, context),
-        body: _isNetworkAvail
-            ? _isLoading
-                ? shimmer(context)
-                : showContent()
-            : noInternet(context));
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+          key: _scaffoldKey,
+          appBar: getAppBar(getTranslated(context, 'MYTRANSACTION')!, context),
+          body: _isNetworkAvail
+              ? _isLoading
+                  ? shimmer(context)
+                  : showContent()
+              : noInternet(context)),
+    );
   }
 
   Widget noInternet(BuildContext context) {

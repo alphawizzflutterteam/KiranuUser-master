@@ -170,101 +170,104 @@ class StateAddress extends State<ManageAddress> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      appBar:
-      getSimpleAppBar(getTranslated(context, "SHIPP_ADDRESS")!, context),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          await Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => AddAddress(
-                  update: false,
-                  index: addressList.length,
-                )),
-          );
-          if (mounted) {
-            setState(() {
-              addModel.clear();
-              addAddressModel();
-            });
-          }
-        },
-        child: const Icon(Icons.add),
-      ),
-      backgroundColor: Theme.of(context).colorScheme.lightWhite,
-      body: _isNetworkAvail
-          ? Column(
-        children: [
-          Expanded(
-            child: _isLoading
-                ? shimmer(context)
-                : addressList.isEmpty
-                ? Center(
-              child: Text(
-                getTranslated(context, 'NOADDRESS')!,
-              ),
-            )
-                : Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: RefreshIndicator(
-                    color: colors.primary,
-                    key: _refreshIndicatorKey,
-                    onRefresh: _refresh,
-                    child: ListView.builder(
-                      // shrinkWrap: true,
-                      physics:
-                      const AlwaysScrollableScrollPhysics(),
-                      itemCount: addressList.length,
-                      itemBuilder: (context, index) {
-                        return addressItem(index);
-                      },
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        key: _scaffoldKey,
+        appBar:
+        getSimpleAppBar(getTranslated(context, "SHIPP_ADDRESS")!, context),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () async {
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddAddress(
+                    update: false,
+                    index: addressList.length,
+                  )),
+            );
+            if (mounted) {
+              setState(() {
+                addModel.clear();
+                addAddressModel();
+              });
+            }
+          },
+          child: const Icon(Icons.add),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.lightWhite,
+        body: _isNetworkAvail
+            ? Column(
+          children: [
+            Expanded(
+              child: _isLoading
+                  ? shimmer(context)
+                  : addressList.isEmpty
+                  ? Center(
+                child: Text(
+                  getTranslated(context, 'NOADDRESS')!,
+                ),
+              )
+                  : Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: RefreshIndicator(
+                      color: colors.primary,
+                      key: _refreshIndicatorKey,
+                      onRefresh: _refresh,
+                      child: ListView.builder(
+                        // shrinkWrap: true,
+                        physics:
+                        const AlwaysScrollableScrollPhysics(),
+                        itemCount: addressList.length,
+                        itemBuilder: (context, index) {
+                          return addressItem(index);
+                        },
+                      ),
                     ),
                   ),
-                ),
-                showCircularProgress(
-                    _isProgress, colors.primary),
-              ],
+                  showCircularProgress(
+                      _isProgress, colors.primary),
+                ],
+              ),
             ),
-          ),
-          // InkWell(
-          //   child: Container(
-          //       alignment: Alignment.center,
-          //       height: 55,
-          //       decoration:  const BoxDecoration(
-          //         gradient: LinearGradient(
-          //             begin: Alignment.topLeft,
-          //             end: Alignment.bottomRight,
-          //             colors: [colors.grad1Color, colors.grad2Color],
-          //             stops: [0, 1]),
-          //       ),
-          //       child: Text(getTranslated(context, 'ADDADDRESS')!,
-          //           style: Theme.of(context).textTheme.titleMedium!.copyWith(
-          //                 color: Theme.of(context).colorScheme.white,
-          //               ))),
-          //   onTap: () async {
-          //     await Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //           builder: (context) => AddAddress(
-          //                 update: false,
-          //                 index: addressList.length,
-          //               )),
-          //     );
-          //     if (mounted) {
-          //       setState(() {
-          //         addModel.clear();
-          //         addAddressModel();
-          //       });
-          //     }
-          //   },
-          // )
-        ],
-      )
-          : noInternet(context),
+            // InkWell(
+            //   child: Container(
+            //       alignment: Alignment.center,
+            //       height: 55,
+            //       decoration:  const BoxDecoration(
+            //         gradient: LinearGradient(
+            //             begin: Alignment.topLeft,
+            //             end: Alignment.bottomRight,
+            //             colors: [colors.grad1Color, colors.grad2Color],
+            //             stops: [0, 1]),
+            //       ),
+            //       child: Text(getTranslated(context, 'ADDADDRESS')!,
+            //           style: Theme.of(context).textTheme.titleMedium!.copyWith(
+            //                 color: Theme.of(context).colorScheme.white,
+            //               ))),
+            //   onTap: () async {
+            //     await Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) => AddAddress(
+            //                 update: false,
+            //                 index: addressList.length,
+            //               )),
+            //     );
+            //     if (mounted) {
+            //       setState(() {
+            //         addModel.clear();
+            //         addAddressModel();
+            //       });
+            //     }
+            //   },
+            // )
+          ],
+        )
+            : noInternet(context),
+      ),
     );
   }
 

@@ -92,101 +92,104 @@ class _CustomerSupportState extends State<CustomerSupport>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar:
-          getSimpleAppBar(getTranslated(context, 'CUSTOMER_SUPPORT')!, context),
-      floatingActionButton: AnimatedOpacity(
-        child: FloatingActionButton(
-          child: Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: colors.primary,
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        appBar:
+            getSimpleAppBar(getTranslated(context, 'CUSTOMER_SUPPORT')!, context),
+        floatingActionButton: AnimatedOpacity(
+          child: FloatingActionButton(
+            child: Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: colors.primary,
+              ),
+              child: Icon(
+                Icons.add,
+                color: Theme.of(context).colorScheme.fontColor,
+              ),
             ),
-            child: Icon(
-              Icons.add,
-              color: Theme.of(context).colorScheme.fontColor,
-            ),
-          ),
-          onPressed: () async {
-            setState(() {
-              edit = false;
-              show = !show;
+            onPressed: () async {
+              setState(() {
+                edit = false;
+                show = !show;
 
-              clearAll();
-            });
-          },
-          heroTag: null,
+                clearAll();
+              });
+            },
+            heroTag: null,
+          ),
+          duration: Duration(milliseconds: 100),
+          opacity: fabIsVisible ? 1 : 0,
         ),
-        duration: Duration(milliseconds: 100),
-        opacity: fabIsVisible ? 1 : 0,
+        body: _isNetworkAvail
+            ? _isLoading
+                ? shimmer(context)
+                : Stack(children: [
+                    SingleChildScrollView(
+                        controller: controller,
+                        child: Form(
+                          key: _formkey,
+                          child: Column(
+                            children: [
+                              show
+                                  ? Card(
+                                      elevation: 0,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            setType(),
+                                            setEmail(),
+                                            setTitle(),
+                                            setDesc(),
+                                            Row(
+                                              children: [
+                                                edit
+                                                    ? statusDropDown()
+                                                    : Container(),
+                                                Spacer(),
+                                                sendButton(),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                      ))
+                                  : Container(),
+                              ticketList.length > 0
+                                  ? ListView.separated(
+                                      separatorBuilder:
+                                          (BuildContext context, int index) =>
+                                              Divider(),
+                                      physics: NeverScrollableScrollPhysics(),
+                                      shrinkWrap: true,
+                                      itemCount: (offset < total)
+                                          ? ticketList.length + 1
+                                          : ticketList.length,
+                                      itemBuilder: (context, index) {
+                                        return (index == ticketList.length &&
+                                                isLoadingmore)
+                                            ? Center(
+                                                child:
+                                                    CircularProgressIndicator())
+                                            : ticketItem(index);
+                                      })
+                                  : Container(
+                                      height: deviceHeight! -
+                                          kToolbarHeight -
+                                          MediaQuery.of(context).padding.top,
+                                      child: getNoItem(context))
+                            ],
+                          ),
+                        )),
+                    showCircularProgress(_isProgress, colors.primary),
+                  ])
+            : noInternet(context),
       ),
-      body: _isNetworkAvail
-          ? _isLoading
-              ? shimmer(context)
-              : Stack(children: [
-                  SingleChildScrollView(
-                      controller: controller,
-                      child: Form(
-                        key: _formkey,
-                        child: Column(
-                          children: [
-                            show
-                                ? Card(
-                                    elevation: 0,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          setType(),
-                                          setEmail(),
-                                          setTitle(),
-                                          setDesc(),
-                                          Row(
-                                            children: [
-                                              edit
-                                                  ? statusDropDown()
-                                                  : Container(),
-                                              Spacer(),
-                                              sendButton(),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ))
-                                : Container(),
-                            ticketList.length > 0
-                                ? ListView.separated(
-                                    separatorBuilder:
-                                        (BuildContext context, int index) =>
-                                            Divider(),
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemCount: (offset < total)
-                                        ? ticketList.length + 1
-                                        : ticketList.length,
-                                    itemBuilder: (context, index) {
-                                      return (index == ticketList.length &&
-                                              isLoadingmore)
-                                          ? Center(
-                                              child:
-                                                  CircularProgressIndicator())
-                                          : ticketItem(index);
-                                    })
-                                : Container(
-                                    height: deviceHeight! -
-                                        kToolbarHeight -
-                                        MediaQuery.of(context).padding.top,
-                                    child: getNoItem(context))
-                          ],
-                        ),
-                      )),
-                  showCircularProgress(_isProgress, colors.primary),
-                ])
-          : noInternet(context),
     );
   }
 

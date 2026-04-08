@@ -1014,7 +1014,7 @@ class StateAddress extends State<AddAddress> with TickerProviderStateMixin {
               horizontal: 10.0,
             ),
             child: TextFormField(
-              //readOnly: true,
+              readOnly: true,
               keyboardType: TextInputType.number,
               controller: pincodeC,
               style: Theme.of(context)

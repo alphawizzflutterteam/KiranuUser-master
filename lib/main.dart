@@ -101,8 +101,6 @@ class _MyAppState extends State<MyApp> {
         _locale = locale;
       });
   }
-
-
   @override
   void initState() {
     super.initState();
@@ -116,7 +114,7 @@ class _MyAppState extends State<MyApp> {
     }).catchError((e) {});
 
     if (_updateInfo?.updateAvailability == UpdateAvailability.updateAvailable) {
-      InAppUpdate.performImmediateUpdate().catchError((e) {
+      InAppUpdate.startFlexibleUpdate().catchError((e) {
         // showSnack(e.toString());
         return AppUpdateResult.inAppUpdateFailed;
       });
